@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-md justify-content-center bg-white navbar-light fixed-top p-3 border-bottom shadow-sm">
+  <div class="container">
+
+
+  <a routerLink="/" class="navbar-brand">L'EH </a>
+
+  <button class="navbar-toggler collapsed" type="button" (click)="collapsedShow = !collapsedShow">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse collapse" [ngClass]="collapsedShow? 'show' :''">
+    <div class="navbar-nav">
+      <a class="p-2 text-dark" [routerLink]="['/shop']">Shop</a>
+      <a class="p-2 text-dark" href="#">Account</a>
+    </div>
+    <div class="" style="margin:auto; display: flex">
+      <input class="" style="min-width:50vw;" type="text" placeholder="Search" aria-label="Search" size="15">
+      <button class="btn btn-primary">O_o</button>
+    </div>
+
+
+    <!--User-->
+    <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <div class="media align-items-center" style="display: flex">
+        <span class="avatar avatar-sm rounded-circle">
+          <img alt="IMG" src="/assets/profile.jpg">
+        </span>
+        <div class="media-body ml-2 d-none d-lg-block">
+          <span class="mb-0 text-sm  font-weight-bold"> Guo Chen </span>
+        </div>
+      </div>
+    </a>
+
+
+
+  </div>
+  </div>
+</nav>
