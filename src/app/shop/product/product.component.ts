@@ -7,9 +7,9 @@ import {Product} from "../../model/product";
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  @Input() productItem?: Product;
+  @Input() productItem!: Product;
 
-  @Input() addedToWishlist?: boolean;
+  @Input() addedToWishlist!: boolean;
 
   constructor() { }
 

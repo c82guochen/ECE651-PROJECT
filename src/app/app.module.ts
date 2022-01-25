@@ -9,6 +9,7 @@ import { PageNotFoundComponent } from './common/page-not-found/page-not-found.co
 import { ShopComponent } from './shop/shop/shop.component';
 import { ProductListComponent } from './shop/product-list/product-list.component';
 import { ProductComponent } from './shop/product/product.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ProductComponent } from './shop/product/product.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
