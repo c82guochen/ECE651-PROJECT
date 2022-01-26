@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Product} from "../../model/product";
+import {MessageService} from "../../services/message.service";
+import {CartService} from "../../services/cart.service";
 
 @Component({
   selector: 'app-product',
@@ -11,14 +13,17 @@ export class ProductComponent implements OnInit {
 
   @Input() addedToWishlist!: boolean;
 
-  constructor() { }
+  constructor(private msg: MessageService, private cartService: CartService) { }
 
   ngOnInit(): void {
 
   }
 
   handleAddToCart() {
-
+    this.cartService.addProductToCart(this.productItem).subscribe(() => {
+      console.log("added to cart", this.productItem)
+      this.msg.sendMsg(this.productItem);
+    })
   }
 
   handleAddToWishlist() {

@@ -10,6 +10,8 @@ import { ShopComponent } from './shop/shop/shop.component';
 import { ProductListComponent } from './shop/product-list/product-list.component';
 import { ProductComponent } from './shop/product/product.component';
 import {HttpClientModule} from "@angular/common/http";
+import { CartComponent } from './shop/cart/cart.component';
+import { CartItemComponent } from './shop/cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import {HttpClientModule} from "@angular/common/http";
     PageNotFoundComponent,
     ShopComponent,
     ProductListComponent,
-    ProductComponent
+    ProductComponent,
+    CartComponent,
+    CartItemComponent
   ],
   imports: [
     BrowserModule,
