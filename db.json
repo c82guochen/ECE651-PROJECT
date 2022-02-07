@@ -55,13 +55,11 @@
     }
   ],
   "cart": {
-    "guochen": {
-      "items": [
-        {"id":  1, "productId": 1, "qty": 1},
-        {"id":  2, "productId": 2, "qty": 2},
-        {"id":  3, "productId": 3, "qty": 3}
-      ]
-    }
+    "id": 2,
+    "name": "Cabbage",
+    "description": "Praesent dictum laoreet nibh nec volutpat. Etiam vel arcu lectus. Maecenas tellus eros, euismod a urna eget, interdum posuere dolor. Vivamus eleifend convallis nisi vel blandit. Praesent sed tellus vitae dui viverra faucibus porttitor ut dui. Praesent id metus ut augue tincidunt porttitor ut ac nisl. Etiam ac porttitor massa,",
+    "imageUrl": "https://www.gardeningknowhow.com/wp-content/uploads/2020/03/primo-vantage-400x350.jpg",
+    "price": 199
   },
   "profile": {
     "name": "typicode"
