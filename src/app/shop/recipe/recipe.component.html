@@ -1,0 +1,18 @@
+<div class="card mb-4 shadow-sm">
+  <img class="bd-placeholder-img card-img-top p-2" width="100%" [src]="recipeItem.imageUrl" />
+  <div class="card-header">{{recipeItem.name}}</div>
+  <div class="card-body">
+
+    <p class="card-text">
+
+      <i *ngIf="addedToWishlist" class="fas fa-heart float-right" (click)="handleRemoveFromWishlist()"></i>
+      <i *ngIf="!addedToWishlist" class="far fa-heart float-right" (click)="handleAddToWishlist()"></i>
+    </p>
+    <p class="card-text">{{ recipeItem.description | slice: 0:80 }}...</p>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="btn-group">
+        <button type="button" class="btn btn-sm btn-outline-secondary product-btn">View Details</button>
+      </div>
+    </div>
+  </div>
+</div>

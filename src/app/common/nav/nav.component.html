@@ -6,16 +6,19 @@
 
   <button class="navbar-toggler collapsed" type="button" (click)="collapsedShow = !collapsedShow">
     <span class="navbar-toggler-icon"></span>
+<!--    //button在页面哪里？在做什么？-->
   </button>
 
   <div class="navbar-collapse collapse" [ngClass]="collapsedShow? 'show' :''">
     <div class="navbar-nav">
+<!--      //这里也不明白……-->
       <a class="p-2 text-dark" [routerLink]="['/']">Shop</a>
       <a class="p-2 text-dark" href="#">Account</a>
     </div>
     <div class="" style="margin:auto; display: flex">
       <input class="" style="min-width:50vw;" type="text" placeholder="Search" aria-label="Search" size="15">
       <button class="btn btn-primary">O_o</button>
+<!--      //搜索符号在哪里找呢？-->
     </div>
 
 

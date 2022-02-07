@@ -11,5 +11,6 @@ export class CartItem {
     this.productId = productId;
     this.qty = qty;
     this.product = new Product(0, "placeholder")
+    //???
   }
 }
