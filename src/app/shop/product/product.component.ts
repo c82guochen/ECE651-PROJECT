@@ -10,7 +10,6 @@ import {CartService} from "../../services/cart.service";
 })
 export class ProductComponent implements OnInit {
   @Input() productItem!: Product;
-
   @Input() addedToWishlist!: boolean;
 
   constructor(private msg: MessageService, private cartService: CartService) { }
@@ -26,12 +25,6 @@ export class ProductComponent implements OnInit {
     })
   }
 
-  handleAddToWishlist() {
 
-  }
-
-  handleRemoveFromWishlist() {
-
-  }
 
 }

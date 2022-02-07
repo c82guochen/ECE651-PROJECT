@@ -14,6 +14,7 @@ export class FavoriteService {
   getFavorite() {
     return this.http.get<{id: number}[]>(favoriteUrl).pipe(
       map((result: {id: number}[]) => result.map((item)=>item.id))
-    );
+    );//result一定有id这个属性，还有可能会有别的属性
+    // 关于=>需要进行理解(聊天记录)
   }
 }
