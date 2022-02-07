@@ -14,6 +14,9 @@ import { CartComponent } from './shop/cart/cart.component';
 import { CartItemComponent } from './shop/cart-item/cart-item.component';
 import { RecipeComponent } from './shop/recipe/recipe.component';
 import { RecipeListComponent } from './shop/recipe-list/recipe-list.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RatingComponent } from './common/rating/rating.component';
+import { CarouselComponent } from './common/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +30,15 @@ import { RecipeListComponent } from './shop/recipe-list/recipe-list.component';
     CartComponent,
     CartItemComponent,
     RecipeComponent,
-    RecipeListComponent
+    RecipeListComponent,
+    RatingComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
