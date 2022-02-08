@@ -12,7 +12,7 @@ export class UserService {
     return 'guochen'
   }
 
-  login(email, password) {
+  login(email:string, password:string) {
     this.user = 'guochen'
     return true
   }

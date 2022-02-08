@@ -10,7 +10,6 @@ import {CartService} from "../../services/cart.service";
 })
 export class ProductComponent implements OnInit {
   @Input() productItem!: Product;
-  @Input() addedToWishlist!: boolean;
 
   constructor(private msg: MessageService, private cartService: CartService) { }
 
@@ -21,7 +20,6 @@ export class ProductComponent implements OnInit {
   handleAddToCart() {
     this.cartService.addProductToCart(this.productItem).subscribe(() => {
       console.log("added to cart", this.productItem)
-      this.msg.sendMsg(this.productItem);
     })
   }
 
