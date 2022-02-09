@@ -1,8 +1,17 @@
 <div class="row align-items-end">
     <div class="col-4">
-      <img class="bd-placeholder-img card-img-top p-2" width="100%" [src]="productItem.imageUrl" />
+      <img class="bd-placeholder-img card-img-top p-2" width="110%" [src]="productItem.imageUrl" />
     </div>
     <div class="col-6">
-      {{productItem.name}}
+      <div class="col align-self-start">
+        <strong>{{productItem.name}}</strong>
+      </div>
+      <div class="col align-self-start">
+        <strong>{{productItem.price}}</strong>
+      </div>
+      <div >
+        <button>Add to cart</button>
+      </div>
+      <div class="col align-self-start">{{productItem.description}}</div>
     </div>
   </div>

@@ -9,20 +9,13 @@ import { productsUrl } from 'src/app/config/api';
   providedIn: 'root'
 })
 export class ProductService {
-  local_product = new Map<number, Product>()
   local_products = new Map<number, Product>()
 
   constructor(private http: HttpClient) { }
 
-  getProduct(id: number):Observable<Product>{
-    const url = `${productsUrl}/${id}`;
-    return this.http.get<Product>(url).pipe(
-      map((res: Product)=> {
-        this.local_product.get(id)
-        return res
-      })
-    )
-  }
+  getProduct(id: number): Product {
+    return this.local_products.get(id) as Product
+  }//非最终
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(productsUrl).pipe(
