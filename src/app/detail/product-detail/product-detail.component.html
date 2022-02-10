@@ -9,6 +9,11 @@
       <div class="col align-self-start">
         <strong>{{productItem.price}}</strong>
       </div>
+      <div id="box">
+        <button id="btn1" (click)="increase()" >+</button>
+        <input type="number" id="quantity" name="quantity" value="1" min="1" oninput="value=value.replace(/[^\d]/g,'')">
+        <button id="btn2" (click)="decrease()">-</button>
+      </div>
       <div >
         <button>Add to cart</button>
       </div>

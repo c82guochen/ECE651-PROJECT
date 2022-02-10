@@ -30,4 +30,20 @@ export class ProductDetailComponent implements OnInit {
       console.log("added to cart", this.productItem)
     })
   }
+
+  increase(){
+
+    var element = document.getElementById("quantity")!;
+    var dataAttribute = element.getAttribute("value");
+    console.log(dataAttribute) ;
+    dataAttribute = String(Number(dataAttribute) + 1);
+    element.setAttribute("value",dataAttribute); 
+  }
+  decrease(){
+    var element = document.getElementById("quantity")!;
+    var dataAttribute = element.getAttribute("value");
+    console.log(dataAttribute) ;
+    dataAttribute = Number(dataAttribute) - 1<1? String(Number(dataAttribute)):String(Number(dataAttribute)-1);
+    element.setAttribute("value",dataAttribute);
+  }
 }
