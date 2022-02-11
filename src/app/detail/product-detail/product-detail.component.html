@@ -3,20 +3,18 @@
       <img class="bd-placeholder-img card-img-top p-2" width="110%" [src]="productItem.imageUrl" />
     </div>
     <div class="col-6">
-      <div class="col align-self-start">
+      <div class="col align-self-start fs-1 p-1 b-2">
         <strong>{{productItem.name}}</strong>
       </div>
-      <div class="col align-self-start">
-        <strong>{{productItem.price}}</strong>
+      <div class="col align-self-start fs-2 text-danger bg-secondary bg-opacity-10 p-2">
+        <strong>{{ productItem.price | currency }}</strong>
       </div>
-      <div id="box">
-        <button id="btn1" (click)="increase()" >+</button>
-        <input type="number" id="quantity" name="quantity" value="1" min="1" oninput="value=value.replace(/[^\d]/g,'')">
-        <button id="btn2" (click)="decrease()">-</button>
+      <div id="box" class="p-2 ">
+        <button class="rounded-3 border-success" style="height: 50px;" id="btn1" (click)="increase()" >+</button>
+        <input type="number" style="height: 50px;" id="quantity" name="quantity" value="1" min="1" oninput="value=value.replace(/[^\d]/g,'')">
+        <button class="rounded-3 border-success" style="height: 50px;" id="btn2" (click)="decrease()">-</button>
+        <button type="button" class="btn btn-outline-success m-2 btn-sm rounded-3" style="height: 50px;width: 200px">Add to cart</button>
       </div>
-      <div >
-        <button>Add to cart</button>
-      </div>
-      <div class="col align-self-start">{{productItem.description}}</div>
+      <div class="col align-self-start">Description: {{productItem.description}}</div>
     </div>
   </div>

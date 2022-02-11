@@ -1,25 +1,38 @@
 <div>
   <div class="row align-items-start">
-    <div class="col-4">
+    <div class="col-4 border border-success p-4 m-3">
       <!--  用户头像姓名性别-->
-      <img src="">
-      <span>name</span>
-      <span>sex</span>
+      <img alt="IMG" class="rounded-circle col-5" style="height: 100px;width: 100px" src="assets/profile.jpg">
+      <span class="col-5 p-3 fs-3">name</span>
     </div>
-    <div class="col-6">
+    <div class="col-6 border border-success m-3" style="height: 150px;width: 600px">
       <!--  用户个人信息-->
-      <span>cardnumber</span>
-      <span>address</span>
-      <button >Change</button>
+      <div class="p-3">
+        <span>cardnumber: </span>
+        <span>xxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span>
+      </div>
+      <div class="p-3">
+        <span>address: </span>
+        <span>xxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span>
+      </div>
+      <div class="">
+        <button type="button" class="float right btn btn-outline-success m-2 btn-sm rounded-pill ">Change</button>
+      </div>
       <!--这里有个Change函数没写，回头看看怎么写-->
     </div>
   </div>
 </div>
 
 <div>
-  <div>your shopping cart list</div>
-  <div>your shopping cart list</div>
-  <div>your shopping cart list</div>
+  <a routerLink = "cartlist">
+      <div class="text-decoration-underline p-3 m-3 bg-danger bg-opacity-25 fw-bold" style="color:HotPink;width:450px;height:70px">your shopping cart list</div>
+  </a>
+  <a routerLink = "">
+      <div class="text-decoration-underline p-3 m-3 bg-warning bg-opacity-25 fw-bold" style="color:Gold;width:450px;height:70px">your orders list</div>
+  </a>
+  <a routerLink = "">
+      <div class="text-decoration-underline p-3 m-3 bg-primary bg-opacity-25 fw-bold" style="color:RoyalBlue;width:450px;height:70px">your favourites list</div>
+  </a>
 </div>
 
 <div>

@@ -32,13 +32,13 @@ export class ProductDetailComponent implements OnInit {
   }
 
   increase(){
-
     var element = document.getElementById("quantity")!;
     var dataAttribute = element.getAttribute("value");
     console.log(dataAttribute) ;
     dataAttribute = String(Number(dataAttribute) + 1);
-    element.setAttribute("value",dataAttribute); 
+    element.setAttribute("value",dataAttribute);
   }
+
   decrease(){
     var element = document.getElementById("quantity")!;
     var dataAttribute = element.getAttribute("value");

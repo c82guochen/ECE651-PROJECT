@@ -9,12 +9,13 @@ import { PageNotFoundComponent } from './common/page-not-found/page-not-found.co
 import { ShopComponent } from './shop/shop/shop.component';
 import { ProductListComponent } from './shop/product-list/product-list.component';
 import { ProductComponent } from './shop/product/product.component';
-import {HttpClientModule} from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 import { CartComponent } from './shop/cart/cart.component';
 import { CartItemComponent } from './shop/cart-item/cart-item.component';
 import { RecipeComponent } from './shop/recipe/recipe.component';
 import { RecipeListComponent } from './shop/recipe-list/recipe-list.component';
 import { UserDetailComponent } from './detail/user-detail/user-detail.component';
+import {ProductDetailComponent} from './detail/product-detail/product-detail.component'
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { UserDetailComponent } from './detail/user-detail/user-detail.component'
     CartItemComponent,
     RecipeComponent,
     RecipeListComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,

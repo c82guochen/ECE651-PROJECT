@@ -6,6 +6,7 @@ import {RecipeListComponent} from "./shop/recipe-list/recipe-list.component";
 import {ProductListComponent} from "./shop/product-list/product-list.component";
 import {ProductDetailComponent} from "./detail/product-detail/product-detail.component"
 import {UserDetailComponent} from "./detail/user-detail/user-detail.component"
+import {CartComponent} from './shop/cart/cart.component'
 
 const routes: Routes = [
   { path: '', component: ShopComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'productlist', component: ProductListComponent },
   { path: 'productdetail/:id', component: ProductDetailComponent },
   { path: 'userdetail', component: UserDetailComponent },
+  { path: 'cartlist', component: CartComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 
