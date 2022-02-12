@@ -15,7 +15,8 @@ import { CartItemComponent } from './shop/cart-item/cart-item.component';
 import { RecipeComponent } from './shop/recipe/recipe.component';
 import { RecipeListComponent } from './shop/recipe-list/recipe-list.component';
 import { UserDetailComponent } from './detail/user-detail/user-detail.component';
-import {ProductDetailComponent} from './detail/product-detail/product-detail.component'
+import { ProductDetailComponent} from './detail/product-detail/product-detail.component';
+import { RecipeDetailComponent } from './detail/recipe-detail/recipe-detail.component'
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {ProductDetailComponent} from './detail/product-detail/product-detail.com
     RecipeComponent,
     RecipeListComponent,
     UserDetailComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    RecipeDetailComponent
   ],
   imports: [
     BrowserModule,

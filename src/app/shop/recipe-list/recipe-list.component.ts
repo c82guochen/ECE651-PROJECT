@@ -20,7 +20,7 @@ export class RecipeListComponent implements OnInit {
   }
 
   loadRecipes() {
-    this.recipeService.getRecipe().subscribe((recipes)=>{
+    this.recipeService.getRecipes().subscribe((recipes)=>{
       this.recipeList = recipes;
     });
   }

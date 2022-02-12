@@ -1,0 +1,17 @@
+<div class="row align-items-end">
+    <div class="col-4">
+      <img class="bd-placeholder-img card-img-top p-2" width="110%" [src]="recipeItem.imageUrl" />
+    </div>
+    <div class="col-6">
+      <div class="col align-self-start fs-1 p-1 b-2">
+        <strong>{{recipeItem.name}}</strong>
+      </div>
+      <div class="col align-self-start fs-2 text-danger bg-secondary bg-opacity-10 p-2">
+        <strong>{{ recipeItem.review_rating }} ({{recipeItem.review_qty}})</strong>
+      </div>
+      <div class="col align-self-start">Description: {{recipeItem.description}}</div>
+      <div id="box" class="p-2 ">
+        <button type="button" class="btn btn-outline-success m-2 btn-sm rounded-3" style="height: 50px;width: 200px">Add all to cart</button>
+      </div>
+    </div>
+  </div>

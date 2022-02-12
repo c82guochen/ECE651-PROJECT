@@ -10,8 +10,12 @@ import { recipesUrl } from 'src/app/config/api';
 export class RecipeService {
   local_recipes = new Map<number, Recipe>()
 
+  getRecipe(id: number): Recipe {
+    return this.local_recipes.get(id) as Recipe
+  }//非最终
+
   constructor(private http: HttpClient) { }
-  getRecipe(): Observable<Recipe[]> {
+  getRecipes(): Observable<Recipe[]> {
     return this.http.get<Recipe[]>(recipesUrl).pipe(
       map((res: Recipe[])=> {
         console.log("get recipe invoke ")

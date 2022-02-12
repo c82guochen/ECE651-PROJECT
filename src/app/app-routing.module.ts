@@ -7,6 +7,7 @@ import {ProductListComponent} from "./shop/product-list/product-list.component";
 import {ProductDetailComponent} from "./detail/product-detail/product-detail.component"
 import {UserDetailComponent} from "./detail/user-detail/user-detail.component"
 import {CartComponent} from './shop/cart/cart.component'
+import {RecipeDetailComponent} from "./detail/recipe-detail/recipe-detail.component"
 
 const routes: Routes = [
   { path: '', component: ShopComponent },
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'productlist', component: ProductListComponent },
   { path: 'productdetail/:id', component: ProductDetailComponent },
   { path: 'userdetail', component: UserDetailComponent },
-  { path: 'cartlist', component: CartComponent },
+//   { path: 'cartDetail', component: CartDetailComponent }, 这里cartlist也要重新写！！
+  { path: 'recipedetail/:id', component: RecipeDetailComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 
