@@ -23,4 +23,10 @@ export class RecipeDetailComponent implements OnInit {
       console.log(this.recipeItem);
   }
 
+  handleAddToWishlist(){
+  }
+
+  handleAddAllToCart(){
+  }
+  //待完成
 }

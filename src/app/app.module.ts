@@ -15,8 +15,7 @@ import { RecipeComponent } from './shop/recipe/recipe.component';
 import { RecipeListComponent } from './shop/recipe-list/recipe-list.component';
 import { UserDetailComponent } from './detail/user-detail/user-detail.component';
 import { ProductDetailComponent} from './detail/product-detail/product-detail.component';
-import { RecipeDetailComponent } from './detail/recipe-detail/recipe-detail.component'
-import {ProductDetailComponent} from './detail/product-detail/product-detail.component'
+import { RecipeDetailComponent } from './detail/recipe-detail/recipe-detail.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RatingComponent } from './common/rating/rating.component';
 import { CarouselComponent } from './common/carousel/carousel.component';

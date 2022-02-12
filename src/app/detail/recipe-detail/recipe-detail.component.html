@@ -1,17 +1,34 @@
-<div class="row align-items-end">
-    <div class="col-4">
-      <img class="bd-placeholder-img card-img-top p-2" width="110%" [src]="recipeItem.imageUrl" />
+<div class="container">
+  <div class="row justify-content-between">
+    <div class="col-5">
+      <img class="border border-success bd-placeholder-img card-img-top p-2" width="110%" [src]="recipeItem.imageUrl" />
     </div>
-    <div class="col-6">
-      <div class="col align-self-start fs-1 p-1 b-2">
+    <div class="col-5">
+      Description: {{recipeItem.description}}
+    </div>
+  </div>
+
+  <div class="row justify-content-between">
+    <div class="col-5">
+      <div class="fs-2">
         <strong>{{recipeItem.name}}</strong>
       </div>
-      <div class="col align-self-start fs-2 text-danger bg-secondary bg-opacity-10 p-2">
-        <strong>{{ recipeItem.review_rating }} ({{recipeItem.review_qty}})</strong>
+      <div class="fs-4" >
+        <app-rating style="color: yellow;"></app-rating>({{recipeItem.review_qty}})
       </div>
-      <div class="col align-self-start">Description: {{recipeItem.description}}</div>
-      <div id="box" class="p-2 ">
-        <button type="button" class="btn btn-outline-success m-2 btn-sm rounded-3" style="height: 50px;width: 200px">Add all to cart</button>
+
+    </div>
+    <div class="col-6">
+<!--      buttons-->
+      <div class="row">
+<!--        按钮的功能未完全实现-->
+        <div class="col-5">
+          <button type="button" class="btn btn-outline-success m-2 btn-sm rounded-3" (click)="handleAddToWishlist()">Add to favourites</button>
+        </div>
+        <div class="col-6">
+          <button type="button" class="btn btn-outline-success m-2 btn-sm rounded-3" (click)="handleAddAllToCart()">Add all to cart</button>
+        </div>
       </div>
     </div>
   </div>
+</div>
