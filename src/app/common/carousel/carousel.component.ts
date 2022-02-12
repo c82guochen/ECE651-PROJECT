@@ -1,15 +1,15 @@
-
-
 import { Component, OnInit } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
-  providers: [NgbCarouselConfig]  // add NgbCarouselConfig to the component providers
+  providers: [NgbCarouselConfig] // add NgbCarouselConfig to the component providers
 })
 export class CarouselComponent {
-  images = [700, 533, 807, 124].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  images = [700, 533, 807, 124].map(
+    (n) => `https://picsum.photos/id/${n}/900/500`
+  );
 
   constructor(config: NgbCarouselConfig) {
     // customize default values of carousels used by this component tree
@@ -18,7 +18,4 @@ export class CarouselComponent {
     config.keyboard = false;
     config.pauseOnHover = false;
   }
-  
 }
-
-

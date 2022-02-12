@@ -1,8 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Product} from "../../model/product";
-import {CartService} from "../../services/cart.service";
-import {ActivatedRoute, Params} from '@angular/router';
-import {ProductService} from '../../services/product.service'
+import { Component, Input, OnInit } from '@angular/core';
+import { Product } from '../../model/product';
+import { CartService } from '../../services/cart.service';
+import { ActivatedRoute, Params } from '@angular/router';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -12,38 +12,44 @@ import {ProductService} from '../../services/product.service'
 export class ProductDetailComponent implements OnInit {
   productItem!: Product;
 
-  constructor(private cartService: CartService,
-  private routeInfo: ActivatedRoute,private productService: ProductService) { }
+  constructor(
+    private cartService: CartService,
+    private routeInfo: ActivatedRoute,
+    private productService: ProductService
+  ) {}
 
   ngOnInit(): void {
-//    this.productItem = this.routeInfo.snapshot.queryParams['product'];
-      const productId = this.routeInfo.snapshot.paramMap.get('id');
-      console.log(productId);
-      this.productItem = this.productService.getProduct(Number(productId));
-      console.log(this.productItem);
-//       this.productItem = res['data'].productItem;
-//       console.log(this.productItem);
+    //    this.productItem = this.routeInfo.snapshot.queryParams['product'];
+    const productId = this.routeInfo.snapshot.paramMap.get('id');
+    console.log(productId);
+    this.productItem = this.productService.getProduct(Number(productId));
+    console.log(this.productItem);
+    //       this.productItem = res['data'].productItem;
+    //       console.log(this.productItem);
   }
 
   handleAddToCart() {
     this.cartService.addProductToCart(this.productItem).subscribe(() => {
-      console.log("added to cart", this.productItem)
-    })
+      console.log('added to cart', this.productItem);
+    });
   }
 
-  increase(){
-    var element = document.getElementById("quantity")!;
-    var dataAttribute = element.getAttribute("value");
-    console.log(dataAttribute) ;
+  increase() {
+    var element = document.getElementById('quantity')!;
+    var dataAttribute = element.getAttribute('value');
+    console.log(dataAttribute);
     dataAttribute = String(Number(dataAttribute) + 1);
-    element.setAttribute("value",dataAttribute);
+    element.setAttribute('value', dataAttribute);
   }
 
-  decrease(){
-    var element = document.getElementById("quantity")!;
-    var dataAttribute = element.getAttribute("value");
-    console.log(dataAttribute) ;
-    dataAttribute = Number(dataAttribute) - 1<1? String(Number(dataAttribute)):String(Number(dataAttribute)-1);
-    element.setAttribute("value",dataAttribute);
+  decrease() {
+    var element = document.getElementById('quantity')!;
+    var dataAttribute = element.getAttribute('value');
+    console.log(dataAttribute);
+    dataAttribute =
+      Number(dataAttribute) - 1 < 1
+        ? String(Number(dataAttribute))
+        : String(Number(dataAttribute) - 1);
+    element.setAttribute('value', dataAttribute);
   }
 }

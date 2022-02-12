@@ -8,7 +8,9 @@
   font-size: small;
 }
 
-.card, .form-control, .btn {
+.card,
+.form-control,
+.btn {
   border-radius: 0;
 }
 
@@ -40,10 +42,10 @@
   font-size: small;
 }
 
-.btn-primary.disabled, .btn-primary:disabled {
+.btn-primary.disabled,
+.btn-primary:disabled {
   cursor: not-allowed;
 }
-
 
 body {
   min-height: 100vh;
@@ -86,7 +88,7 @@ footer.container {
 }
 
 .avatar-sm {
-  font-size: .875rem;
+  font-size: 0.875rem;
   width: 36px;
   height: 36px;
 }

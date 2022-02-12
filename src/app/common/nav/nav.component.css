@@ -1,8 +1,9 @@
 input {
   width: auto;
 }
-.mr-auto, .mx-auto {
-  margin-right: auto!important;
+.mr-auto,
+.mx-auto {
+  margin-right: auto !important;
 }
 
 nav {

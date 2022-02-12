@@ -1,29 +1,20 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Recipe} from "../../model/recipe";
-import {CartService} from "../../services/cart.service";
+import { Component, Input, OnInit } from '@angular/core';
+import { Recipe } from '../../model/recipe';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
   styleUrls: ['./recipe.component.css']
 })
-export class RecipeComponent implements OnInit {
+export class RecipeComponent {
   @Input() recipeItem!: Recipe;
-   @Input() addedToWishlist!: boolean;
-  constructor(private cartService: CartService) { }
+  @Input() addedToWishlist!: boolean;
+  constructor(private cartService: CartService) {}
 
-  ngOnInit(): void {
-  }
+  handleAddToWishlist() {}
 
-  //主要的作用有两个，一个add favourite一个全加购物车
-  handleAddToWishlist() {
+  handleRemoveFromWishlist() {}
 
-  }
-
-  handleRemoveFromWishlist() {
-
-  }
-
-  addAlltoCart(){
-  }
+  addAlltoCart() {}
 }

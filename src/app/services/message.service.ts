@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Subject} from "rxjs";
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,14 +7,14 @@ import {Subject} from "rxjs";
 export class MessageService {
   sub = new Subject();
   //这个功能不太懂？
-  constructor() { }
+  constructor() {}
 
   sendMsg(item: unknown) {
     // Todo handle what is being sent: only product for now
-    this.sub.next(item)
+    this.sub.next(item);
   }
 
   getMsg() {
-    return this.sub.asObservable()
+    return this.sub.asObservable();
   }
 }

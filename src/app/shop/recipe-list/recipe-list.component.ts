@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Recipe} from "../../model/recipe";
-import {Product} from "../../model/product";
-import {RecipeService} from "../../services/recipe.service";
+import { Recipe } from '../../model/recipe';
+import { Product } from '../../model/product';
+import { RecipeService } from '../../services/recipe.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -9,23 +9,21 @@ import {RecipeService} from "../../services/recipe.service";
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
-  recipeList: Recipe[] = []
-  wishlist: number[] = []
+  recipeList: Recipe[] = [];
+  wishlist: number[] = [];
 
-  constructor(private recipeService: RecipeService) { }
+  constructor(private recipeService: RecipeService) {}
 
   ngOnInit(): void {
-    this.loadRecipes()
-    this.loadWishlist()
+    this.loadRecipes();
+    this.loadWishlist();
   }
 
   loadRecipes() {
-    this.recipeService.getRecipes().subscribe((recipes)=>{
+    this.recipeService.getRecipes().subscribe((recipes) => {
       this.recipeList = recipes;
     });
   }
 
-  loadWishlist() {
-
-  }
+  loadWishlist() {}
 }
