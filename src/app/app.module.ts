@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './common/footer/footer.component';
@@ -17,6 +16,10 @@ import { RecipeListComponent } from './shop/recipe-list/recipe-list.component';
 import { UserDetailComponent } from './detail/user-detail/user-detail.component';
 import { ProductDetailComponent} from './detail/product-detail/product-detail.component';
 import { RecipeDetailComponent } from './detail/recipe-detail/recipe-detail.component'
+import {ProductDetailComponent} from './detail/product-detail/product-detail.component'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RatingComponent } from './common/rating/rating.component';
+import { CarouselComponent } from './common/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -33,12 +36,16 @@ import { RecipeDetailComponent } from './detail/recipe-detail/recipe-detail.comp
     RecipeListComponent,
     UserDetailComponent,
     ProductDetailComponent,
-    RecipeDetailComponent
+    RecipeDetailComponent,
+    ProductDetailComponent,
+    RatingComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
