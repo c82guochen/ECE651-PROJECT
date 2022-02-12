@@ -10,17 +10,14 @@ import { ProductService } from './product.service';
   providedIn: 'root'
 })
 export class CartService {
-  localCart?: any; //（不能用any，后期要改！）
-  index = 5; //index是购物车现有容量
+  localCart?: any;
+  index = 5;
   constructor(
     private http: HttpClient,
     private productService: ProductService
-  ) {
-    //这里我还是需要理解一下
-  }
+  ) {}
 
   getCartItems(name: string): Observable<any> {
-    //这里需要给我讲解一下
     return this.http.get<any>(cartUrl).pipe(
       map((cartItems) => {
         this.localCart = cartItems;
@@ -42,5 +39,4 @@ export class CartService {
     this.index += 1;
     return this.http.post(cartUrl, product);
   }
-  //还有别的
 }

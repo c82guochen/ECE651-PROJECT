@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'productlist', component: ProductListComponent },
   { path: 'productdetail/:id', component: ProductDetailComponent },
   { path: 'userdetail', component: UserDetailComponent },
-  //   { path: 'cartDetail', component: CartDetailComponent }, 这里cartlist也要重新写！！
+  //   { path: 'cartDetail', component: CartDetailComponent },
   { path: 'recipedetail/:id', component: RecipeDetailComponent },
   { path: '**', component: PageNotFoundComponent }
 ];

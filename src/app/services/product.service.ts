@@ -15,7 +15,7 @@ export class ProductService {
 
   getProduct(id: number): Product {
     return this.local_products.get(id) as Product;
-  } //非最终
+  }
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(productsUrl).pipe(

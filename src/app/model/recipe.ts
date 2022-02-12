@@ -10,7 +10,7 @@ export class Recipe {
   ingredients_product: Product[];
   review_rating: number;
   review_qty: number;
-  isFavourite: boolean; //登录之后才可以修改
+  isFavourite: boolean;
 
   constructor(
     id: number,
@@ -30,7 +30,7 @@ export class Recipe {
     this.imageUrl = imageUrl;
     this.category = category;
     this.ingredients_id = ingredients_id;
-    this.ingredients_product = ingredients_product; //不清楚对不对……
+    this.ingredients_product = ingredients_product;
     this.review_rating = review_rating;
     this.review_qty = review_qty;
     this.isFavourite = isFavourite;

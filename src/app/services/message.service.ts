@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 })
 export class MessageService {
   sub = new Subject();
-  //这个功能不太懂？
+
   constructor() {}
 
   sendMsg(item: unknown) {

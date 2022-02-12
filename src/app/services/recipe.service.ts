@@ -12,7 +12,7 @@ export class RecipeService {
 
   getRecipe(id: number): Recipe {
     return this.local_recipes.get(id) as Recipe;
-  } //非最终
+  }
 
   constructor(private http: HttpClient) {}
   getRecipes(): Observable<Recipe[]> {

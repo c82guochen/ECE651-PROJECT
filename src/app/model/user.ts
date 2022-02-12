@@ -12,7 +12,7 @@ export class User {
   email: string;
   password: string;
   cartList: CartItem[];
-  ordersList: CartItem[]; //order的数据类型应该是order
+  ordersList: CartItem[];
   favouritesList: Recipe[];
 
   constructor(
