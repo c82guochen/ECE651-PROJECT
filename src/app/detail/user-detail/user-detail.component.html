@@ -16,7 +16,7 @@
         <div
           class="col-md-5 nav flex-column justify-content-center text-center"
         >
-          <p class="fs-3">name name</p>
+          <p class="fs-3">{{ name }}</p>
         </div>
       </div>
     </div>
@@ -58,7 +58,7 @@
         >
           <a
             style="padding-left: 0; color: HotPink; max-width: 250px"
-            routerLink="cartlist"
+            [routerLink]="['/shoppingcartDetail']"
           >
             your shopping cart list
           </a>

@@ -9,10 +9,12 @@ import { User } from '../../model/user';
 })
 export class UserDetailComponent implements OnInit {
   userInfo!: User;
+  name!: string;
 
   constructor(private userservice: UserService) {}
 
   ngOnInit(): void {
-    this.userservice.getUser();
+    this.name = this.userservice.getUser(); //not complete
+    console.log(this.userInfo.name);
   }
 }

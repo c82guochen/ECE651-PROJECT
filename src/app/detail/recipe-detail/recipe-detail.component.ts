@@ -29,5 +29,4 @@ export class RecipeDetailComponent implements OnInit {
   handleAddToWishlist() {}
 
   handleAddAllToCart() {}
-
 }
