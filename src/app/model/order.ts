@@ -5,11 +5,23 @@ export class OrderItem {
   productId: number;
   qty: number;
   product: Product;
+  orderTime: Date;
+  deliverTime: Date;
 
-  constructor(id: number, productId: number, qty: number) {
+  constructor(
+    id: number,
+    productId: number,
+    qty: number,
+    orderTime: Date,
+    deliverTime: Date
+  ) {
     this.id = id;
     this.productId = productId;
     this.qty = qty;
     this.product = new Product(0, 'placeholder');
+    //     this.orderTime = new Date();
+    //     this.deliverTime = new Date();
+    this.orderTime = orderTime;
+    this.deliverTime = deliverTime;
   }
 }

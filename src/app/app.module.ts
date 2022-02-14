@@ -19,6 +19,7 @@ import { RecipeDetailComponent } from './detail/recipe-detail/recipe-detail.comp
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RatingComponent } from './common/rating/rating.component';
 import { CarouselComponent } from './common/carousel/carousel.component';
+import { ShoppingCartDetailComponent } from './detail/shopping-cart-detail/shopping-cart-detail.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { CarouselComponent } from './common/carousel/carousel.component';
     RecipeDetailComponent,
     ProductDetailComponent,
     RatingComponent,
-    CarouselComponent
+    CarouselComponent,
+    ShoppingCartDetailComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbModule],
   providers: [],

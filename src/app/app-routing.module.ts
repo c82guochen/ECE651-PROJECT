@@ -8,14 +8,15 @@ import { ProductDetailComponent } from './detail/product-detail/product-detail.c
 import { UserDetailComponent } from './detail/user-detail/user-detail.component';
 import { CartComponent } from './shop/cart/cart.component';
 import { RecipeDetailComponent } from './detail/recipe-detail/recipe-detail.component';
+import { ShoppingCartDetailComponent } from './detail/shopping-cart-detail/shopping-cart-detail.component';
 
 const routes: Routes = [
   { path: '', component: ShopComponent },
+  { path: 'shoppingcartDetail', component: ShoppingCartDetailComponent },
   { path: 'recipelist', component: RecipeListComponent },
   { path: 'productlist', component: ProductListComponent },
   { path: 'productdetail/:id', component: ProductDetailComponent },
   { path: 'userdetail', component: UserDetailComponent },
-  //   { path: 'cartDetail', component: CartDetailComponent },
   { path: 'recipedetail/:id', component: RecipeDetailComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
