@@ -3,10 +3,10 @@
     <div>
       <span class="fs-5 fw-bold" style="color: #00008b">Your account > </span>
       <span class="fs-5 fw-bold" style="color: #b22222"
-        >Your shopping cart list</span
+        >Your favourites list</span
       >
     </div>
-    <h2 class="fs-2 top-m10">Your shopping cart list</h2>
+    <h2 class="fs-2 top-m10">Your favourites list</h2>
   </div>
 
   <div class="row top-m10 p-4 justify-content-between border border-success">
@@ -20,17 +20,16 @@
     </div>
     <div class="col-8">
       <div class="row justify-content-between col-5">
-        <div class="col-3 fs-5 fw-bold">name</div>
-        <div class="col-3 fs-5">x1</div>
+        <div class="col-3 fs-4 fw-bold">name</div>
       </div>
-      <div class="row col-5 justify-content-between">
-        <div class="col-3 fs-5 fw-bold" style="color: red">price</div>
-        <div class="col-3 fs-5">total</div>
+      <div class="row col-5">
+        <app-rating style="color: yellow"></app-rating>
+        <span> (review_qty) </span>
       </div>
       <div class="row top-m10">
         <div class="col-12">
           <p class="text-wrap text-break">
-            Description:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            Introduction:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
           </p>
         </div>
       </div>
@@ -39,14 +38,8 @@
         id="delete-btn"
         class="col-3 btn btn-outline-success m-2 btn-sm rounded-3"
       >
-        Delete
+        Cancel favourite
       </button>
     </div>
   </div>
-  <button
-    id="checkout-btn"
-    class="col-3 btn btn-outline-success btn-md rounded-3 top-m10"
-  >
-    proceed to checkout
-  </button>
 </div>
