@@ -4,7 +4,7 @@ export class Recipe {
   id: number;
   name: string;
   description: string;
-  imageUrl: string;
+  image_url: string;
   category: string;
   ingredients_id: number[];
   ingredients_product: Product[];
@@ -22,12 +22,12 @@ export class Recipe {
     review_rating = 0,
     review_qty = 0,
     isFavourite = false,
-    imageUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR608TWmLRWFNYPlY5xgKkgZPYe7mwv0GDMDtAS9nRdlVo4aytG'
+    image_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR608TWmLRWFNYPlY5xgKkgZPYe7mwv0GDMDtAS9nRdlVo4aytG'
   ) {
     this.id = id;
     this.name = name;
     this.description = description;
-    this.imageUrl = imageUrl;
+    this.image_url = image_url;
     this.category = category;
     this.ingredients_id = ingredients_id;
     this.ingredients_product = ingredients_product;
