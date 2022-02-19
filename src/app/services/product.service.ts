@@ -5,19 +5,13 @@ import { Product } from '../model/product';
 
 import { productsUrl } from 'src/app/config/api';
 
-
-
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-
   local_products = new Map<number, Product>();
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getProduct(id: number): Product {
     return this.local_products.get(id) as Product;
@@ -36,7 +30,7 @@ export class ProductService {
         console.log(this.local_products);
         return res;
       }),
-      catchError(err => {
+      catchError((err) => {
         console.log(err);
         return throwError(err);
       })
