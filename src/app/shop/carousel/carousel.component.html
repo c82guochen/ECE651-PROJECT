@@ -1,0 +1,16 @@
+<carousel [(activeSlide)]="activeSlideIndex"
+          [itemsPerSlide]="3"
+          [interval]="myInteval"
+          [noPause]="false"
+          [singleSlideOffset]="true">
+
+  <slide *ngFor="let re of res$; let index=index">
+    <img [src]="re.image_url"
+         class="d-md-block"
+         alt="image slide" style=" width: 28vw; height: 60vh;">
+    <div class="carousel-caption d-none d-md-block bg-white bg-opacity-75 text-black">
+      <h5> #{{index+1.}} {{re.name}} </h5>
+      <p>{{re.description}}</p>
+    </div>
+  </slide>
+</carousel>

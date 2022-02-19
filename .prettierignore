@@ -5,3 +5,4 @@ e2e
 coverage
 .angular
 dist
+*.html

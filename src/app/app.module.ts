@@ -16,10 +16,11 @@ import { RecipeListComponent } from './shop/recipe-list/recipe-list.component';
 import { UserDetailComponent } from './detail/user-detail/user-detail.component';
 import { ProductDetailComponent } from './detail/product-detail/product-detail.component';
 import { RecipeDetailComponent } from './detail/recipe-detail/recipe-detail.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RatingComponent } from './common/rating/rating.component';
-import { CarouselComponent } from './common/carousel/carousel.component';
+import { CarouselComponent } from './shop/carousel/carousel.component';
 import { ShoppingCartDetailComponent } from './detail/shopping-cart-detail/shopping-cart-detail.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,13 @@ import { ShoppingCartDetailComponent } from './detail/shopping-cart-detail/shopp
     CarouselComponent,
     ShoppingCartDetailComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    CarouselModule.forRoot()
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

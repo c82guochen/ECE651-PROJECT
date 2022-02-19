@@ -97,3 +97,12 @@ a {
   color: inherit; /* blue colors for links too */
   text-decoration: inherit; /* no underline */
 }
+
+h3 {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+div .section {
+  margin-top: 40px;
+}
