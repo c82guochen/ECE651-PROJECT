@@ -16,15 +16,6 @@ export class RecipeService {
 
   constructor(private http: HttpClient) {}
   getRecipes(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(recipesUrl).pipe(
-      map((res: Recipe[]) => {
-        console.log('get recipe invoke ');
-        for (let item of res) {
-          this.local_recipes.set(item.id, item);
-        }
-        console.log(this.local_recipes);
-        return res;
-      })
-    );
+    return this.http.get<Recipe[]>(recipesUrl);
   }
 }
