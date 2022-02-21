@@ -8,8 +8,9 @@ export class Recipe {
   category: string;
   ingredients_id: number[];
   ingredients_product: Product[];
-  review_rating: number;
-  review_qty: number;
+  rating: number;
+  total_reviews: number;
+//   detail:[];
   isFavourite: boolean;
 
   constructor(
@@ -17,12 +18,13 @@ export class Recipe {
     name: string,
     description = '',
     category = '',
+//     detail = NULL,
     ingredients_id = [],
     ingredients_product = [],
-    review_rating = 0,
-    review_qty = 0,
+    rating = 0,
+    total_reviews = 0,
     isFavourite = false,
-    image_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR608TWmLRWFNYPlY5xgKkgZPYe7mwv0GDMDtAS9nRdlVo4aytG'
+    image_url = ''
   ) {
     this.id = id;
     this.name = name;
@@ -31,8 +33,9 @@ export class Recipe {
     this.category = category;
     this.ingredients_id = ingredients_id;
     this.ingredients_product = ingredients_product;
-    this.review_rating = review_rating;
-    this.review_qty = review_qty;
+    this.rating = rating;
+    this.total_reviews = total_reviews;
     this.isFavourite = isFavourite;
+//     this.detail = detail
   }
 }

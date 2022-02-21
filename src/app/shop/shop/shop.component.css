@@ -1,0 +1,39 @@
+#HotItems
+{
+  background-color:LightGreen;
+  border-top-left-radius:2em;
+  border-top-right-radius:2em;
+  font-weight:bold;
+  color:DarkGreen;
+  font-style:italic;
+  font-family:"Times New Roman",Georgia,Serif;
+}
+
+.HotItemsContent{
+  margin-left:20px;
+}
+
+#Recipe{
+  background-color:ForestGreen;
+  border-top-left-radius:2em;
+  border-top-right-radius:2em;
+  font-weight:bold;
+  color:White;
+  font-style:italic;
+  font-family:"Times New Roman",Georgia,Serif;
+}
+
+#Produce{
+  background-color:DarkGreen;
+  border-top-left-radius:2em;
+  border-top-right-radius:2em;
+  font-weight:900;
+  color:White;
+  font-style:italic;
+  font-family:"Times New Roman",Georgia,Serif;
+}
+
+.bgImage{
+  background-image: url(../../../assets/bgImage.jpg);
+  background-repeat: repeat;
+}
