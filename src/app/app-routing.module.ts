@@ -9,6 +9,7 @@ import { UserDetailComponent } from './detail/user-detail/user-detail.component'
 import { CartComponent } from './shop/cart/cart.component';
 import { RecipeDetailComponent } from './detail/recipe-detail/recipe-detail.component';
 import { ShoppingCartDetailComponent } from './detail/shopping-cart-detail/shopping-cart-detail.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   { path: '', component: ShopComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'productdetail/:id', component: ProductDetailComponent },
   { path: 'userdetail', component: UserDetailComponent },
   { path: 'recipedetail/:id', component: RecipeDetailComponent },
+  { path: 'search/:key', component: SearchComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

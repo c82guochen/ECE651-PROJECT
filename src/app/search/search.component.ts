@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { RecipeService } from '../services/recipe.service';
+import { ProductService } from '../services/product.service';
+import { Recipe } from '../model/recipe';
+import { Product } from '../model/product';
 
 @Component({
   selector: 'app-search',
@@ -6,10 +11,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+  recipeCandidates: Recipe[] = [];
+  productCandidates: Product[] = [];
+  key!: string;
 
-  constructor() { }
+  constructor(
+    private routeInfo: ActivatedRoute,
+    private recipeService: RecipeService,
+    private productService: ProductService
+  ) {}
 
   ngOnInit(): void {
-  }
+    const key = this.routeInfo.snapshot.paramMap.get('key') as string;
+    this.routeInfo.paramMap.subscribe((word) => {
+      const key = word.get('key') as string;
+      this.key = key;
+      this.recipeService
+        .getRecipeByName(key)
+        .subscribe((res) => (this.recipeCandidates = res));
 
+      this.productService
+        .getProductByName(key)
+        .subscribe((res) => (this.productCandidates = res));
+    });
+  }
 }

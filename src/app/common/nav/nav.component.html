@@ -28,8 +28,14 @@
           size="15"
           style="min-width: 50vw"
           type="text"
+          typeaheadOptionField="name"
+          [typeahead]="recipe"
+          [(ngModel)]="search_text"
+          (typeaheadOnSelect)="look()"
         />
-        <button class="btn btn-primary">Search</button>
+        <a class="btn btn-primary"
+           [routerLink]="['/search', search_text]"
+        >Search</a>
       </div>
       <a
         aria-expanded="false"
@@ -38,6 +44,7 @@
         data-toggle="dropdown"
         href="#"
         role="button"
+
         routerLink="userdetail"
       >
         <div class="media align-items-center" style="display: flex">

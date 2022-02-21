@@ -25,6 +25,7 @@ import { NgxNumberSpinnerModule } from 'ngx-number-spinner';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 @NgModule({
   declarations: [
@@ -49,14 +50,15 @@ import { SearchComponent } from './search/search.component';
     SearchComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    CarouselModule.forRoot(),
     NgxNumberSpinnerModule,
-    RatingModule.forRoot(),
-    FormsModule
+    CarouselModule.forRoot(),
+    TypeaheadModule.forRoot(),
+    RatingModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

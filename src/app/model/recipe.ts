@@ -38,4 +38,8 @@ export class Recipe {
     this.isFavourite = isFavourite;
     this.details = details;
   }
+
+  toSearch(): { name: string; type: string } {
+    return { name: this.name, type: 'recipe' };
+  }
 }
