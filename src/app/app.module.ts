@@ -21,6 +21,7 @@ import { CarouselComponent } from './shop/carousel/carousel.component';
 import { ShoppingCartDetailComponent } from './detail/shopping-cart-detail/shopping-cart-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { NgxNumberSpinnerModule } from 'ngx-number-spinner';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    NgxNumberSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

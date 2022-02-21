@@ -25,7 +25,6 @@ export class RecipeDetailComponent implements OnInit {
     this.recipeService
       .getRecipe(Number(recipeId))
       .subscribe((res) => (this.recipeItem = res[0]));
-    console.log(this.recipeItem);
   }
 
   handleAddToWishlist() {}

@@ -11,6 +11,7 @@ import { ProductService } from '../../services/product.service';
 })
 export class ProductDetailComponent implements OnInit {
   productItem!: Product;
+  product_qty = 1;
 
   constructor(
     private cartService: CartService,
@@ -26,27 +27,9 @@ export class ProductDetailComponent implements OnInit {
   }
 
   handleAddToCart() {
-    this.cartService.addProductToCart(this.productItem).subscribe(() => {
-      console.log('added to cart', this.productItem);
-    });
-  }
-
-  increase() {
-    var element = document.getElementById('quantity')!;
-    var dataAttribute = element.getAttribute('value');
-    console.log(dataAttribute);
-    dataAttribute = String(Number(dataAttribute) + 1);
-    element.setAttribute('value', dataAttribute);
-  }
-
-  decrease() {
-    var element = document.getElementById('quantity')!;
-    var dataAttribute = element.getAttribute('value');
-    console.log(dataAttribute);
-    dataAttribute =
-      Number(dataAttribute) - 1 < 1
-        ? String(Number(dataAttribute))
-        : String(Number(dataAttribute) - 1);
-    element.setAttribute('value', dataAttribute);
+    // TODO: Come back to it when doing kart adding
+    // this.cartService.addProductToCart(this.productItem).subscribe(() => {
+    //   console.log('added to cart', this.productItem);
+    // });
   }
 }
