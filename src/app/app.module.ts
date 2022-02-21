@@ -24,6 +24,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { NgxNumberSpinnerModule } from 'ngx-number-spinner';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { FormsModule } from '@angular/forms';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { FormsModule } from '@angular/forms';
     ProductDetailComponent,
     RatingComponent,
     CarouselComponent,
-    ShoppingCartDetailComponent
+    ShoppingCartDetailComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
