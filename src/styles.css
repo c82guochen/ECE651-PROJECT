@@ -106,3 +106,10 @@ h3 {
 div .section {
   margin-top: 40px;
 }
+
+
+body {
+  opacity: 1;
+  background-image: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0.5)), url('assets/bgImage.jpg');
+  background-repeat: repeat;
+}
