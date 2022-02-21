@@ -22,7 +22,6 @@ export class SearchComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const key = this.routeInfo.snapshot.paramMap.get('key') as string;
     this.routeInfo.paramMap.subscribe((word) => {
       const key = word.get('key') as string;
       this.key = key;
