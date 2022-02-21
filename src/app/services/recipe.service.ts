@@ -8,23 +8,12 @@ import { recipesUrl } from 'src/app/config/api';
   providedIn: 'root'
 })
 export class RecipeService {
-  local_recipes = new Map<number, Recipe>();
-
-  getRecipe(id: number): Recipe {
-    return this.local_recipes.get(id) as Recipe;
+  getRecipe(id: number): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(recipesUrl + '?id=' + id);
   }
 
   constructor(private http: HttpClient) {}
   getRecipes(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(recipesUrl).pipe(
-      map((res: Recipe[]) => {
-        console.log('get recipe invoke ');
-        for (let item of res) {
-          this.local_recipes.set(item.id, item);
-        }
-        console.log(this.local_recipes);
-        return res;
-      })
-    );
+    return this.http.get<Recipe[]>(recipesUrl);
   }
 }

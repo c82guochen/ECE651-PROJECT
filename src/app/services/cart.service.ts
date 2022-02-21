@@ -10,7 +10,6 @@ import { ProductService } from './product.service';
   providedIn: 'root'
 })
 export class CartService {
-  localCart?: any;
   index = 5;
   constructor(
     private http: HttpClient,
@@ -18,20 +17,7 @@ export class CartService {
   ) {}
 
   getCartItems(name: string): Observable<any> {
-    return this.http.get<any>(cartUrl).pipe(
-      map((cartItems) => {
-        this.localCart = cartItems;
-        let current = cartItems[name]['items'] as CartItem[];
-        console.log(current);
-        current.forEach(
-          (i) =>
-            (i.product =
-              this.productService.local_products.get(i.id) ||
-              new Product(0, ''))
-        );
-        return current;
-      })
-    );
+    return this.http.get<any>(cartUrl);
   }
 
   //add
