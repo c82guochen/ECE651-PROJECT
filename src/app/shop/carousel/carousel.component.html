@@ -5,6 +5,7 @@
           [singleSlideOffset]="true">
 
   <slide *ngFor="let re of res$; let index=index">
+    <a [routerLink]="['/recipedetail', re.id]">
     <img [src]="re.image_url"
          class="d-md-block"
          alt="image slide" style=" width: 28vw; height: 60vh;">
@@ -12,5 +13,7 @@
       <h5> #{{index+1.}} {{re.name}} </h5>
       <p>{{re.description}}</p>
     </div>
+    </a>
   </slide>
+
 </carousel>
