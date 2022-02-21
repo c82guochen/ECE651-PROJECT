@@ -10,7 +10,7 @@ export class Recipe {
   ingredients_product: Product[];
   rating: number;
   total_reviews: number;
-//   detail:[];
+  //   detail:[];
   isFavourite: boolean;
 
   constructor(
@@ -18,7 +18,7 @@ export class Recipe {
     name: string,
     description = '',
     category = '',
-//     detail = NULL,
+    //     detail = NULL,
     ingredients_id = [],
     ingredients_product = [],
     rating = 0,
@@ -36,6 +36,6 @@ export class Recipe {
     this.rating = rating;
     this.total_reviews = total_reviews;
     this.isFavourite = isFavourite;
-//     this.detail = detail
+    //     this.detail = detail
   }
 }

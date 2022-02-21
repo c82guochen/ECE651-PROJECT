@@ -1,14 +1,17 @@
-<div class="row">
-  <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let recipe of recipeList">
-    <app-recipe
-      [recipeItem]="recipe"
-      [addedToWishlist]="wishlist.indexOf(recipe.id) >= 0"
-    ></app-recipe>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let recipe of recipeList">
+      <app-recipe
+        [recipeItem]="recipe"
+        [addedToWishlist]="wishlist.indexOf(recipe.id) >= 0"
+      ></app-recipe>
+    </div>
+   <!-- <button-->
+  <!--    type="button"-->
+  <!--    class="btn btn-sm btn-outline-secondary product-btn"-->
+  <!--  >-->
+  <!--     View More-->
+  <!--  </button> -->
   </div>
-<!--  <button-->
-<!--    type="button"-->
-<!--    class="btn btn-sm btn-outline-secondary product-btn"-->
-<!--  >-->
-<!--     View More-->
-<!--  </button>-->
 </div>
+
