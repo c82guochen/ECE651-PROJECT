@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
   recipe: any[] = [];
+  ifLogin = false;
   collapsedShow = false;
   collapsedShowState = '';
   search_text = '';

@@ -26,6 +26,8 @@ import { RatingModule } from 'ngx-bootstrap/rating';
 import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './common/search/search.component';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { LoginComponent } from './common/login/login.component';
+import { SignupComponent } from './common/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     CarouselComponent,
     ShoppingCartDetailComponent,
     SearchComponent
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     FormsModule,

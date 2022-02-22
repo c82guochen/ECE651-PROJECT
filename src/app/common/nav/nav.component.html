@@ -1,5 +1,6 @@
 <nav
   class="navbar navbar-expand-md justify-content-center navbar-light fixed-top p-3 border-bottom shadow-sm"
+  id = "navBg"
 >
   <div class="nav-content container">
     <a class="navbar-brand" routerLink="/">L'EH </a>
@@ -37,6 +38,11 @@
            [routerLink]="['/search', search_text]"
         >Search</a>
       </div>
+
+      <div class="row" *ngIf="!ifLogin" >
+        <a class="col-6" id="fontClick" routerLink="login">login</a>
+        <a class="col-6" id="fontClick" routerLink="signup">signup</a>
+      </div>
       <a
         aria-expanded="false"
         aria-haspopup="true"
@@ -46,6 +52,7 @@
         role="button"
 
         routerLink="userdetail"
+        *ngIf="ifLogin"
       >
         <div class="media align-items-center" style="display: flex">
           <span class="avatar avatar-sm rounded-circle">

@@ -24,3 +24,8 @@ h3 {
   background-color: DarkGreen;
   color: White;
 }
+
+#viewMore{
+    float: right;
+    margin-right: 20px;
+}

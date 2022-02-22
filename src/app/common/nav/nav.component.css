@@ -14,3 +14,13 @@ nav {
 .space-taker {
   margin-bottom: 100px;
 }
+
+#navBg{
+  background:	#C8FFC8;
+}
+
+#fontClick{
+  color:#2F4F4F;
+  font-style: italic;
+  text-decoration: underline;
+}

@@ -10,9 +10,14 @@ import { CartComponent } from './shop/cart/cart.component';
 import { RecipeDetailComponent } from './detail/recipe-detail/recipe-detail.component';
 import { ShoppingCartDetailComponent } from './detail/shopping-cart-detail/shopping-cart-detail.component';
 import { SearchComponent } from './common/search/search.component';
+import {LoginComponent} from './common/login/login.component';
+import {SignupComponent} from './common/signup/signup.component';
+
 
 const routes: Routes = [
   { path: '', component: ShopComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
   { path: 'shoppingcartDetail', component: ShoppingCartDetailComponent },
   { path: 'recipelist', component: RecipeListComponent },
   { path: 'productlist', component: ProductListComponent },

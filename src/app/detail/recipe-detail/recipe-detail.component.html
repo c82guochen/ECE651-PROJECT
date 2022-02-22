@@ -15,21 +15,22 @@
         <rating [(ngModel)]="recipeItem.rating" [max]="5" [readonly]="true"></rating>
         ({{ recipeItem.total_reviews }})
       </div>
-      <div class="row" >
-        <div class="col">
-          <div class="row" style="margin: 10px;">
-            <button class="btn btn-success">Save to Favourites</button>
-          </div>
-        </div>
-        <div class="col">
-          <div class="row" style="margin: 10px;">
-            <button class="btn btn-primary">Add Products to Cart</button>
-          </div>
-        </div>
-      </div>
       <div>
         {{ recipeItem.description }}
       </div>
+      <div class="row" >
+        <div class="col">
+          <div class="row" style="margin: 10px;">
+            <button class="btn btn-success rounded-pill">Save to Favourites</button>
+          </div>
+        </div>
+        <div class="col">
+          <div class="row" style="margin: 10px;">
+            <button class="btn btn-primary rounded-pill">Add Ingredients to Cart</button>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
   <div class="row">
@@ -93,8 +94,8 @@
   </div>
 
 <!--  Used for debugging -->
-  <div>
-    {{ recipeItem | json }}
-  </div>
+<!--  <div>-->
+<!--    {{ recipeItem | json }}-->
+<!--  </div>-->
 
 </div>
