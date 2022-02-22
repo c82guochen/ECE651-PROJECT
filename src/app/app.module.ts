@@ -49,7 +49,7 @@ import { SignupComponent } from './common/signup/signup.component';
     RatingComponent,
     CarouselComponent,
     ShoppingCartDetailComponent,
-    SearchComponent
+    SearchComponent,
     LoginComponent,
     SignupComponent
   ],
