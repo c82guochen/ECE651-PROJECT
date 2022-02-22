@@ -8,4 +8,4 @@ export const productsUrl = baseUrl + '/products';
 export const recipesUrl = baseUrl + '/recipes';
 export const cartUrl = baseUrl + '/cart';
 export const favoriteUrl = baseUrl + '/wishlist';
-export const userUrl = baseUrl + '/user';
+export const authUrl = baseUrl + '/auth';

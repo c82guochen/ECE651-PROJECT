@@ -10,11 +10,14 @@ import { User } from '../../model/user';
 export class UserDetailComponent implements OnInit {
   userInfo!: User;
   name!: string;
+  user: any;
 
-  constructor(private userservice: UserService) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.name = this.userservice.getUser(); //not complete
-    console.log(this.userInfo.name);
+    this.userService.login('a@a.com', '12345678').subscribe((user) => {
+      this.user = user;
+      console.log(user);
+    });
   }
 }

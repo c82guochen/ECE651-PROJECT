@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { RecipeService } from '../services/recipe.service';
-import { ProductService } from '../services/product.service';
-import { Recipe } from '../model/recipe';
-import { Product } from '../model/product';
+import { RecipeService } from '../../services/recipe.service';
+import { ProductService } from '../../services/product.service';
+import { Recipe } from '../../model/recipe';
+import { Product } from '../../model/product';
 
 @Component({
   selector: 'app-search',

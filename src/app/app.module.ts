@@ -24,7 +24,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { NgxNumberSpinnerModule } from 'ngx-number-spinner';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { FormsModule } from '@angular/forms';
-import { SearchComponent } from './search/search.component';
+import { SearchComponent } from './common/search/search.component';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 @NgModule({
