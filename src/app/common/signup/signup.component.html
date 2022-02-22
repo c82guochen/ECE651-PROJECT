@@ -1,16 +1,32 @@
-<form class="formCSS" method="post">
-  <p>
-    <label for="email" style="margin-right:10px;">Email : </label>
-    <input type="text" name="email" style="background:#DCF0FF;border-color:	LightSteelBlue;" />
-  </p>
-  <p>
-    <label for="name" style="margin-right:10px;">Name : </label>
-    <input type="text" name="name" style="background:#DCF0FF;border-color:	LightSteelBlue;" />
-  </p>
-  <p>
-    <label for="password" style="margin-right:10px;">Password: </label>
-    <input type="text" name="password" style="background:#DCF0FF;border-color:	LightSteelBlue;"/>
-  </p>
+<div class="container">
+  <form class="formCSS" method="post">
+    <div class="h1 text-center">Create an account</div>
+    <div class="row flex justify-content-center">
+      <div class="col-lg-4 col-md-4 col-sm-6">
+        <label class="text-center" for="email">Email : </label>
+        <input class="form-control" type="text" name="email" />
+      </div>
+    </div>
 
-  <input type="submit" value="Submit" class="btn btn-outline-primary rounded"/>
-</form>
+    <div class="row flex justify-content-center">
+      <div class="col-lg-4 col-md-4  col-sm-6">
+        <label class="text-center" for="name">Name : </label>
+        <input class="form-control" type="text" name="name" />
+      </div>
+    </div>
+
+    <div class="row flex justify-content-center">
+      <div class="col-lg-4 col-md-4  col-sm-6">
+        <label for="password">Password: </label>
+        <input class="form-control" type="text" name="password" />
+      </div>
+    </div>
+
+    <div class="row flex justify-content-center" style="margin-top:30px;">
+      <div class="col-lg-2 col-md-2 col-sm-4 nav flex-column justify-content-center">
+        <input type="submit" value="Create" class="btn btn-success rounded" />
+      </div>
+    </div>
+  </form>
+</div>
+
