@@ -8,12 +8,12 @@ import { authUrl } from 'src/app/config/api';
   providedIn: 'root'
 })
 export class UserService {
-  user = 'guochen';
+  user = new User();
 
   constructor(private http: HttpClient) {}
 
   getUser() {
-    return 'guochen';
+    return this.user;
   }
 
   signup(username: string, email: string, password: string) {}
@@ -28,7 +28,7 @@ export class UserService {
   }
 
   logout() {
-    this.user = '';
+    this.user = new User();
     return true;
   }
 }
