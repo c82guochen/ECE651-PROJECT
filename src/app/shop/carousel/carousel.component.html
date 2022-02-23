@@ -11,7 +11,7 @@
          alt="image slide" style=" width: 28vw; height: 60vh;">
     <div class="carousel-caption d-none d-md-block bg-white bg-opacity-75 text-black">
       <h5> #{{index+1.}} {{re.name}} </h5>
-      <p>{{re.description}}</p>
+      <p>{{re.description | slice: 0:80 }}...</p>
     </div>
     </a>
   </slide>

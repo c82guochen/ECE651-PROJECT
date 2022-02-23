@@ -4,27 +4,48 @@
     <div class="row flex justify-content-center">
       <div class="col-lg-4 col-md-4 col-sm-6">
         <label class="text-center" for="email">Email : </label>
-        <input class="form-control" type="text" name="email" />
+        <input
+          class="form-control"
+          type="text"
+          name="email"
+          id="email"
+          [(ngModel)]="email"
+        />
       </div>
     </div>
 
     <div class="row flex justify-content-center">
       <div class="col-lg-4 col-md-4  col-sm-6">
         <label class="text-center" for="name">Name : </label>
-        <input class="form-control" type="text" name="name" />
+        <input
+          class="form-control"
+          type="text"
+          name="name"
+          id="name"
+          [(ngModel)]="name"
+        />
       </div>
     </div>
 
     <div class="row flex justify-content-center">
       <div class="col-lg-4 col-md-4  col-sm-6">
         <label for="password">Password: </label>
-        <input class="form-control" type="text" name="password" />
+        <input
+          class="form-control"
+          type="password"
+          id="password"
+          name="password"
+              [(ngModel)]="password"/>
       </div>
     </div>
 
     <div class="row flex justify-content-center" style="margin-top:30px;">
       <div class="col-lg-2 col-md-2 col-sm-4 nav flex-column justify-content-center">
-        <input type="submit" value="Create" class="btn btn-success rounded" />
+        <button type="submit"
+                class="btn btn-success rounded"
+                (click) = "signUp()">
+          Create new account
+        </button>
       </div>
     </div>
   </form>

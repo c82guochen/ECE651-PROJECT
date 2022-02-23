@@ -39,18 +39,16 @@
         >Search</a>
       </div>
 
-      <div class="row" *ngIf="!ifLogin" >
-        <a class="col-6" id="fontClick" routerLink="login">login</a>
-        <a class="col-6" id="fontClick" routerLink="signup">signup</a>
+      <div class="navbar-nav" *ngIf="!ifLogin" >
+        <a class="p-2" id="fontClick" routerLink="login">login</a>
+        <a class="p-2" id="fontClick" routerLink="signup">signup</a>
       </div>
       <a
         aria-expanded="false"
         aria-haspopup="true"
         class="nav-link pr-0"
         data-toggle="dropdown"
-        href="#"
         role="button"
-
         routerLink="userdetail"
         *ngIf="ifLogin"
       >
