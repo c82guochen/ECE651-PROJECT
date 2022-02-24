@@ -9,7 +9,8 @@
     "test": "ng test",
     "api": "npx json-server db.json",
     "lint": "ng lint",
-    "prettier": "npx prettier --write ./src/app/ --config .prettierrc.json"
+    "prettier": "npx prettier --write ./src/app/ --config .prettierrc.json",
+    "deploy": "npx firebase deploy"
   },
   "private": true,
   "dependencies": {
@@ -49,6 +50,7 @@
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "firebase": "^9.6.7",
     "jasmine-core": "~3.10.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
