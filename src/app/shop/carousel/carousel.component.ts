@@ -10,13 +10,13 @@ import { Recipe } from '../../model/recipe';
 export class CarouselComponent implements OnInit {
   res$: Recipe[] = [];
   activeSlideIndex = 0;
-  myInteval = 600;
+  myInteval = 3000;
 
   constructor(private reServ: RecipeService) {
     this.reServ.getRecipes().subscribe((o) => {
       this.res$ = o;
       this.activeSlideIndex = 2;
-      this.myInteval = 500;
+      this.myInteval = 3000;
     });
   }
 
