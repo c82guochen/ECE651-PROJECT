@@ -15,7 +15,6 @@ import { SearchComponent } from './common/search/search.component';
 import { LoginComponent } from './common/login/login.component';
 import { SignupComponent } from './common/signup/signup.component';
 
-
 const routes: Routes = [
   { path: '', component: ShopComponent },
   { path: 'login', component: LoginComponent },
