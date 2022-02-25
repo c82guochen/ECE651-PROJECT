@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../../model/user';
-import {UserService} from '../../services/user.service'
+import { User } from '../../model/user';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -8,19 +8,16 @@ import {UserService} from '../../services/user.service'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  email = "";
-  password = "";
+  email = '';
+  password = '';
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {}
 
-  signIn(){
-    console.log(this.email,this.password);
-    this.userService.login(this.email,this.password);
+  signIn() {
+    console.log(this.email, this.password);
+    this.userService.login(this.email, this.password).s。u;
     //if the outcome is true,ifLogin in nav.ts will be assigned to true
   }
 
-  ngOnInit(): void {
-
-  }
-
+  ngOnInit(): void {}
 }
