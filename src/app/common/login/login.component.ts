@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   signIn() {
     console.log(this.email, this.password);
-    this.userService.login(this.email, this.password).s。u;
+    this.userService.login(this.email, this.password);
     //if the outcome is true,ifLogin in nav.ts will be assigned to true
   }
 
