@@ -10,7 +10,7 @@ export class MessageService {
   constructor() {}
 
   sendMsg(item: unknown) {
-    // Todo handle what is being sent: only product for now
+    // Todo handle what is being sent: only product-item for now
     this.sub.next(item);
   }
 

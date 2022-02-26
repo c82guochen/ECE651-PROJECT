@@ -1,0 +1,17 @@
+<!--<a [routerLink]="['/productdetail']" [queryParams] = "{product-item:productItem}">-->
+<a [routerLink]="['/productdetail', productItem.id]">
+  <div class="card md-3 shadow-sm">
+    <img
+      class="bd-placeholder-img card-img-top p-2"
+      width="100%"
+      [src]="productItem.image_url"
+    />
+    <div class="card-header">{{ productItem.name }}</div>
+    <div class="card-body">
+      <p class="card-text">
+        <strong>{{ productItem.price | currency }}</strong>
+      </p>
+      <p class="card-text">{{ productItem.description | slice: 0:80 }}...</p>
+    </div>
+  </div>
+</a>
