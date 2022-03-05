@@ -5,6 +5,7 @@ import { RecipeService } from '../../../services/recipe.service';
 import { Recipe } from '../../../model/recipe';
 import { ProductService } from '../../../services/product.service';
 import { Router } from '@angular/router';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-nav',
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
   recipe: any[] = [];
-  ifLogin = true;
+  ifLogin = false;
   collapsedShow = false;
   collapsedShowState = '';
   search_text = '';
@@ -21,6 +22,7 @@ export class NavComponent implements OnInit {
   constructor(
     private recipeService: RecipeService,
     private productService: ProductService,
+    private userService: UserService,
     private router: Router
   ) {}
 
@@ -32,6 +34,9 @@ export class NavComponent implements OnInit {
     this.productService.getProducts().subscribe((it) => {
       this.recipe.push(...it);
     });
+
+    this.ifLogin = this.userService.getIfLogin();
+    console.log(this.ifLogin);
   }
 
   look() {

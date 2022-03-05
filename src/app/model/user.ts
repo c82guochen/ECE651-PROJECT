@@ -4,40 +4,41 @@ import { Recipe } from './recipe';
 
 export class User {
   id: number;
-  imageUrl: string;
-  name: string;
-  cardNumber: string;
-  phoneNumber: string;
-  address: string;
+//   imageUrl: string;
+  username: string;
   email: string;
+//   cardNumber: string;
+//   phoneNumber: string;
+  shipping_address: string;
+
   password: string;
-  cartList: CartItem[];
-  ordersList: CartItem[];
-  favouritesList: Recipe[];
+  cart_items: CartItem[];
+  orders: CartItem[];
+  fav_recipes: Recipe[];
 
   constructor(
     id = 0,
-    imageUrl = '',
-    name = '',
-    cardNumber = '',
-    phoneNumber = '',
-    address = '',
+//     imageUrl = '',
+    username = '',
+//     cardNumber = '',
+//     phoneNumber = '',
+    shipping_address = '',
     email = '',
     password = '',
-    cartList = [],
-    ordersList = [],
-    favouritesList = []
+    cart_items = [],
+    orders = [],
+    fav_recipes = []
   ) {
     this.id = id;
-    this.imageUrl = imageUrl;
-    this.name = name;
-    this.cardNumber = cardNumber;
-    this.phoneNumber = phoneNumber;
-    this.address = address;
+//     this.imageUrl = imageUrl;
+    this.username = username;
+//     this.cardNumber = cardNumber;
+//     this.phoneNumber = phoneNumber;
+    this.shipping_address = shipping_address;
     this.email = email;
     this.password = password;
-    this.cartList = cartList;
-    this.ordersList = ordersList;
-    this.favouritesList = favouritesList;
+    this.cart_items = cart_items;
+    this.orders = orders;
+    this.fav_recipes = fav_recipes;
   }
 }

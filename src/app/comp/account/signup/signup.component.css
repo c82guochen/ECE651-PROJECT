@@ -6,3 +6,27 @@
   position: relative;
   padding-top: 10vh;
 }
+
+.succ{
+   opacity: 0.7;
+   margin:10px;
+   padding:10px;
+   border-style:solid;
+   border-color: green;
+   background:#90EE90;
+   text-align:center;
+   border-radius: 5px;
+   color:green;
+}
+
+.fail{
+   opacity: 0.7;
+   margin:10px;
+   padding:10px;
+   border-style: solid;
+   border-color: 	red;
+   background:	#FFB6C1;
+   text-align:center;
+   border-radius: 5px;
+   color:red;
+}
