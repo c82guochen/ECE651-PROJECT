@@ -20,12 +20,16 @@ export class LoginComponent implements OnInit {
   signIn() {
     this.userService.login(this.email, this.password).subscribe(
       data => {
-       //提示注册成功，并且跳转至shop页面,更新navigation
+        console.log(typeof(data));
+
+        //         let realData = JSON.stringify(data);
+        console.log((data as any).username);
+//         console.log(realData.getString("username");
         this.isSuccessful = true;
         this.isLoginFailed = false;
         this.userService.setUser(data);
         this.userService.setIfLogin(this.isSuccessful);
-        this.router.navigate(['']);
+        this.router.navigate([''],{ queryParams: { ifLogin:this.isSuccessful,username:(data as any).username} });
       },
       err => {
         this.isSuccessful = false;

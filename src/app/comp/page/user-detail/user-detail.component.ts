@@ -9,7 +9,7 @@ import { catchError, map, Observable, throwError } from 'rxjs';
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
-  userInfo!: User;
+  userInfo!: any;
   name!: string;
   user: any;
 
@@ -23,6 +23,7 @@ export class UserDetailComponent implements OnInit {
 //   }
   ngOnInit(): void {
 //     this.userService.login('a@a.com', '12345678');
-    this.userService.getUser();
+    this.userInfo = this.userService.getUser();
+    console.log(this.userInfo);
   }
 }

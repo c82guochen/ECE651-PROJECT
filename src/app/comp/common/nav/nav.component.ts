@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { map, Observable, Observer, of, switchMap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { RecipeService } from '../../../services/recipe.service';
@@ -13,8 +13,9 @@ import { UserService } from '../../../services/user.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+  @Input() ifLogin!: boolean;
+  @Input() username!: string;
   recipe: any[] = [];
-  ifLogin = false;
   collapsedShow = false;
   collapsedShowState = '';
   search_text = '';
@@ -27,7 +28,7 @@ export class NavComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.recipeService.getRecipes().subscribe((it) => {
+      this.recipeService.getRecipes().subscribe((it) => {
       this.recipe.push(...it);
     });
 
@@ -35,9 +36,10 @@ export class NavComponent implements OnInit {
       this.recipe.push(...it);
     });
 
-    this.ifLogin = this.userService.getIfLogin();
-    console.log(this.ifLogin);
-  }
+    if(this.userService.getUser()){
+      this.ifLogin = true;
+    }
+ }
 
   look() {
     this.router.navigate(['/search', this.search_text]);
