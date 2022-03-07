@@ -4,7 +4,7 @@ export class OrderItem {
   id: number;
   productId: number;
   qty: number;
-  product: Product;
+  product?: Product;
   orderTime: Date;
   deliverTime: Date;
 
@@ -18,7 +18,6 @@ export class OrderItem {
     this.id = id;
     this.productId = productId;
     this.qty = qty;
-    this.product = new Product(0, 'placeholder');
     //     this.orderTime = new Date();
     //     this.deliverTime = new Date();
     this.orderTime = orderTime;

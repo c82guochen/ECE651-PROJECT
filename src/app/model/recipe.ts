@@ -1,6 +1,6 @@
 import { Product } from './product';
 
-export class Recipe {
+export interface Recipe {
   id: number;
   name: string;
   description: string;
@@ -12,30 +12,4 @@ export class Recipe {
   total_reviews: number;
   details: any;
   isFavourite: boolean;
-
-  constructor(
-    id: number,
-    name: string,
-    description = '',
-    category = '',
-    details = null,
-    ingredients_id = [],
-    ingredients_product = [],
-    rating = 0,
-    total_reviews = 0,
-    isFavourite = false,
-    image_url = ''
-  ) {
-    this.id = id;
-    this.name = name;
-    this.description = description;
-    this.image_url = image_url;
-    this.category = category;
-    this.ingredients_id = ingredients_id;
-    this.ingredients_product = ingredients_product;
-    this.rating = rating;
-    this.total_reviews = total_reviews;
-    this.isFavourite = isFavourite;
-    this.details = details;
-  }
 }

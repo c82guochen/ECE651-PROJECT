@@ -32,6 +32,7 @@ export class UserService {
     return this.local_user;
     //如果没有登录的话？
   }
+  error_msg = '';
 
   signup(name: string, mail: string, pin: string) {
     console.log(name,mail,pin);

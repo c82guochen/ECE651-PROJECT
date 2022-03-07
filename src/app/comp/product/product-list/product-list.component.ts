@@ -9,13 +9,11 @@ import { ProductService } from '../../../services/product.service';
 })
 export class ProductListComponent implements OnInit {
   productList: Product[] = [];
-  // wishlist: number[] = []
 
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
     this.loadProducts();
-    // this.loadWishlist()
   }
 
   loadProducts() {
