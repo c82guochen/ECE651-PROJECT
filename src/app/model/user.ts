@@ -2,43 +2,29 @@ import { CartItem } from './cart';
 import { Product } from './product';
 import { Recipe } from './recipe';
 
-export class User {
-  id: number;
-  //   imageUrl: string;
+export interface User {
+  // attributes
+  id: string;
+  token: string;
   username: string;
   email: string;
-  //   cardNumber: string;
-  //   phoneNumber: string;
+  credit_card: string;
   shipping_address: string;
 
-  password: string;
+  // date
+  last_login: Date;
+  date_joined: Date;
+  expiry: Date;
+
+  // Types
+  is_active: true;
+  is_staff: false;
+  is_superuser: false;
+
+  // Collections
   cart_items: CartItem[];
   orders: CartItem[];
-  fav_recipes: Recipe[];
-
-  constructor(
-    id = 0,
-    //     imageUrl = '',
-    username = '',
-    //     cardNumber = '',
-    //     phoneNumber = '',
-    shipping_address = '',
-    email = '',
-    password = '',
-    cart_items = [],
-    orders = [],
-    fav_recipes = []
-  ) {
-    this.id = id;
-    //     this.imageUrl = imageUrl;
-    this.username = username;
-    //     this.cardNumber = cardNumber;
-    //     this.phoneNumber = phoneNumber;
-    this.shipping_address = shipping_address;
-    this.email = email;
-    this.password = password;
-    this.cart_items = cart_items;
-    this.orders = orders;
-    this.fav_recipes = fav_recipes;
-  }
+  fav_recipes: any[];
+  groups: any[];
+  user_permissions: any[];
 }

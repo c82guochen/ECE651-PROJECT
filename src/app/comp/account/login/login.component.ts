@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   email = '';
   password = '';
+  err_msg = '';
   isSuccessful = false;
   isLoginFailed = false;
   localUser: any;
@@ -29,6 +30,9 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['']);
       },
       (err) => {
+        this.err_msg = JSON.stringify(err.error);
+
+        console.log(err);
         this.isSuccessful = false;
         this.isLoginFailed = true;
         this.userService.setIfLogin(this.isSuccessful);

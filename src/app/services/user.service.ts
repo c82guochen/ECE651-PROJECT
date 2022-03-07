@@ -17,11 +17,11 @@ import {
 })
 export class UserService {
   ifLogin = false;
-  local_user: any;
-  userSubject = new Subject();
+  userSubject = new Subject<User | null>();
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
+
   constructor(private http: HttpClient) {}
 
   setIfLogin(v: boolean) {
@@ -33,8 +33,6 @@ export class UserService {
   }
 
   setUser(user: any) {
-    this.local_user = user;
-    console.log(this.local_user);
     this.userSubject.next(user);
   }
 
@@ -71,7 +69,7 @@ export class UserService {
 
   logout() {
     this.ifLogin = false;
-    this.local_user = new User();
+    this.userSubject.next(null);
     return true;
   }
 }

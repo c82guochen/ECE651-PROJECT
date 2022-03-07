@@ -14,21 +14,38 @@ import { FavouritesDetailComponent } from './comp/page/favourites-detail/favouri
 import { SearchComponent } from './comp/common/search/search.component';
 import { LoginComponent } from './comp/account/login/login.component';
 import { SignupComponent } from './comp/account/signup/signup.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   { path: '', component: ShopComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-
-  { path: 'ordersDetail', component: OrderDetailComponent },
-  { path: 'favouritesDetail', component: FavouritesDetailComponent },
-  { path: 'shoppingcartDetail', component: ShoppingCartDetailComponent },
   { path: 'recipelist', component: RecipeListComponent },
   { path: 'productlist', component: ProductListComponent },
   { path: 'productdetail/:id', component: ProductDetailComponent },
-  { path: 'userdetail', component: UserDetailComponent },
   { path: 'recipedetail/:id', component: RecipeDetailComponent },
   { path: 'search/:key', component: SearchComponent },
+  {
+    path: 'ordersDetail',
+    component: OrderDetailComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'favouritesDetail',
+    component: FavouritesDetailComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'shoppingcartDetail',
+    component: ShoppingCartDetailComponent,
+    canActivate: [AuthGuardService]
+  },
+
+  {
+    path: 'userdetail',
+    component: UserDetailComponent,
+    canActivate: [AuthGuardService]
+  },
   { path: '**', component: PageNotFoundComponent }
 ];
 
