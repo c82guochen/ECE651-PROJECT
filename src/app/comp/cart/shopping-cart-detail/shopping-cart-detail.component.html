@@ -9,29 +9,27 @@
     <h2 class="fs-2 top-m10">Your shopping cart list</h2>
   </div>
 
-  <div class="row top-m10 p-4 justify-content-between border border-success">
+  <div *ngFor="let it of kart" class="row top-m10 p-4 justify-content-between border border-success">
     <div class="col-3">
       <img
         alt="IMG"
         class="rounded-circle product-image"
-        src="https://www.gardeningknowhow.com/wp-content/uploads/2020/03/primo-vantage-400x350.jpg%22"
+        src="{{it.product.image_url}}"
         width="100%"
       />
     </div>
     <div class="col-8">
       <div class="row justify-content-between col-5">
-        <div class="col-3 fs-5 fw-bold">name</div>
-        <div class="col-3 fs-5">x1</div>
+        <div class="col-3 fs-5 fw-bold">{{it.product.name}}</div>
+        <div class="col-3 fs-5"><span>x {{it.quantity}}</span></div>
       </div>
       <div class="row col-5 justify-content-between">
-        <div class="col-3 fs-5 fw-bold" style="color: red">price</div>
-        <div class="col-3 fs-5">total</div>
+        <div class="col-3 fs-5 fw-bold" style="color: red">{{it.product.id}}</div>
+        <div class="col-3 fs-5">total: {{it.quantity }}</div>
       </div>
       <div class="row top-m10">
         <div class="col-12">
-          <p class="text-wrap text-break">
-            Description:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-          </p>
+          <p class="text-wrap text-break">{{it.product.description}}</p>
         </div>
       </div>
 
