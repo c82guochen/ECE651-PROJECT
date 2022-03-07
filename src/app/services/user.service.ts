@@ -9,7 +9,8 @@ import {
   throwError,
   tap,
   of,
-  Subject
+  Subject,
+  Observer
 } from 'rxjs';
 
 @Injectable({
@@ -32,7 +33,7 @@ export class UserService {
     return this.ifLogin;
   }
 
-  setUser(user: any) {
+  setUser(user: User) {
     this.userSubject.next(user);
   }
 
@@ -41,9 +42,9 @@ export class UserService {
   }
   error_msg = '';
 
-  signup(name: string, mail: string, pin: string) {
+  signup(name: string, mail: string, pin: string): Observable<User> {
     console.log(name, mail, pin);
-    return this.http.post(
+    return this.http.post<User>(
       authUrl + '/signup/',
       {
         username: name,
@@ -54,8 +55,8 @@ export class UserService {
     );
   }
 
-  login(email: string, password: string) {
-    return this.http.post(
+  login(email: string, password: string): Observable<User> {
+    return this.http.post<User>(
       authUrl + '/signin/',
       {
         username: email,

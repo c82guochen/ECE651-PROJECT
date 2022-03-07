@@ -7,10 +7,4 @@ import { UserService } from '../../services/user.service';
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.css']
 })
-export class ShopComponent implements OnInit {
-  constructor(private userService: UserService) {}
-
-  ngOnInit(): void {
-    this.userService.login('', '');
-  }
-}
+export class ShopComponent {}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../services/user.service';
 import { Router } from '@angular/router';
+import { User } from '../../../model/user';
 
 @Component({
   selector: 'app-signup',
@@ -19,21 +20,25 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  onSignUpSuccess(data: User) {
+    //提示注册成功，并且跳转至login页面
+    console.log(data);
+    this.isSuccessful = true;
+    this.isSignUpFailed = false;
+    //         this.router.navigate(['../login']);
+  }
+
+  onSignUpError(err: ErrorEvent) {
+    this.isSignUpFailed = true;
+    this.isSuccessful = false;
+    this.errorMessage = err.message;
+    console.log(this.errorMessage);
+  }
+
   signUp(): void {
-    this.userService.signup(this.name, this.email, this.password).subscribe(
-      (data) => {
-        //提示注册成功，并且跳转至login页面
-        console.log(data);
-        this.isSuccessful = true;
-        this.isSignUpFailed = false;
-        //         this.router.navigate(['../login']);
-      },
-      (err) => {
-        this.isSignUpFailed = true;
-        this.isSuccessful = false;
-        this.errorMessage = err.message;
-        console.log(this.errorMessage);
-      }
-    );
+    this.userService.signup(this.name, this.email, this.password).subscribe({
+      next: this.onSignUpSuccess.bind(this),
+      error: this.onSignUpError.bind(this)
+    });
   }
 }
