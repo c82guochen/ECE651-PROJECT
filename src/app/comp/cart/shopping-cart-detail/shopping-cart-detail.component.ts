@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CartItem } from '../../../model/cart';
 import { CartService } from '../../../services/cart.service';
+import { UserService } from '../../../services/user.service';
+import { User } from '../../../model/user';
 
 @Component({
   selector: 'app-shopping-cart-detail',
@@ -9,9 +11,14 @@ import { CartService } from '../../../services/cart.service';
 })
 export class ShoppingCartDetailComponent implements OnInit {
   cartItem!: CartItem;
-  constructor(private cartService: CartService) {}
+  constructor(private cServ: CartService) {}
+  user: User | null = null;
+  kart: any[] = [];
 
   ngOnInit(): void {
-    //     this.cartService.getCartItems();
+    console.log('shoppingcart Detail');
+    this.cServ.getCartItems().subscribe((it) => {
+      console.log(it);
+    });
   }
 }

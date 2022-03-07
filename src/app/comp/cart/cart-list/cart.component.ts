@@ -5,6 +5,7 @@ import { productsUrl } from '../../../config/api';
 import { Product } from '../../../model/product';
 import { CartItem } from '../../../model/cart';
 import { stringify } from '@angular/compiler/src/util';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-cart',
@@ -15,25 +16,18 @@ export class CartComponent implements OnInit {
   cartItems: CartItem[] = [];
   cartTotal = 0;
 
-  constructor(private msg: MessageService, private cartService: CartService) {}
+  constructor(
+    private userService: UserService,
+    private cartService: CartService
+  ) {}
 
-  ngOnInit(): void {
-    this.loadCartItems('guochen');
-    this.subToMessage();
-  }
-
-  subToMessage() {
-    this.msg.getMsg().subscribe(() => {
-      // a product-item is passed in, but this is handled by load cartItems
-      this.loadCartItems('guochen');
-    });
-  }
+  ngOnInit(): void {}
 
   loadCartItems(name: string) {
-    this.cartService.getCartItems(name).subscribe((items: any) => {
-      this.cartItems = items;
-      console.log('loadCartItems', items);
-      //this.cartTotal = this.cartItems.reduce((sum, cv) => sum + cv.qty * cv.price, 0)
-    });
+    // this.cartService.getCartItems().subscribe((items: any) => {
+    //   this.cartItems = items;
+    //   console.log('loadCartItems', items);
+    //   //this.cartTotal = this.cartItems.reduce((sum, cv) => sum + cv.qty * cv.price, 0)
+    // });
   }
 }

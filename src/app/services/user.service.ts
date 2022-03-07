@@ -10,7 +10,8 @@ import {
   tap,
   of,
   Subject,
-  Observer
+  Observer,
+  BehaviorSubject
 } from 'rxjs';
 
 @Injectable({
@@ -18,7 +19,8 @@ import {
 })
 export class UserService {
   ifLogin = false;
-  userSubject = new Subject<User | null>();
+  userSubject = new BehaviorSubject<User | null>(null);
+  local_user: User | null = null;
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -34,6 +36,7 @@ export class UserService {
   }
 
   setUser(user: User) {
+    this.local_user = user;
     this.userSubject.next(user);
   }
 
