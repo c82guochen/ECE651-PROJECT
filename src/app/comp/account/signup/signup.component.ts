@@ -15,21 +15,20 @@ export class SignupComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(
-    private userService: UserService,private router:Router) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {}
 
   signUp(): void {
     this.userService.signup(this.name, this.email, this.password).subscribe(
-      data => {
-       //提示注册成功，并且跳转至login页面
+      (data) => {
+        //提示注册成功，并且跳转至login页面
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
-//         this.router.navigate(['../login']);
+        //         this.router.navigate(['../login']);
       },
-      err => {
+      (err) => {
         this.isSignUpFailed = true;
         this.isSuccessful = false;
         this.errorMessage = err.message;

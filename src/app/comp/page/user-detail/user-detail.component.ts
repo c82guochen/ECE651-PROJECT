@@ -15,14 +15,7 @@ export class UserDetailComponent implements OnInit {
 
   constructor(private userService: UserService) {}
 
-//   ngOnInit(): void {
-//     this.userService.login('a@a.com', '12345678').subscribe((user) => {
-//       this.user = user;
-//       console.log(user);
-//     });
-//   }
   ngOnInit(): void {
-//     this.userService.login('a@a.com', '12345678');
     this.userInfo = this.userService.getUser();
     console.log(this.userInfo);
   }

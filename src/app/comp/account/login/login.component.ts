@@ -13,25 +13,22 @@ export class LoginComponent implements OnInit {
   password = '';
   isSuccessful = false;
   isLoginFailed = false;
-  localUser :any;
+  localUser: any;
 
-  constructor(private userService: UserService,private router: Router) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   signIn() {
     this.userService.login(this.email, this.password).subscribe(
-      data => {
-        console.log(typeof(data));
-
-        //         let realData = JSON.stringify(data);
+      (data) => {
+        console.log(typeof data);
         console.log((data as any).username);
-//         console.log(realData.getString("username");
         this.isSuccessful = true;
         this.isLoginFailed = false;
         this.userService.setUser(data);
         this.userService.setIfLogin(this.isSuccessful);
-        this.router.navigate([''],{ queryParams: { ifLogin:this.isSuccessful,username:(data as any).username} });
+        this.router.navigate(['']);
       },
-      err => {
+      (err) => {
         this.isSuccessful = false;
         this.isLoginFailed = true;
         this.userService.setIfLogin(this.isSuccessful);
@@ -39,5 +36,6 @@ export class LoginComponent implements OnInit {
     );
     //if the outcome is true,ifLogin in nav.ts will be assigned to true
   }
+
   ngOnInit(): void {}
 }

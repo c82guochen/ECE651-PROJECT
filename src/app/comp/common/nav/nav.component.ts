@@ -13,8 +13,8 @@ import { UserService } from '../../../services/user.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  @Input() ifLogin!: boolean;
-  @Input() username!: string;
+  ifLogin = false;
+  username = '';
   recipe: any[] = [];
   collapsedShow = false;
   collapsedShowState = '';
@@ -28,7 +28,7 @@ export class NavComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-      this.recipeService.getRecipes().subscribe((it) => {
+    this.recipeService.getRecipes().subscribe((it) => {
       this.recipe.push(...it);
     });
 
@@ -36,10 +36,13 @@ export class NavComponent implements OnInit {
       this.recipe.push(...it);
     });
 
-    if(this.userService.getUser()){
+    this.userService.getUser().subscribe((user: any) => {
+      this.username = user.username;
       this.ifLogin = true;
-    }
- }
+      console.log('user from service');
+      console.log(user);
+    });
+  }
 
   look() {
     this.router.navigate(['/search', this.search_text]);

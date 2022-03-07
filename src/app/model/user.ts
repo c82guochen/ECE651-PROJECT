@@ -4,11 +4,11 @@ import { Recipe } from './recipe';
 
 export class User {
   id: number;
-//   imageUrl: string;
+  //   imageUrl: string;
   username: string;
   email: string;
-//   cardNumber: string;
-//   phoneNumber: string;
+  //   cardNumber: string;
+  //   phoneNumber: string;
   shipping_address: string;
 
   password: string;
@@ -18,10 +18,10 @@ export class User {
 
   constructor(
     id = 0,
-//     imageUrl = '',
+    //     imageUrl = '',
     username = '',
-//     cardNumber = '',
-//     phoneNumber = '',
+    //     cardNumber = '',
+    //     phoneNumber = '',
     shipping_address = '',
     email = '',
     password = '',
@@ -30,10 +30,10 @@ export class User {
     fav_recipes = []
   ) {
     this.id = id;
-//     this.imageUrl = imageUrl;
+    //     this.imageUrl = imageUrl;
     this.username = username;
-//     this.cardNumber = cardNumber;
-//     this.phoneNumber = phoneNumber;
+    //     this.cardNumber = cardNumber;
+    //     this.phoneNumber = phoneNumber;
     this.shipping_address = shipping_address;
     this.email = email;
     this.password = password;
