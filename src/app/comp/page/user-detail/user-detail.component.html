@@ -3,14 +3,13 @@
     <div
       class="col-md-5 border border-success nav flex-column justify-content-center"
     >
-      <!--  用户头像姓名性别-->
       <div class="row justify-content-evenly">
         <div class="col-md-5">
           <img
             alt="IMG"
             class="rounded-circle"
+            src="/assets/profile.jpg"
             style="height: 100%; width: 100%; padding: 5px"
-            src="../../../../assets/profile.jpg"
           />
         </div>
         <div
@@ -32,9 +31,9 @@
         <span class="fs-5">{{userInfo.shipping_address}}</span>
       </div>
       <button
-        type="button"
-        id="change-btn"
         class="btn btn-outline-success m-2 btn-md rounded-pill"
+        id="change-btn"
+        type="button"
       >
         <strong>Change</strong>
       </button>
@@ -49,16 +48,16 @@
         <div class="col-md-2 remove-padding">
           <img
             alt="shopping-cart-icon"
-            style="height: 100%; width: 100%"
             src="../../../../assets/shopping-cart-icon.jpg"
+            style="height: 100%; width: 100%"
           />
         </div>
         <div
           class="col-md-8 remove-padding bg-warning bg-opacity-25 fw-bold nav flex-column justify-content-center align-items-center"
         >
           <a
-            style="padding-left: 0; color: Gold; max-width: 250px"
             [routerLink]="['/shoppingcartDetail']"
+            style="padding-left: 0; color: Gold; max-width: 250px"
           >
             your shopping cart list
           </a>
@@ -70,8 +69,8 @@
         <div class="col-md-2 remove-padding">
           <img
             alt="order-icon"
-            style="height: 100%; width: 100%"
             src="../../../../assets/order-icon.jpg"
+            style="height: 100%; width: 100%"
           />
         </div>
 
@@ -79,8 +78,8 @@
           class="col-md-10 remove-padding bg-primary bg-opacity-25 fw-bold nav flex-column justify-content-center align-items-center"
         >
           <a
-            style="padding-left: 0; color: RoyalBlue; max-width: 250px"
             [routerLink]="['/ordersDetail']"
+            style="padding-left: 0; color: RoyalBlue; max-width: 250px"
           >
             your orders list
           </a>
@@ -88,8 +87,6 @@
       </div>
     </div>
   </div>
-
-
 
 
   <div class="row">
