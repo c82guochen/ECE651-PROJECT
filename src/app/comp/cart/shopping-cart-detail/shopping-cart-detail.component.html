@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container bg-white">
   <div class="row justify-content-between">
     <div>
       <span class="fs-5 fw-bold" style="color: #00008b">Your account > </span>
       <span class="fs-5 fw-bold" style="color: #b22222"
-        >Your shopping cart list</span
+      >Your shopping cart list</span
       >
     </div>
     <h2 class="fs-2 top-m10">Your shopping cart list</h2>
@@ -19,32 +19,37 @@
       />
     </div>
     <div class="col-8">
-      <div class="row justify-content-between col-5">
-        <div class="col-3 fs-5 fw-bold">{{it.product.name}}</div>
-        <div class="col-3 fs-5"><span>x {{it.quantity}}</span></div>
-      </div>
-      <div class="row col-5 justify-content-between">
-        <div class="col-3 fs-5 fw-bold" style="color: red">{{it.product.id}}</div>
-        <div class="col-3 fs-5">total: {{it.quantity }}</div>
+      <div class="row justify-content-between">
+        <div class="fs-5 fw-bold">{{it.product.name}}</div>
+        <div class="fs-5"><span>{{ it.product.price | currency }} x {{it.quantity}}
+          = {{ it.product.price * it.quantity | currency }}</span></div>
       </div>
       <div class="row top-m10">
         <div class="col-12">
           <p class="text-wrap text-break">{{it.product.description}}</p>
         </div>
       </div>
-
       <button
-        id="delete-btn"
-        class="col-3 btn btn-outline-success m-2 btn-sm rounded-3"
-      >
+        class="col-3 btn btn-danger m-2 btn-sm rounded-3"
+        id="delete-btn">
         Delete
       </button>
     </div>
   </div>
-  <button
-    id="checkout-btn"
-    class="col-3 btn btn-outline-success btn-md rounded-3 top-m10"
-  >
-    proceed to checkout
-  </button>
+
+  <div class="row">
+    <button
+      class="btn btn-primary"
+      id="checkout-btn"
+      (click)="checkoutdetail.hidden = !checkoutdetail.hidden"
+    >
+      proceed to checkout
+    </button>
+  </div>
+
+
+  <div #checkoutdetail hidden>
+    <div><span class="fs-5 fw-bold"> Confirming your details</span></div>
+  </div>
+  <br style="height: 20vh">
 </div>

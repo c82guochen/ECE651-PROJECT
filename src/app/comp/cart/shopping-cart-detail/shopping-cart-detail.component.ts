@@ -19,7 +19,6 @@ export class ShoppingCartDetailComponent implements OnInit {
     console.log('shoppingcart Detail');
     this.cServ.getCartItems().subscribe((it) => {
       this.kart = it;
-
       console.log(it);
     });
   }
