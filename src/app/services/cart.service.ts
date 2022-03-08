@@ -49,8 +49,25 @@ export class CartService {
   }
 
   //add
-  addProductToCart(product: Product): Observable<any> {
-    this.index += 1;
-    return this.http.post(cartUrl, product);
+  addProductToCart(product: Product, qty: number): Observable<any> {
+    if (!this.user) return of([]); // TODO: catch error here
+    console.log(this.httpOptions);
+    this.httpOptions.headers.set('Authorization', 'token ' + this.user.token);
+    return this.http.post(
+      cartUrl,
+      { product_id: product.id, quantity: qty },
+      this.httpOptions
+    );
+  }
+
+  delProduct(id: number) {
+    if (!this.user) return of([]); // TODO: catch error here
+    console.log(this.httpOptions);
+    this.httpOptions.headers.set('Authorization', 'token ' + this.user.token);
+    return this.http.patch(
+      cartUrl + id + '/',
+      { quantity: 0 },
+      this.httpOptions
+    );
   }
 }

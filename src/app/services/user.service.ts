@@ -48,7 +48,7 @@ export class UserService {
   signup(name: string, mail: string, pin: string): Observable<User> {
     console.log(name, mail, pin);
     return this.http.post<User>(
-      authUrl + '/signup/',
+      authUrl + 'signup/',
       {
         username: name,
         email: mail,
@@ -60,7 +60,7 @@ export class UserService {
 
   login(email: string, password: string): Observable<User> {
     return this.http.post<User>(
-      authUrl + '/signin/',
+      authUrl + 'signin/',
       {
         username: email,
         password: password

@@ -12,10 +12,4 @@ export class ProductComponent {
   @Input() productItem!: Product;
 
   constructor(private msg: MessageService, private cartService: CartService) {}
-
-  handleAddToCart() {
-    this.cartService.addProductToCart(this.productItem).subscribe(() => {
-      console.log('added to cart', this.productItem);
-    });
-  }
 }

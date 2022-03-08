@@ -20,12 +20,13 @@
         <ngx-number-spinner
           [max]="999"
           [min]="1"
-          [value]="product_qty">
+          [value]="product_qty"
+          (change)="product_qty=$event">
         </ngx-number-spinner>
         <button
           class="btn btn-primary rounded-3 offset-1"
           type="button"
-          (click)="handleAddToCart()"
+          (click)="addToKart()"
         >
           Add to cart
         </button>

@@ -22,4 +22,16 @@ export class ShoppingCartDetailComponent implements OnInit {
       console.log(it);
     });
   }
+
+  delete(id: number) {
+    console.log('trigger deleting product');
+    this.cServ.delProduct(id).subscribe((res) => {
+      console.log(res);
+      this.kart = res as any[];
+    });
+  }
+
+  clear() {
+    // TODO: send a clear cart request
+  }
 }

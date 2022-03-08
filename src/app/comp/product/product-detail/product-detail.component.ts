@@ -26,10 +26,13 @@ export class ProductDetailComponent implements OnInit {
       .subscribe((product) => (this.productItem = product[0]));
   }
 
-  handleAddToCart() {
-    // TODO: Come back to it when doing kart adding
-    // this.cartService.addProductToCart(this.productItem).subscribe(() => {
-    //   console.log('added to cart', this.productItem);
-    // });
+  addToKart() {
+    console.log('addToKart triggered');
+    console.log(this.product_qty);
+    this.cartService
+      .addProductToCart(this.productItem, this.product_qty)
+      .subscribe((res) => {
+        console.log('added to cart', res);
+      });
   }
 }
