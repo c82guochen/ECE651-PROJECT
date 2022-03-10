@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../model/user';
-import { authUrl } from 'src/app/config/api';
+import { authUrl, userUrl } from 'src/app/config/api';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {
   catchError,
@@ -75,5 +75,42 @@ export class UserService {
     this.ifLogin = false;
     this.userSubject.next(null);
     return true;
+  }
+
+  ChangeCardID(userInfo: any, cardID:string){
+    let httpOptions = {
+        headers: new HttpHeaders({
+          'Authorization': 'Token '+`${userInfo.token}`,
+          'Content-Type': 'application/json',
+        })
+    };
+    console.log(cardID);
+    return this.http.patch(
+      userUrl + '/',
+      {
+        credit_card: cardID,
+      },
+      httpOptions
+    )
+  }
+
+  ChangeAddress(userInfo: any, telephone: string, address: string, province: string){
+     let httpOptions = {
+        headers: new HttpHeaders({
+          'Authorization': 'Token '+`${userInfo.token}`,
+          'Content-Type': 'application/json',
+          })
+        };
+    return this.http.put(
+      userUrl + '/address/',
+      {
+        full_name: userInfo.username,
+        phone_number: telephone,
+        email: userInfo.email,
+        address: address,
+        province: province,
+      },
+      httpOptions,
+    )
   }
 }
