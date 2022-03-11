@@ -50,13 +50,15 @@
 
   <div class="row" style="margin-top:10vh;">
     <div #checkoutdetail hidden>
-      <span class="fs-5 fw-bold mt-10" > Confirming your details</span> 
-      <div>address: replace by user.address</div>
-      <div>card number: replace by user.card</div>   
-      <div>price total: {{total_price | currency}}</div>
-      <div class="row">
+      <span class="fs-5 fw-bold" > Confirming your details</span> 
+      <div class="top-m10">address: replace by user.address</div>
+      <div class="top-m10">card number: replace by user.card</div>   
+      <div class="top-m10">price total: {{total_price | currency}}</div>
+      <div class="row mt-4">
         <div class="col-4">
-          <button class="btn btn-success rounded">Change information</button>
+          <button class="btn btn-success rounded" routerLink="/userdetail">
+            Change information
+          </button>
         </div>
         <div class="col-4">
           <button class="btn btn-success rounded">Place my order</button>
