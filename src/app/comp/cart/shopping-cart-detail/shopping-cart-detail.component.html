@@ -40,7 +40,7 @@
 
   <div class="row">
     <button
-      class="btn btn-primary"
+      class="btn btn-success rounded"
       id="checkout-btn"
       (click)="checkoutdetail.hidden = !checkoutdetail.hidden"
     >
@@ -48,9 +48,22 @@
     </button>
   </div>
 
-
-  <div #checkoutdetail hidden>
-    <div><span class="fs-5 fw-bold"> Confirming your details</span></div>
+  <div class="row" style="margin-top:10vh;">
+    <div #checkoutdetail hidden>
+      <span class="fs-5 fw-bold mt-10" > Confirming your details</span> 
+      <div>address: replace by user.address</div>
+      <div>card number: replace by user.card</div>   
+      <div>price total: {{total_price | currency}}</div>
+      <div class="row">
+        <div class="col-4">
+          <button class="btn btn-success rounded">Change information</button>
+        </div>
+        <div class="col-4">
+          <button class="btn btn-success rounded">Place my order</button>
+        </div>
+      </div>
+    </div>
   </div>
+  
   <br style="height: 20vh">
 </div>

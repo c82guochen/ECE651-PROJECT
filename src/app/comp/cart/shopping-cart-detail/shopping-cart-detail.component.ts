@@ -14,12 +14,16 @@ export class ShoppingCartDetailComponent implements OnInit {
   constructor(private cServ: CartService) {}
   user: User | null = null;
   kart: any[] = [];
+  total_price = 0;
 
   ngOnInit(): void {
     console.log('shoppingcart Detail');
     this.cServ.getCartItems().subscribe((it) => {
       this.kart = it;
       console.log(it);
+      for (let item of it){
+        this.total_price += item.product.price * item.quantity;
+      }
     });
   }
 
@@ -28,6 +32,10 @@ export class ShoppingCartDetailComponent implements OnInit {
     this.cServ.delProduct(id).subscribe((res) => {
       console.log(res);
       this.kart = res as any[];
+      this.total_price = 0;
+      for (let item of res as any[]){
+        this.total_price += item.product.price * item.quantity;
+      }
     });
   }
 
