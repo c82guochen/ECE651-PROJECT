@@ -59,17 +59,12 @@ export class ShoppingCartDetailComponent implements OnInit {
         product_id: -1,
         quantity:-1
       };
-      console.log('I am item: ',item)
-      console.log(item.product.id, item.quantity) 
       obj.product_id = item.product.id;  
       obj.quantity = item.quantity;
       order.push(obj);
     }
     console.log(order);
-    // this.cServ
-    //   .create_new_order(status,order)
-    //   .subscribe((res) => {
-    //     console.log('added to cart', res);
-    //   });   
+    this.cServ.create_new_order(status,order);
+    window.alert('success place order');
   }
 }
