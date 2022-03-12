@@ -19,6 +19,7 @@ export class OrderDetailComponent implements OnInit {
       this.orders = it;
       console.log('I am trying to get all orders!')
       console.log(it);
+      console.log('url = ',it[0].order_items[0].product.image_url);
     });
   }
 }

@@ -7,8 +7,35 @@
     <h2 class="fs-2 top-m10">Your orders</h2>
   </div>
 
-  <div class="row top-m10 p-4 justify-content-between border border-success">
-    <div class="col-3">
+
+  <div *ngFor="let order of orders" class="row top-m10 p-2 justify-content-between border border-success">
+    <div class="fs-6 fw-bold">order {{order.id}}</div>
+    <div *ngFor="let items of order.order_items" class="row mb-4">
+      <div class="col-4">
+        <img
+        alt="IMG"
+        class="rounded-circle product-image"
+        src="{{items.product.img_url}}"
+        width="100%"
+      />
+      </div>
+      <div class="col-8">
+        <div class="row ">
+          <div class="col-4 fs-9 fw-bold">{{items.product.name}}</div>
+          <div class="col-4 fs-9">x {{items.quantity}}</div>
+        </div>
+        
+        <div class="row ">
+          <div class="col-4 fs-9">price</div>
+          <div class="col-4 fs-9">{{items.product.price | currency}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col-8 pl-4 mt-2">Total: {{order.subtotal}}</div>      
+    </div>
+    <!-- <div class="col-3">
       <img
         alt="IMG"
         class="rounded-circle product-image"
@@ -41,6 +68,6 @@
           comment
         </button>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>

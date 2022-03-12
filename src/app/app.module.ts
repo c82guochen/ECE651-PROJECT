@@ -29,6 +29,7 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { LoginComponent } from './comp/account/login/login.component';
 import { SignupComponent } from './comp/account/signup/signup.component';
 import { RecipeSectionComponent } from './comp/recipe/recipe-section/recipe-section.component';
+import { OrderDetailComponent } from './comp/page/order-detail/order-detail.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { RecipeSectionComponent } from './comp/recipe/recipe-section/recipe-sect
     LoginComponent,
     SignupComponent,
     RecipeSectionComponent,
+    OrderDetailComponent,
   ],
   imports: [
     FormsModule,

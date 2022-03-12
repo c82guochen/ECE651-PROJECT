@@ -63,8 +63,9 @@ export class ShoppingCartDetailComponent implements OnInit {
       obj.quantity = item.quantity;
       order.push(obj);
     }
-    console.log(order);
-    this.cServ.create_new_order(status,order);
+    this.cServ.create_new_order(status,order).subscribe( data => {
+      console.log('data = ', data);
+    });
     window.alert('success place order');
   }
 }
