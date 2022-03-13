@@ -23,7 +23,7 @@ export class ShoppingCartDetailComponent implements OnInit {
   kart: any[] = [];
   checkoutOrder!: CheckoutOrder;
   total_price = 0;
-
+  address: string ='';
   
 
   ngOnInit(): void {
@@ -38,6 +38,8 @@ export class ShoppingCartDetailComponent implements OnInit {
     this.userService.getUser().subscribe((user: any) => {
       console.log('I am getting user information');
       console.log(user);
+      this.address = user.shipping_address.address+ ', ' + user.shipping_address.province + ', '+ user.shipping_address.postal_code;
+      console.log(user.shipping_address.address)
     });
   }
 
