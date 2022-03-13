@@ -8,32 +8,35 @@
   </div>
 
 
-  <div *ngFor="let order of orders" class="row top-m10 p-2 justify-content-between border border-success">
+  <div *ngFor="let order of orders.slice().reverse()" class="row top-m10 p-2 justify-content-between border border-success">
     <div class="fs-6 fw-bold">order {{order.id}}</div>
-    <div *ngFor="let items of order.order_items" class="row mb-4">
-      <div class="col-4">
+    <div *ngFor="let items of order.order_items" class="row mb-4 d-flex align-items-center">
+      <div class="col-1"></div>
+      <div class="col-2">
         <img
         alt="IMG"
         class="rounded-circle product-image"
-        src="{{items.product.img_url}}"
-        width="100%"
+        src="{{items.product.image_url}}"
+        width="90%"
+        style="min-width:60px;"
       />
       </div>
-      <div class="col-8">
-        <div class="row ">
-          <div class="col-4 fs-9 fw-bold">{{items.product.name}}</div>
-          <div class="col-4 fs-9">x {{items.quantity}}</div>
+      <div class="col-1"></div>
+      <div class="col-6">
+        <div class="row">
+          <div class="col-6 fs-9 fw-bold">{{items.product.name}}</div>
+          <div class="col-6 fs-9">x {{items.quantity}}</div>
         </div>
         
-        <div class="row ">
-          <div class="col-4 fs-9">price</div>
-          <div class="col-4 fs-9">{{items.product.price | currency}}</div>
+        <div class="row">
+          <div class="col-6 fs-9">price</div>
+          <div class="col-6 fs-9">{{items.product.price | currency}}</div>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-4"></div>
-      <div class="col-8 pl-4 mt-2">Total: {{order.subtotal}}</div>      
+      <div class="col-8 pl-4 mt-2">Total: {{order.subtotal | currency}}</div>      
     </div>
     <!-- <div class="col-3">
       <img
