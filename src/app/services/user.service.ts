@@ -77,40 +77,34 @@ export class UserService {
     return true;
   }
 
-  ChangeCardID(userInfo: any, cardID:string){
+  UpdateUser(userInfo: any,
+          cardID: string,
+          telephone:string,
+          address:string,
+          province:string,
+          postal_code:string){
     let httpOptions = {
-        headers: new HttpHeaders({
-          'Authorization': 'Token '+`${userInfo.token}`,
-          'Content-Type': 'application/json',
-        })
+      headers: new HttpHeaders({
+        Authorization: 'Token ' + `${userInfo.token}`,
+        'Content-Type': 'application/json'
+      })
     };
-    console.log(cardID);
     return this.http.patch(
       userUrl + '/',
       {
+        username: userInfo.username,
         credit_card: cardID,
+        shipping_address: {
+          full_name: userInfo.username,
+          phone_number:  telephone,
+          email: userInfo.email,
+          address: address,
+          province: province,
+          postal_code: postal_code
+        }
       },
       httpOptions
-    )
+    );
   }
 
-  ChangeAddress(userInfo: any, telephone: string, address: string, province: string){
-     let httpOptions = {
-        headers: new HttpHeaders({
-          'Authorization': 'Token '+`${userInfo.token}`,
-          'Content-Type': 'application/json',
-          })
-        };
-    return this.http.put(
-      userUrl + '/address/',
-      {
-        full_name: userInfo.username,
-        phone_number: telephone,
-        email: userInfo.email,
-        address: address,
-        province: province,
-      },
-      httpOptions,
-    )
-  }
 }
