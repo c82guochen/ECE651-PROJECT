@@ -9,7 +9,9 @@ import { OrderService} from '../../../services/order.service';
   styleUrls: ['./order-detail.component.css']
 })
 export class OrderDetailComponent implements OnInit {
-  constructor(private oServ: OrderService) {}
+  constructor(
+    private oServ: OrderService
+  ) {}
   user: User | null = null;
   orders: any[] = [];
 
@@ -20,6 +22,6 @@ export class OrderDetailComponent implements OnInit {
       console.log('I am trying to get all orders!')
       console.log(it);
       console.log('url = ',it[0].order_items[0].product.image_url);
-    });
+    }); 
   }
 }

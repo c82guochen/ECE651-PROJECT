@@ -15,7 +15,10 @@ import { CheckoutOrder } from 'src/app/model/checkout';
 
 export class ShoppingCartDetailComponent implements OnInit {
   cartItem!: CartItem;
-  constructor(private cServ: CartService) {}
+  constructor(
+    private cServ: CartService,
+    private userService: UserService
+  ) {}
   user: User | null = null;
   kart: any[] = [];
   checkoutOrder!: CheckoutOrder;
@@ -31,6 +34,10 @@ export class ShoppingCartDetailComponent implements OnInit {
       for (let item of it){
         this.total_price += item.product.price * item.quantity;
       }
+    });
+    this.userService.getUser().subscribe((user: any) => {
+      console.log('I am getting user information');
+      console.log(user);
     });
   }
 

@@ -8,8 +8,8 @@
   </div>
 
 
-  <div *ngFor="let order of orders.slice().reverse()" class="row top-m10 p-2 justify-content-between border border-success">
-    <div class="fs-6 fw-bold">order {{order.id}}</div>
+  <div *ngFor="let order of orders.slice().reverse()" class="row top-m10 p-2 border border-success" style="margin-bottom: 10px;">
+    <div class="fs-4 fw-bold">order {{order.id}}</div>
     <div *ngFor="let items of order.order_items" class="row mb-4 d-flex align-items-center">
       <div class="col-1"></div>
       <div class="col-2">
