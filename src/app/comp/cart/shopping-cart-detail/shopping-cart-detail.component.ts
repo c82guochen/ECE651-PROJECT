@@ -71,7 +71,7 @@ export class ShoppingCartDetailComponent implements OnInit {
         product_id: -1,
         quantity:-1
       };
-      obj.product_id = item.product.id;  
+      obj.product_id = item.product.id;
       obj.quantity = item.quantity;
       order.push(obj);
     }

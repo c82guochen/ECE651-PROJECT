@@ -25,6 +25,7 @@ export class UserService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
   error_msg = '';
+  userToken: any;
 
   constructor(private http: HttpClient) {}
 
@@ -34,6 +35,15 @@ export class UserService {
 
   getIfLogin() {
     return this.ifLogin;
+  }
+
+  setUserToken(v: any) {
+    console.log(v);
+    this.userToken = v;
+  }
+
+  getUserToken() {
+    return this.userToken;
   }
 
   setUser(user: User) {
@@ -83,11 +93,12 @@ export class UserService {
     telephone: string,
     address: string,
     province: string,
-    postal_code: string
-  ) {
+    postal_code: string,
+    userToken:any
+  ){
     let httpOptions = {
       headers: new HttpHeaders({
-        Authorization: 'Token ' + `${userInfo.token}`,
+        Authorization: 'Token ' + userToken,
         'Content-Type': 'application/json'
       })
     };

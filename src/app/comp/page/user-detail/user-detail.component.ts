@@ -32,7 +32,9 @@ export class UserDetailComponent implements OnInit {
       this.userInfo = user;
     });
     this.name = (this.userInfo as any).username;
+    this.userService.setUserToken((this.userInfo as any).token);
     this.JudgeIfNull();
+    console.log(this.userInfo);
   }
 
   JudgeIfNull() {
@@ -58,32 +60,41 @@ export class UserDetailComponent implements OnInit {
     this.isUpdateSucc = true;
     this.isChanging = false;
     console.log(data);
+    data.token = this.userService.getUserToken();
+  //     setUser
+    this.userService.setUser(data);
     this.userInfo = data;
   }
 
   onUpdateUserError(err: ErrorEvent) {
     this.isUpdateSucc = false;
     this.err_msg = JSON.stringify(err.error);
+    window.alert(this.err_msg);
     console.log(this.err_msg);
   }
 
   Submit() {
-
     if (this.cardID != ''
     && this.address != ''
     && this.telephone != ''
     && this.province != ''
     && this.postal_code != '') {
-      this.userService.UpdateUser(
-          this.userInfo,
-          this.cardID,
-          this.telephone,
-          this.address,
-          this.province,
-          this.postal_code).subscribe({
-        next: this.onUpdateUserSuccess.bind(this),
-        error: this.onUpdateUserError.bind(this)
-      });
+      if(this.userService.getUserToken() != null){
+        let userToken = this.userService.getUserToken();
+        this.userService.UpdateUser(
+            this.userInfo,
+            this.cardID,
+            this.telephone,
+            this.address,
+            this.province,
+            this.postal_code,
+            userToken
+            ).subscribe({
+          next: this.onUpdateUserSuccess.bind(this),
+          error: this.onUpdateUserError.bind(this)
+        });
+      }
+
     }
 //     else if((this.address == ''
 //     || this.telephone == ''
@@ -104,7 +115,7 @@ export class UserDetailComponent implements OnInit {
     else{
       this.isUpdateSucc = false;
       this.err_msg = "(information is incomplete)";
-      window.alert("Fail to submit,please try again!");
+      window.alert("Fail to submit,please try again!"+`${this.err_msg}`);
       this.isChanging = true;
     }
 
