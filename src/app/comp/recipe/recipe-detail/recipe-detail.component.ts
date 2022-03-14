@@ -25,10 +25,24 @@ export class RecipeDetailComponent implements OnInit {
     this.recipeService
       .getRecipe(Number(recipeId))
       .subscribe((res) => (this.recipeItem = res[0]));
-    console.log(this.recipeItem);
   }
 
   handleAddToWishlist() {}
 
-  handleAddAllToCart() {}
+  handleAddAllToCart() {
+    console.log(this.recipeItem);
+    let arr = this.recipeItem.ingredients_id.map((id) => {
+      return { product_id: id, quantity: 1 };
+    });
+    console.log('Add All to arr');
+    console.log(arr);
+    this.cartService.addProductsToCart(arr).subscribe((res) => {
+      if (res.length > 0) {
+        alert('Successfully added to cart');
+      } else {
+        alert('Sorry cannot add ingredients to kart');
+      }
+    });
+    console.log('adding product to cart');
+  }
 }

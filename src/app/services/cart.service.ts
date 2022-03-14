@@ -63,6 +63,15 @@ export class CartService {
     );
   }
 
+  addProductsToCart(
+    li: { product_id: number; quantity: number }[]
+  ): Observable<any> {
+    if (!this.user) return of([]); // TODO: catch error here
+    console.log(this.httpOptions);
+    this.httpOptions.headers.set('Authorization', 'token ' + this.user.token);
+    return this.http.post(cartUrl, li, this.httpOptions);
+  }
+
   delProduct(id: number) {
     if (!this.user) return of([]); // TODO: catch error here
     console.log(this.httpOptions);
@@ -74,17 +83,17 @@ export class CartService {
     );
   }
 
-  create_new_order(order_status:string, order:Array<CheckoutOrder>){
+  create_new_order(order_status: string, order: Array<CheckoutOrder>) {
     if (!this.user) return of([]); // TODO: catch error here
     console.log(this.httpOptions);
     console.log('status = ', order_status);
-    console.log('order = ',order);
-    let obj = {order_status, order}  
+    console.log('order = ', order);
+    let obj = { order_status, order };
     console.log('I am tring to post this to backend: ', obj);
     this.httpOptions.headers.set('Authorization', 'token ' + this.user.token);
     return this.http.post(
       orderUrl,
-      {status:order_status, order_items:order},
+      { status: order_status, order_items: order },
       this.httpOptions
     );
   }
