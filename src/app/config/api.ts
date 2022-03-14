@@ -7,3 +7,4 @@ export const cartUrl = baseUrl + 'cart/';
 export const favoriteUrl = baseUrl + 'wishlist/';
 export const authUrl = baseUrl + 'auth/';
 export const orderUrl = baseUrl + 'orders/';
+export const userUrl = baseUrl + 'users/';

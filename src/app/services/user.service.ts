@@ -24,6 +24,7 @@ export class UserService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
+  error_msg = '';
 
   constructor(private http: HttpClient) {}
 
@@ -43,7 +44,6 @@ export class UserService {
   getUser() {
     return this.userSubject;
   }
-  error_msg = '';
 
   signup(name: string, mail: string, pin: string): Observable<User> {
     console.log(name, mail, pin);
@@ -77,12 +77,14 @@ export class UserService {
     return true;
   }
 
-  UpdateUser(userInfo: any,
-          cardID: string,
-          telephone:string,
-          address:string,
-          province:string,
-          postal_code:string){
+  UpdateUser(
+    userInfo: any,
+    cardID: string,
+    telephone: string,
+    address: string,
+    province: string,
+    postal_code: string
+  ) {
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: 'Token ' + `${userInfo.token}`,
@@ -90,13 +92,13 @@ export class UserService {
       })
     };
     return this.http.patch(
-      userUrl + '/',
+      userUrl,
       {
         username: userInfo.username,
         credit_card: cardID,
         shipping_address: {
           full_name: userInfo.username,
-          phone_number:  telephone,
+          phone_number: telephone,
           email: userInfo.email,
           address: address,
           province: province,
@@ -106,5 +108,4 @@ export class UserService {
       httpOptions
     );
   }
-
 }
