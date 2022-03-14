@@ -23,7 +23,8 @@ export class ShoppingCartDetailComponent implements OnInit {
   kart: any[] = [];
   checkoutOrder!: CheckoutOrder;
   total_price = 0;
-  address: string ='';
+  address: string = '';
+  card: string = '';
   
 
   ngOnInit(): void {
@@ -39,7 +40,9 @@ export class ShoppingCartDetailComponent implements OnInit {
       console.log('I am getting user information');
       console.log(user);
       this.address = user.shipping_address.address+ ', ' + user.shipping_address.province + ', '+ user.shipping_address.postal_code;
-      console.log(user.shipping_address.address)
+      console.log('shipping address = ',user.shipping_address.address)
+      this.card = user.credit_card;
+      console.log('card number = ', user.credit_card)
     });
   }
 
