@@ -19,7 +19,7 @@ describe('AppComponent', () => {
   it(`should have as title 'lehstore'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('lehstore');
+    expect(app.title).toEqual('leh');
   });
 
   it('should render title', () => {
@@ -27,7 +27,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.content span')?.textContent).toContain(
-      'lehstore app is running!'
+      'leh app is running!'
     );
   });
 });

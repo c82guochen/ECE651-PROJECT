@@ -4,6 +4,7 @@ import { SignupComponent } from './signup.component';
 import { RecipeService } from '../../../services/recipe.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { UserService } from '../../../services/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 describe('SignupComponent', () => {
   let component: SignupComponent;
