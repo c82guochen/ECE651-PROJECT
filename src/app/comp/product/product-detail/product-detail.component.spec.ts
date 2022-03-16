@@ -14,7 +14,7 @@ describe('ProductDetailComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ProductDetailComponent],
-      providers: [CartService, ProductService, ActivatedRoute],
+      providers: [CartService, ProductService],
       imports: [HttpClientTestingModule]
     }).compileComponents();
   });
