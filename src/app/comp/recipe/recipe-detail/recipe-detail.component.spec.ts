@@ -13,7 +13,7 @@ describe('RecipeDetailComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [RecipeDetailComponent],
-      providers: [RecipeService, CartService, ActivatedRoute],
+      providers: [RecipeService, CartService],
       imports: [HttpClientTestingModule]
     }).compileComponents();
   });
