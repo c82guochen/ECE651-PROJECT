@@ -55,7 +55,7 @@ import { OrderDetailComponent } from './comp/page/order-detail/order-detail.comp
     LoginComponent,
     SignupComponent,
     RecipeSectionComponent,
-    OrderDetailComponent,
+    OrderDetailComponent
   ],
   imports: [
     FormsModule,

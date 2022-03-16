@@ -7,7 +7,6 @@ import { CartService } from '../../../services/cart.service';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
-
 describe('RecipeDetailComponent', () => {
   let component: RecipeDetailComponent;
   let fixture: ComponentFixture<RecipeDetailComponent>;

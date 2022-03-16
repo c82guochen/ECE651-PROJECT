@@ -10,7 +10,7 @@ describe('RecipeSectionComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [RecipeSectionComponent],
-      providers: [HttpClient, HttpHandler],
+      providers: [HttpClient, HttpHandler]
     }).compileComponents();
   });
 

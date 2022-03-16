@@ -61,7 +61,7 @@ export class UserDetailComponent implements OnInit {
     this.isChanging = false;
     console.log(data);
     data.token = this.userService.getUserToken();
-  //     setUser
+    //     setUser
     this.userService.setUser(data);
     this.userInfo = data;
   }
@@ -74,14 +74,17 @@ export class UserDetailComponent implements OnInit {
   }
 
   Submit() {
-    if (this.cardID != ''
-    && this.address != ''
-    && this.telephone != ''
-    && this.province != ''
-    && this.postal_code != '') {
-      if(this.userService.getUserToken() != null){
+    if (
+      this.cardID != '' &&
+      this.address != '' &&
+      this.telephone != '' &&
+      this.province != '' &&
+      this.postal_code != ''
+    ) {
+      if (this.userService.getUserToken() != null) {
         let userToken = this.userService.getUserToken();
-        this.userService.UpdateUser(
+        this.userService
+          .UpdateUser(
             this.userInfo,
             this.cardID,
             this.telephone,
@@ -89,66 +92,66 @@ export class UserDetailComponent implements OnInit {
             this.province,
             this.postal_code,
             userToken
-            ).subscribe({
-          next: this.onUpdateUserSuccess.bind(this),
-          error: this.onUpdateUserError.bind(this)
-        });
+          )
+          .subscribe({
+            next: this.onUpdateUserSuccess.bind(this),
+            error: this.onUpdateUserError.bind(this)
+          });
       }
-
     }
-//     else if((this.address == ''
-//     || this.telephone == ''
-//     || this.province == ''
-//     || this.postal_code == '') && this.cardID != ''){ //卡号和地址必须有一个是输入完整的
-//       this.isUpdateSucc = false;
-//       console.log("2");
-//       this.err_msg = "(address information is incomplete.)";
-//     }
-//     else if(this.cardID == ''&& this.address != ''
-//     && this.telephone != ''
-//     && this.province != ''
-//     && this.postal_code != ''){
-//       this.isUpdateSucc = false;
-//       console.log("3");
-//       this.err_msg = "(credit card number is empty.)";
-//     }
-    else{
+    //     else if((this.address == ''
+    //     || this.telephone == ''
+    //     || this.province == ''
+    //     || this.postal_code == '') && this.cardID != ''){ //卡号和地址必须有一个是输入完整的
+    //       this.isUpdateSucc = false;
+    //       console.log("2");
+    //       this.err_msg = "(address information is incomplete.)";
+    //     }
+    //     else if(this.cardID == ''&& this.address != ''
+    //     && this.telephone != ''
+    //     && this.province != ''
+    //     && this.postal_code != ''){
+    //       this.isUpdateSucc = false;
+    //       console.log("3");
+    //       this.err_msg = "(credit card number is empty.)";
+    //     }
+    else {
       this.isUpdateSucc = false;
-      this.err_msg = "(information is incomplete)";
-      window.alert("Fail to submit,please try again!"+`${this.err_msg}`);
+      this.err_msg = '(information is incomplete)';
+      window.alert('Fail to submit,please try again!' + `${this.err_msg}`);
       this.isChanging = true;
     }
 
-//     this.userService.getUser().subscribe((user) => {
-//       this.userInfo = user;
-//       console.log((this.userInfo as any).credit_card);
-//       this.JudgeIfNull();
-//       this.isChanging = false;
-//     });
-//     if (this.cardID != '') {
-//       this.userService.ChangeCardID(this.userInfo, this.cardID).subscribe({
-//         next: this.onChangeCardIDSuccess.bind(this),
-//         error: this.onChangeCardIDError.bind(this)
-//       });
-//     }
-//     if (this.address != '' && this.telephone != '' && this.province != '') {
-//       this.userService
-//         .ChangeAddress(
-//           this.userInfo,
-//           this.telephone,
-//           this.address,
-//           this.province
-//         )
-//         .subscribe({
-//           next: this.onChangeAddressSuccess.bind(this),
-//           error: this.onChangeAddressError.bind(this)
-//         });
-//     }
-//     this.userService.getUser().subscribe((user) => {
-//       this.userInfo = user;
-//       console.log((this.userInfo as any).credit_card);
-//       this.JudgeIfNull();
-//       this.isChanging = false;
-//     });
+    //     this.userService.getUser().subscribe((user) => {
+    //       this.userInfo = user;
+    //       console.log((this.userInfo as any).credit_card);
+    //       this.JudgeIfNull();
+    //       this.isChanging = false;
+    //     });
+    //     if (this.cardID != '') {
+    //       this.userService.ChangeCardID(this.userInfo, this.cardID).subscribe({
+    //         next: this.onChangeCardIDSuccess.bind(this),
+    //         error: this.onChangeCardIDError.bind(this)
+    //       });
+    //     }
+    //     if (this.address != '' && this.telephone != '' && this.province != '') {
+    //       this.userService
+    //         .ChangeAddress(
+    //           this.userInfo,
+    //           this.telephone,
+    //           this.address,
+    //           this.province
+    //         )
+    //         .subscribe({
+    //           next: this.onChangeAddressSuccess.bind(this),
+    //           error: this.onChangeAddressError.bind(this)
+    //         });
+    //     }
+    //     this.userService.getUser().subscribe((user) => {
+    //       this.userInfo = user;
+    //       console.log((this.userInfo as any).credit_card);
+    //       this.JudgeIfNull();
+    //       this.isChanging = false;
+    //     });
   }
 }

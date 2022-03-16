@@ -14,7 +14,7 @@ describe('LoginComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [LoginComponent],
       providers: [UserService],
-      imports: [HttpClientTestingModule,RouterTestingModule]
+      imports: [HttpClientTestingModule, RouterTestingModule]
     }).compileComponents();
   });
 

@@ -1,4 +1,4 @@
-export interface CheckoutOrder{
-    product_id: number;
-    quantity: number;
-  }
+export interface CheckoutOrder {
+  product_id: number;
+  quantity: number;
+}

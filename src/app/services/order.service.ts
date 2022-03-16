@@ -11,7 +11,6 @@ import { User } from '../model/user';
   providedIn: 'root'
 })
 export class OrderService {
-
   index = 5;
   user: User | null = null;
   httpOptions = {
@@ -24,7 +23,7 @@ export class OrderService {
     private http: HttpClient,
     private userService: UserService,
     private productService: ProductService
-  ) { 
+  ) {
     this.userService.getUser().subscribe((user) => {
       this.user = user;
       if (this.user != null) {

@@ -94,8 +94,8 @@ export class UserService {
     address: string,
     province: string,
     postal_code: string,
-    userToken:any
-  ){
+    userToken: any
+  ) {
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: 'Token ' + userToken,

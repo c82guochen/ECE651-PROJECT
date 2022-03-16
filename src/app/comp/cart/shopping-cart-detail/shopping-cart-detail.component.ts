@@ -11,38 +11,37 @@ import { CheckoutOrder } from 'src/app/model/checkout';
   templateUrl: './shopping-cart-detail.component.html',
   styleUrls: ['./shopping-cart-detail.component.css']
 })
-
-
 export class ShoppingCartDetailComponent implements OnInit {
   cartItem!: CartItem;
-  constructor(
-    private cServ: CartService,
-    private userService: UserService
-  ) {}
+  constructor(private cServ: CartService, private userService: UserService) {}
   user: User | null = null;
   kart: any[] = [];
   checkoutOrder!: CheckoutOrder;
   total_price = 0;
   address: string = '';
   card: string = '';
-  
 
   ngOnInit(): void {
     console.log('shoppingcart Detail');
     this.cServ.getCartItems().subscribe((it) => {
       this.kart = it;
       console.log(it);
-      for (let item of it){
+      for (let item of it) {
         this.total_price += item.product.price * item.quantity;
       }
     });
     this.userService.getUser().subscribe((user: any) => {
       console.log('I am getting user information');
       console.log(user);
-      this.address = user.shipping_address.address+ ', ' + user.shipping_address.province + ', '+ user.shipping_address.postal_code;
-      console.log('shipping address = ',user.shipping_address.address)
+      this.address =
+        user.shipping_address.address +
+        ', ' +
+        user.shipping_address.province +
+        ', ' +
+        user.shipping_address.postal_code;
+      console.log('shipping address = ', user.shipping_address.address);
       this.card = user.credit_card;
-      console.log('card number = ', user.credit_card)
+      console.log('card number = ', user.credit_card);
     });
   }
 
@@ -52,7 +51,7 @@ export class ShoppingCartDetailComponent implements OnInit {
       console.log(res);
       this.kart = res as any[];
       this.total_price = 0;
-      for (let item of res as any[]){
+      for (let item of res as any[]) {
         this.total_price += item.product.price * item.quantity;
       }
     });
@@ -62,20 +61,20 @@ export class ShoppingCartDetailComponent implements OnInit {
     // TODO: send a clear cart request
   }
 
-  placeOrder(){
-    let status='unpaid';
-    let order=[];
+  placeOrder() {
+    let status = 'unpaid';
+    let order = [];
     console.log('trigger place order');
-    for (let item of this.kart){
-      let obj:CheckoutOrder = {
+    for (let item of this.kart) {
+      let obj: CheckoutOrder = {
         product_id: -1,
-        quantity:-1
+        quantity: -1
       };
       obj.product_id = item.product.id;
       obj.quantity = item.quantity;
       order.push(obj);
     }
-    this.cServ.create_new_order(status,order).subscribe( data => {
+    this.cServ.create_new_order(status, order).subscribe((data) => {
       console.log('data = ', data);
     });
     window.alert('success place order');
