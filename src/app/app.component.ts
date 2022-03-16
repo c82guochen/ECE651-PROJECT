@@ -9,4 +9,5 @@ import { UserService } from './services/user.service';
 })
 export class AppComponent {
   title = 'leh';
+  ngOnInit(): void { }
 }

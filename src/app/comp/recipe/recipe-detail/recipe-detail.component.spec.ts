@@ -5,6 +5,8 @@ import { RecipeService } from '../../../services/recipe.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CartService } from '../../../services/cart.service';
 import { ActivatedRoute } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+
 
 describe('RecipeDetailComponent', () => {
   let component: RecipeDetailComponent;
@@ -14,7 +16,7 @@ describe('RecipeDetailComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [RecipeDetailComponent],
       providers: [RecipeService, CartService],
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule, RouterTestingModule]
     }).compileComponents();
   });
 

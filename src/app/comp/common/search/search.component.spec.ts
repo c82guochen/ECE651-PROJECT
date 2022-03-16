@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
 import { SearchComponent } from './search.component';
 import { RecipeService } from '../../../services/recipe.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -14,7 +14,7 @@ describe('SearchComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [SearchComponent],
       providers: [RecipeService, ProductService],
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule, RouterTestingModule]
     }).compileComponents();
   });
 
