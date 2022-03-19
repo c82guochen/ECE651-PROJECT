@@ -11,5 +11,4 @@ export interface Recipe {
   rating: number;
   total_reviews: number;
   details: any;
-  isFavourite: boolean;
 }

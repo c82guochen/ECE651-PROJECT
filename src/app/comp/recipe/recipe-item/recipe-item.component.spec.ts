@@ -33,7 +33,6 @@ describe('RecipeComponent', () => {
       rating: 5,
       total_reviews: 94,
       details: ['aaa', 'bbb'],
-      isFavourite: false
     };
     fixture.detectChanges();
   });
