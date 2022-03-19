@@ -14,7 +14,7 @@ export class UserDetailComponent implements OnInit {
   emptyString = 'Empty temporarily,please fill before placing order.';
   ifcardNull = true;
   ifaddressNull = true;
-  iftelephoneNull = false;
+  iftelephoneNull = true;
   isChanging = false;
   cardID = '';
   address = '';
@@ -99,22 +99,7 @@ export class UserDetailComponent implements OnInit {
           });
       }
     }
-    //     else if((this.address == ''
-    //     || this.telephone == ''
-    //     || this.province == ''
-    //     || this.postal_code == '') && this.cardID != ''){ //卡号和地址必须有一个是输入完整的
-    //       this.isUpdateSucc = false;
-    //       console.log("2");
-    //       this.err_msg = "(address information is incomplete.)";
-    //     }
-    //     else if(this.cardID == ''&& this.address != ''
-    //     && this.telephone != ''
-    //     && this.province != ''
-    //     && this.postal_code != ''){
-    //       this.isUpdateSucc = false;
-    //       console.log("3");
-    //       this.err_msg = "(credit card number is empty.)";
-    //     }
+
     else {
       this.isUpdateSucc = false;
       this.err_msg = '(information is incomplete)';
@@ -122,36 +107,6 @@ export class UserDetailComponent implements OnInit {
       this.isChanging = true;
     }
 
-    //     this.userService.getUser().subscribe((user) => {
-    //       this.userInfo = user;
-    //       console.log((this.userInfo as any).credit_card);
-    //       this.JudgeIfNull();
-    //       this.isChanging = false;
-    //     });
-    //     if (this.cardID != '') {
-    //       this.userService.ChangeCardID(this.userInfo, this.cardID).subscribe({
-    //         next: this.onChangeCardIDSuccess.bind(this),
-    //         error: this.onChangeCardIDError.bind(this)
-    //       });
-    //     }
-    //     if (this.address != '' && this.telephone != '' && this.province != '') {
-    //       this.userService
-    //         .ChangeAddress(
-    //           this.userInfo,
-    //           this.telephone,
-    //           this.address,
-    //           this.province
-    //         )
-    //         .subscribe({
-    //           next: this.onChangeAddressSuccess.bind(this),
-    //           error: this.onChangeAddressError.bind(this)
-    //         });
-    //     }
-    //     this.userService.getUser().subscribe((user) => {
-    //       this.userInfo = user;
-    //       console.log((this.userInfo as any).credit_card);
-    //       this.JudgeIfNull();
-    //       this.isChanging = false;
-    //     });
+  
   }
 }

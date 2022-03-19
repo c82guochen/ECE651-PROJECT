@@ -102,6 +102,7 @@ export class UserService {
         'Content-Type': 'application/json'
       })
     };
+    
     return this.http.patch(
       userUrl,
       {
