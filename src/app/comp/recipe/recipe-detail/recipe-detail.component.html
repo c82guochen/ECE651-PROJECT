@@ -3,8 +3,8 @@
     <div class="col-md-6">
       <img
         [src]="recipeItem.image_url"
-        class="border border-success bd-placeholder-img card-img-top p-2"
-        width="110%"
+        class="border border-success bd-placeholder-img card-img-top p-2 cover"
+        style="max-height:500px;"
       />
     </div>
     <div class="col-md-6">
@@ -15,7 +15,7 @@
         <rating [(ngModel)]="recipeItem.rating" [max]="5" [readonly]="true"></rating>
         ({{ recipeItem.total_reviews }})
       </div>
-      <div>
+      <div style="margin:20px 0;">
         {{ recipeItem.description }}
       </div>
       <button class="btn btn-success rounded-pill" id="buttonAdd" (click)="handleAddAllToCart()">Add Ingredients to Cart</button>
