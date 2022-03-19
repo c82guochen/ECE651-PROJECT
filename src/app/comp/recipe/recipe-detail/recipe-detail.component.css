@@ -12,3 +12,7 @@ h3 {
   float: right;
   margin: 20px;
 }
+
+.cover{
+  object-fit: cover;
+}
