@@ -1,17 +1,20 @@
 <!--<a [routerLink]="['/productdetail']" [queryParams] = "{product-item:productItem}">-->
 <a [routerLink]="['/productdetail', productItem.id]">
-  <div class="card md-3 shadow-sm">
+  <div class="card shadow-sm">
     <img
-      class="bd-placeholder-img card-img-top p-2"
-      width="100%"
+      class="bd-placeholder-img card-img-top p-2 cover"
+      style="min-width:150px; height:200px;"
       [src]="productItem.image_url"
     />
-    <div class="card-header">{{ productItem.name }}</div>
-    <div class="card-body">
+    <div class="card-header"> 
+      <span *ngIf="productItem.name.length <= 20">{{productItem.name}}</span>
+      <span *ngIf="productItem.name.length > 20">{{productItem.name | slice: 0:15 }}...</span>
+    </div>
+    <div class="card-body" >
       <p class="card-text">
         <strong>{{ productItem.price | currency }}</strong>
       </p>
-      <p class="card-text">{{ productItem.description | slice: 0:80 }}...</p>
+      <p class="card-text" >{{ productItem.description | slice: 0:50 }}...</p>
     </div>
   </div>
 </a>
