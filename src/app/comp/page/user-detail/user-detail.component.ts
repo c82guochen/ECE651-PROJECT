@@ -98,15 +98,11 @@ export class UserDetailComponent implements OnInit {
             error: this.onUpdateUserError.bind(this)
           });
       }
-    }
-
-    else {
+    } else {
       this.isUpdateSucc = false;
       this.err_msg = '(information is incomplete)';
       window.alert('Fail to submit,please try again!' + `${this.err_msg}`);
       this.isChanging = true;
     }
-
-  
   }
 }
