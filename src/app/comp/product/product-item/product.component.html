@@ -9,9 +9,9 @@
     <div class="card-header">{{ productItem.name }}</div>
     <div class="card-body">
       <p class="card-text">
-        <strong>{{ productItem.price | currency }}</strong>
+        <strong class="price">{{ productItem.price | currency }}</strong>
       </p>
-      <p class="card-text">{{ productItem.description | slice: 0:80 }}...</p>
+      <p class="card-text" id="des">{{ productItem.description | slice: 0:80 }}...</p>
     </div>
   </div>
 </a>
