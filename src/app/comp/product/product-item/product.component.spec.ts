@@ -1,17 +1,23 @@
-import { ComponentFixture, TestBed, fakeAsync, tick, async, inject } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+  fakeAsync,
+  tick,
+  async,
+  inject
+} from '@angular/core/testing';
 import { ProductComponent } from './product.component';
 import { RecipeService } from '../../../services/recipe.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CartService } from '../../../services/cart.service';
 import { Product } from '../../../model/product';
-import { DebugElement } from "@angular/core";
-import { By } from "@angular/platform-browser";
-import { formatCurrency } from "@angular/common";
-import { RouterTestingModule } from "@angular/router/testing";
-import { Router } from "@angular/router";
-import { Location } from "@angular/common";
-import { SpyLocation } from "@angular/common/testing";
-
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
+import { formatCurrency } from '@angular/common';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+import { SpyLocation } from '@angular/common/testing';
 
 describe('ProductComponent', () => {
   let component: ProductComponent;
@@ -45,20 +51,28 @@ describe('ProductComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('initial one item',() => {
+  it('initial one item', () => {
     el = fixture.debugElement.query(By.css('div.card-header'));
-    expect(el.nativeElement.textContent.trim()).toBe(component.productItem.name);
+    expect(el.nativeElement.textContent.trim()).toBe(
+      component.productItem.name
+    );
     el = fixture.debugElement.query(By.css('strong.price'));
-    expect(el.nativeElement.textContent.trim()).toEqual(formatCurrency(component.productItem.price,'en_US','$'));
+    expect(el.nativeElement.textContent.trim()).toEqual(
+      formatCurrency(component.productItem.price, 'en_US', '$')
+    );
     el = fixture.debugElement.query(By.css('p#des'));
-    expect(el.nativeElement.textContent.trim()).toEqual(component.productItem.description + '...');
+    expect(el.nativeElement.textContent.trim()).toEqual(
+      component.productItem.description + '...'
+    );
     el = fixture.debugElement.query(By.css('img'));
     expect(el.nativeElement.src).toEqual(component.productItem.image_url);
-  })
+  });
 
-  it('should go to detail page of product',async(() => {
+  it('should go to detail page of product', async(() => {
     fixture.detectChanges();
-    let href = fixture.debugElement.query(By.css('a')).nativeElement.getAttribute('href');
-    expect(href).toEqual('/productdetail/'+component.productItem.id);
+    let href = fixture.debugElement
+      .query(By.css('a'))
+      .nativeElement.getAttribute('href');
+    expect(href).toEqual('/productdetail/' + component.productItem.id);
   }));
 });

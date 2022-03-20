@@ -1,7 +1,10 @@
 import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { RecipeService } from './recipe.service';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpClient } from "@angular/common/http";
+import {
+  HttpClientTestingModule,
+  HttpTestingController
+} from '@angular/common/http/testing';
+import { HttpClient } from '@angular/common/http';
 import { recipesUrl } from 'src/app/config/api';
 import { Recipe } from '../model/recipe';
 
@@ -26,7 +29,7 @@ describe('RecipeService', () => {
       ingredients_product: [],
       rating: 5,
       total_reviews: 94,
-      details: ['aaa', 'bbb'],
+      details: ['aaa', 'bbb']
     };
   });
 
@@ -38,7 +41,7 @@ describe('RecipeService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('get all recipes', fakeAsync(()=>{
+  it('get all recipes', fakeAsync(() => {
     service.getRecipes().subscribe((res) => {
       expect((res as any).id).toBe(response.id);
       expect((res as any).name).toBe(response.name);
@@ -47,35 +50,33 @@ describe('RecipeService', () => {
       expect((res as any).ingredients_id).toBe(response.ingredients_id);
       expect((res as any).details).toBe(response.details);
     });
-    const req = httpTestingController.expectOne(
-       recipesUrl
-    );
-    expect(req.request.method).toEqual("GET");
+    const req = httpTestingController.expectOne(recipesUrl);
+    expect(req.request.method).toEqual('GET');
     req.flush(response);
     tick();
   }));
 
-  it('get recipe by id', fakeAsync(()=>{
+  it('get recipe by id', fakeAsync(() => {
     service.getRecipe(response.id).subscribe((res) => {
       expect((res as any).id).toBe(response.id);
     });
     const req = httpTestingController.expectOne(
-       recipesUrl + '?id=' + response.id
+      recipesUrl + '?id=' + response.id
     );
-    expect(req.request.method).toEqual("GET");
+    expect(req.request.method).toEqual('GET');
     req.flush(response);
     tick();
   }));
 
-  it('get recipe by name', fakeAsync(()=>{
+  it('get recipe by name', fakeAsync(() => {
     service.getRecipeByName(response.name).subscribe((res) => {
       console.log(res);
       expect((res as any).name).toBe(response.name);
     });
     const req = httpTestingController.expectOne(
-       recipesUrl + '?name=' + response.name
+      recipesUrl + '?name=' + response.name
     );
-    expect(req.request.method).toEqual("GET");
+    expect(req.request.method).toEqual('GET');
     req.flush(response);
     tick();
   }));
