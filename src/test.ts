@@ -29,7 +29,7 @@ const context = require.context('./', true, /\.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);
 // const FILE = ['./app/services/user.service.spec.ts'];
-// const FILE = ['./app/comp/product/product-list/product-list.component.spec.ts'];
-// const FILE = ['./app/comp/recipe/recipe-item/recipe-item.component.spec.ts'];
-
+// const FILE = ['./app/comp/product/product-detail/product-detail.component.spec.ts'];
+// const FILE = ['./app/comp/recipe/recipe-section/recipe-section.component.spec.ts'];
+//
 // context.keys().filter( name => !!FILE.includes(name)).map(context);

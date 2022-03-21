@@ -9,13 +9,13 @@
     </div>
     <div class="col-md-6">
       <div class="fs-2">
-        <strong>{{ recipeItem.name }}</strong>
+        <strong class="name">{{ recipeItem.name }}</strong>
       </div>
       <div class="fs-4">
         <rating [(ngModel)]="recipeItem.rating" [max]="5" [readonly]="true"></rating>
         ({{ recipeItem.total_reviews }})
       </div>
-      <div>
+      <div class="des">
         {{ recipeItem.description }}
       </div>
       <button class="btn btn-success rounded-pill" id="buttonAdd" (click)="handleAddAllToCart()">Add Ingredients to Cart</button>
