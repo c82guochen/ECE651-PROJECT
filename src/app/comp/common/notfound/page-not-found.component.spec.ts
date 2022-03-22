@@ -1,14 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Router } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found.component';
+import { Observable, of } from 'rxjs';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('PageNotFoundComponent', () => {
   let component: PageNotFoundComponent;
   let fixture: ComponentFixture<PageNotFoundComponent>;
+  let el: DebugElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PageNotFoundComponent]
+      declarations: [PageNotFoundComponent],
+      imports: [HttpClientTestingModule, RouterTestingModule]
     }).compileComponents();
   });
 
@@ -20,5 +27,11 @@ describe('PageNotFoundComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  //主要测试routerlink
+  it('can go to home page', () =>{
+    el = fixture.debugElement.query(By.css('a'));
+    expect(el.nativeElement.getAttribute('href')).toBe('/');
   });
 });

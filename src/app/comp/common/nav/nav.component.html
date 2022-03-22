@@ -40,13 +40,13 @@
       </div>
 
       <div class="navbar-nav" *ngIf="!ifLogin" >
-        <a class="p-2" id="fontClick" routerLink="login">login</a>
-        <a class="p-2" id="fontClick" routerLink="signup">signup</a>
+        <a class="p-2 login" id="fontClick" routerLink="login">login</a>
+        <a class="p-2 signup" id="fontClick" routerLink="signup">signup</a>
       </div>
       <a
         aria-expanded="false"
         aria-haspopup="true"
-        class="nav-link pr-0"
+        class="nav-link pr-0 userDetail"
         data-toggle="dropdown"
         role="button"
         routerLink="userdetail"
@@ -57,7 +57,7 @@
             <img alt="IMG" src="../../../../assets/profile.jpg" />
           </span>
           <div class="media-body ml-2 d-none d-lg-block">
-            <span class="mb-0 text-sm font-weight-bold" style="margin-left:10px;"> {{username}} </span>
+            <span class="mb-0 text-sm font-weight-bold username" style="margin-left:10px;"> {{username}} </span>
           </div>
         </div>
       </a>

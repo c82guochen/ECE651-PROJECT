@@ -15,7 +15,7 @@
         <div
           class="col-md-6 nav flex-column justify-content-center "
         >
-          <p class="fs-4">{{ userInfo.username }}</p>
+          <p class="fs-4 name">{{ userInfo.username }}</p>
           <p class="fs-5" style="color:gray">{{ userInfo.email }}</p>
         </div>
       </div>
@@ -74,12 +74,12 @@
       <div class="p-2 text-wrap">
         <span class="fs-5">card number: </span>
         <span class="emptyContent" *ngIf="ifcardNull">{{emptyString}}</span>
-        <span class="fs-5" *ngIf="!ifcardNull">{{userInfo.credit_card}}</span>
+        <span class="fs-5 card" id="card" *ngIf="!ifcardNull">{{userInfo.credit_card}}</span>
       </div>
       <div class="p-2 text-wrap">
         <span class="fs-5">address: </span>
         <span  class="emptyContent" *ngIf="ifaddressNull">{{emptyString}}</span>
-        <span class="fs-5" *ngIf="!ifaddressNull">{{userInfo.shipping_address.address}}, {{userInfo.shipping_address.province}}, {{userInfo.shipping_address.postal_code}}</span>
+        <span class="fs-5 shippingAddress" *ngIf="!ifaddressNull">{{userInfo.shipping_address.address}}, {{userInfo.shipping_address.province}}, {{userInfo.shipping_address.postal_code}}</span>
       </div>
       <div class="p-2 text-wrap">
         <span class="fs-5">telephone: </span>
@@ -87,7 +87,7 @@
         <span class="fs-5" *ngIf="!iftelephoneNull">{{userInfo.shipping_address.phone_number}}</span>
       </div>
       <button
-        class="btn btn-outline-success m-2 btn-md rounded-pill"
+        class="btn btn-outline-success m-2 btn-md rounded-pill change"
         id="change-btn"
         type="button"
         (click)="Change()"
