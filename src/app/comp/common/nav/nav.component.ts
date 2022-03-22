@@ -16,6 +16,7 @@ export class NavComponent implements OnInit {
   ifLogin = false;
   username = '';
   recipe: any[] = [];
+  product: any[] = [];
   collapsedShow = false;
   collapsedShowState = '';
   search_text = '';
@@ -33,14 +34,16 @@ export class NavComponent implements OnInit {
     });
 
     this.productService.getProducts().subscribe((it) => {
-      this.recipe.push(...it);
+      this.product.push(...it);
     });
 
     this.userService.getUser().subscribe((user: any) => {
-      this.username = user.username;
-      this.ifLogin = true;
-      console.log('user from service');
-      console.log(user);
+      if(user != null){
+        this.username = user.username;
+        this.ifLogin = true;
+        console.log('user from service');
+        console.log(user);
+      }
     });
   }
 

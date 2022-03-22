@@ -44,12 +44,21 @@ export class UserDetailComponent implements OnInit {
     ) {
       this.ifcardNull = false;
     } else this.ifcardNull = true;
-    if ((this.userInfo as any).shipping_address != null)
-      this.ifaddressNull = false;
-    else this.ifaddressNull = true;
-    if ((this.userInfo as any).shipping_address.phone_number != null)
-      this.iftelephoneNull = false;
-    else this.iftelephoneNull = true;
+    if((this.userInfo as any).shipping_address == null
+      ||　(this.userInfo as any).shipping_address == ''){
+      this.ifaddressNull = true;
+      this.iftelephoneNull = true;
+    }
+    else {
+      if((this.userInfo as any).shipping_address.address != null
+          && (this.userInfo as any).shipping_address.address != '')
+        this.ifaddressNull = false;
+      else this.ifaddressNull = true;
+      if ((this.userInfo as any).shipping_address.phone_number != null
+          && (this.userInfo as any).shipping_address.phone_number != '')
+        this.iftelephoneNull = false;
+      else this.iftelephoneNull = true;
+    }
   }
 
   Change(): void {
