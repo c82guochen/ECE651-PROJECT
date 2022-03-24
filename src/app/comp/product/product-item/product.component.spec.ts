@@ -60,9 +60,15 @@ describe('ProductComponent', () => {
     expect(el.nativeElement.textContent.trim()).toEqual(
       formatCurrency(component.productItem.price, 'en_US', '$')
     );
-    el = fixture.debugElement.query(By.css('p#des'));
+    el = fixture.debugElement.query(By.css('span.lessEqual'));
     expect(el.nativeElement.textContent.trim()).toEqual(
-      component.productItem.description + '...'
+      component.productItem.description
+    );
+    component.productItem.description = 'lank steak comes from the cow\'s lower chest or abdominal muscle, and is an inexpensive, flavorful, and versatile cut of beef.';
+    fixture.detectChanges();
+    el = fixture.debugElement.query(By.css('span.greater'));
+    expect(el.nativeElement.textContent.trim()).toEqual(
+      component.productItem.description.substr(0,90) + '...'
     );
     el = fixture.debugElement.query(By.css('img'));
     expect(el.nativeElement.src).toEqual(component.productItem.image_url);

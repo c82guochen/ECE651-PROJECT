@@ -6,7 +6,7 @@
       style="min-width:150px; height:200px;"
       [src]="productItem.image_url"
     />
-    <div class="card-header"> 
+    <div class="card-header">
       <span *ngIf="productItem.name.length <= 16">{{productItem.name}}</span>
       <span *ngIf="productItem.name.length > 16">{{productItem.name | slice: 0:16 }}..</span>
     </div>
@@ -14,9 +14,8 @@
       <p class="card-text">
         <strong class="price">{{ productItem.price | currency }}</strong>
       </p>
-     
-      <span *ngIf="productItem.description.length <= 90">{{productItem.description}}</span>
-      <span *ngIf="productItem.description.length > 90">{{productItem.description | slice: 0:90 }}...</span>
+      <span *ngIf="productItem.description.length <= 90" class="lessEqual">{{productItem.description}}</span>
+      <span *ngIf="productItem.description.length > 90" class="greater">{{productItem.description | slice: 0:90 }}...</span>
     </div>
   </div>
 </a>

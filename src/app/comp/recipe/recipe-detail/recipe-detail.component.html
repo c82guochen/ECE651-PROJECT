@@ -15,9 +15,7 @@
         <rating [(ngModel)]="recipeItem.rating" [max]="5" [readonly]="true"></rating>
         ({{ recipeItem.total_reviews }})
       </div>
-
       <div class="des" style="margin:20px 0;">
-
         {{ recipeItem.description }}
       </div>
       <button class="btn btn-success rounded-pill" id="buttonAdd" (click)="handleAddAllToCart()">Add Ingredients to Cart</button>
