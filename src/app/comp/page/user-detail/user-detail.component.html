@@ -108,10 +108,7 @@
         <div
           class="col-md-8 remove-padding bg-warning bg-opacity-25 fw-bold nav flex-column justify-content-center align-items-center"
         >
-          <a
-            [routerLink]="['/shoppingcartDetail']"
-            style="padding-left: 0; color: Gold; max-width: 250px"
-          >
+          <a [routerLink]="['/shoppingcartDetail']" class="shoppingCart" style="padding-left: 0; color: Gold; max-width: 250px">
             your shopping cart list
           </a>
         </div>
@@ -131,6 +128,7 @@
           class="col-md-10 remove-padding bg-primary bg-opacity-25 fw-bold nav flex-column justify-content-center align-items-center"
         >
           <a
+            class="orderList"
             [routerLink]="['/ordersDetail']"
             style="padding-left: 0; color: RoyalBlue; max-width: 250px"
           >

@@ -79,6 +79,9 @@ describe('ProductComponent', () => {
     let href = fixture.debugElement
       .query(By.css('a'))
       .nativeElement.getAttribute('href');
+    console.log(fixture.debugElement
+      .query(By.css('a'))
+      .nativeElement);
     expect(href).toEqual('/productdetail/' + component.productItem.id);
   }));
 });

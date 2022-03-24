@@ -122,7 +122,7 @@ describe('UserDetailComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [UserDetailComponent],
       providers: [{ provide: UserService, useValue: mockUserService }],
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule, RouterTestingModule]
     }).compileComponents();
   });
 
@@ -284,5 +284,13 @@ describe('UserDetailComponent', () => {
     expect(component.isUpdateSucc).toBe(false);
     component.err_msg = CustomErrorEvent.error;
     expect(component.err_msg).toEqual(CustomErrorEvent.error);
+  });
+
+  it('can go to shapping cart page and order page', () => {
+    fixture.detectChanges();
+    let href = fixture.debugElement.query(By.css('a.shoppingCart')).nativeElement.getAttribute('href');
+    expect(href).toEqual('/shoppingcartDetail');
+    href = fixture.debugElement.query(By.css('a.orderList')).nativeElement.getAttribute('href');
+    expect(href).toEqual('/ordersDetail');
   })
 });
