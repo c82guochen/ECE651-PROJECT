@@ -58,9 +58,16 @@ describe('RecipeComponent', () => {
   it('initial one item', () => {
     el = fixture.debugElement.query(By.css('div.card-header'));
     expect(el.nativeElement.textContent.trim()).toBe(component.recipeItem.name);
-    el = fixture.debugElement.query(By.css('div#des'));
+    fixture.detectChanges();
+    el = fixture.debugElement.query(By.css('span.lessEqual'));
     expect(el.nativeElement.textContent.trim()).toEqual(
-      component.recipeItem.description + '...'
+      component.recipeItem.description
+    );
+    component.recipeItem.description = 'Ultimate Slow Cooker Pot Roast that leaves you with tender meat, vegetables and a built in gravy to enjoy them all with in just 15 minutes of prep! Perfect weeknight dinner! No-fuss, amazingly fall-apart pot roast made in your crockpot with the most tender vegetables!';
+    fixture.detectChanges();
+    el = fixture.debugElement.query(By.css('span.greater'));
+    expect(el.nativeElement.textContent.trim()).toEqual(
+      component.recipeItem.description.substr(0,160) + '...'
     );
     el = fixture.debugElement.query(By.css('img'));
     expect(el.nativeElement.src).toEqual(component.recipeItem.image_url);
