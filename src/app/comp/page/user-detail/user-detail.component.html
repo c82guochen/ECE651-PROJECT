@@ -46,8 +46,6 @@
           <label for="floatingSelect">Province</label>
         </div>
       </div>
-
-
       <div class="row justify-content-between">
         <div class="form-floating col-8 mb-3">
           <input type="phoneNum" class="form-control" id="floatingPhoneNum" placeholder="telephone" [(ngModel)] = "telephone">
@@ -74,7 +72,7 @@
       <div class="p-2 text-wrap">
         <span class="fs-5">card number: </span>
         <span class="emptyContent" id="cardEmpty" *ngIf="ifcardNull">{{emptyString}}</span>
-        <span class="fs-5 card" id="card" *ngIf="!ifcardNull">{{userInfo.credit_card}}</span>
+        <span class="fs-5 cardId" *ngIf="!ifcardNull">{{userInfo.credit_card}}</span>
       </div>
       <div class="p-2 text-wrap">
         <span class="fs-5">address: </span>

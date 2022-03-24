@@ -109,7 +109,13 @@ describe('UserDetailComponent', () => {
     },
     setUserToken: (token: string) => {
       mockUserHttp.token = token;
-    }
+    },
+    getUserToken: () => {
+      return mockUserHttp.token;
+    },
+    setUser: (user: any) => {
+      mockUserHttp = user;
+    },
   };
 
   beforeEach(async () => {
@@ -184,7 +190,7 @@ describe('UserDetailComponent', () => {
     expect(el.nativeElement.textContent).toBe(component.emptyString);
     component.JudgeIfNull();
     fixture.detectChanges();
-    el = fixture.debugElement.query(By.css('span.card'));
+    el = fixture.debugElement.query(By.css('span.cardId'));
     expect(el.nativeElement.textContent).toBe(component.userInfo.credit_card);
     el = fixture.debugElement.query(By.css('span.shippingAddress'));
     expect(el.nativeElement.textContent).toBe(component.userInfo.shipping_address.address+', '+component.userInfo.shipping_address.province+', '+component.userInfo.shipping_address.postal_code);
@@ -260,5 +266,23 @@ describe('UserDetailComponent', () => {
     expect(mockUserHttp.shipping_address.address).toBe('address');
     expect(mockUserHttp.shipping_address.province).toBe('province');
     expect(mockUserHttp.shipping_address.postal_code).toBe('postal');
+    component.onUpdateUserSuccess(mockUserHttp);
+    expect(component.isUpdateSucc).toBe(true);
+    expect(component.isChanging).toBe(false);
   });
+
+  it('should return error message when user fails to update information', () => {
+    const errorInitEvent: ErrorEventInit = {
+      error : new Error('Login failed!'),
+      message : 'Login failed!',
+      lineno : 0,
+      colno: 0,
+      filename : ''
+    };
+    const CustomErrorEvent = new ErrorEvent('FailErrorEvent', errorInitEvent);
+    component.onUpdateUserError(CustomErrorEvent);
+    expect(component.isUpdateSucc).toBe(false);
+    component.err_msg = CustomErrorEvent.error;
+    expect(component.err_msg).toEqual(CustomErrorEvent.error);
+  })
 });

@@ -10,7 +10,6 @@ import { catchError, map, Observable, throwError } from 'rxjs';
 })
 export class UserDetailComponent implements OnInit {
   userInfo!: any;
-  name!: string;
   emptyString = 'Empty temporarily,please fill before placing order.';
   ifcardNull = true;
   ifaddressNull = true;
@@ -31,7 +30,6 @@ export class UserDetailComponent implements OnInit {
     this.userService.getUser().subscribe((user) => {
       this.userInfo = user;
     });
-    this.name = (this.userInfo as any).username;
     this.userService.setUserToken((this.userInfo as any).token);
     this.JudgeIfNull();
     console.log(this.userInfo);
@@ -70,9 +68,8 @@ export class UserDetailComponent implements OnInit {
     this.isChanging = false;
     console.log(data);
     data.token = this.userService.getUserToken();
-    //     setUser
     this.userService.setUser(data);
-    this.userInfo = data;
+    this.ngOnInit();
   }
 
   onUpdateUserError(err: ErrorEvent) {

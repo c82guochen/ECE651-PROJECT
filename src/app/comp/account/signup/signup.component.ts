@@ -22,7 +22,6 @@ export class SignupComponent implements OnInit {
 
   onSignUpSuccess(data: User) {
     //提示注册成功，并且跳转至login页面
-    console.log(data);
     this.isSuccessful = true;
     this.isSignUpFailed = false;
     //         this.router.navigate(['../login']);

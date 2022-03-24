@@ -38,7 +38,6 @@ export class UserService {
   }
 
   setUserToken(v: any) {
-    console.log(v);
     this.userToken = v;
   }
 
