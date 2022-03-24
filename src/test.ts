@@ -27,11 +27,11 @@ getTestBed().initTestEnvironment(
 // Then we find all the tests.
 const context = require.context('./', true, /\.spec\.ts$/);
 // And load the modules.
-// context.keys().map(context);
+context.keys().map(context);
 // const FILE = ['./app/services/user.service.spec.ts'];
 // const FILE = ['./app/comp/product/product-detail/product-detail.component.spec.ts'];
 // const FILE = ['./app/comp/recipe/recipe-section/recipe-section.component.spec.ts'];
 // const FILE = ['./app/comp/common/nav/nav.component.spec.ts'];
-const FILE = ['./app/comp/page/user-detail/user-detail.component.spec.ts'];
-
-context.keys().filter( name => !!FILE.includes(name)).map(context);
+// const FILE = ['./app/comp/page/user-detail/user-detail.component.spec.ts'];
+//
+// context.keys().filter( name => !!FILE.includes(name)).map(context);
