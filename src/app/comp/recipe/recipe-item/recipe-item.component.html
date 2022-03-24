@@ -10,9 +10,14 @@
       <span *ngIf="recipeItem.name.length > 25">{{recipeItem.name | slice: 0:25 }}...</span>    
     </div>
     <div class="card-body">
+<<<<<<< HEAD
       <div class="d-flex justify-content-between align-items-center">
         <span *ngIf="recipeItem.description.length <= 160">{{recipeItem.description}}</span>
         <span *ngIf="recipeItem.description.length > 160">{{recipeItem.description | slice: 0:160 }}...</span>
+=======
+      <div class="d-flex justify-content-between align-items-center" id="des">
+          {{ recipeItem.description | slice: 0:80 }}...
+>>>>>>> 3624a31582abfb3bf026ad423a99777451460727
       </div>
     </div>
   </div>
