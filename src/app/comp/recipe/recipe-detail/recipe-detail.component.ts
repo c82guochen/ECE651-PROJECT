@@ -12,6 +12,7 @@ import { RecipeService } from '../../../services/recipe.service';
 })
 export class RecipeDetailComponent implements OnInit {
   recipeItem!: Recipe;
+  cartAns: any;
 
   constructor(
     private cartService: CartService,
@@ -27,8 +28,6 @@ export class RecipeDetailComponent implements OnInit {
       .subscribe((res) => (this.recipeItem = res[0]));
   }
 
-  handleAddToWishlist() {}
-
   handleAddAllToCart() {
     console.log(this.recipeItem);
     let arr = this.recipeItem.ingredients_id.map((id) => {
@@ -37,12 +36,20 @@ export class RecipeDetailComponent implements OnInit {
     console.log('Add All to arr');
     console.log(arr);
     this.cartService.addProductsToCart(arr).subscribe((res) => {
-      if (res.length > 0) {
+      this.cartAns = res;
+    });
+    if(this.cartAns != undefined)
+      this.judgeCartAns();
+    console.log('adding product to cart');
+  }
+
+  judgeCartAns(){
+    if (this.cartAns.length > 0) {
         alert('Successfully added to cart');
+        return true;
       } else {
         alert('Sorry cannot add ingredients to kart');
+        return false;
       }
-    });
-    console.log('adding product to cart');
   }
 }
