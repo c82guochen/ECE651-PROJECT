@@ -12,11 +12,15 @@
     </div>
     <div class="card-body" style="min-height:210px;" >
       <p class="card-text">
-        <strong>{{ productItem.price | currency }}</strong>
+        <strong class="price">{{ productItem.price | currency }}</strong>
       </p>
+<<<<<<< HEAD
      
       <span *ngIf="productItem.description.length <= 90">{{productItem.description}}</span>
       <span *ngIf="productItem.description.length > 90">{{productItem.description | slice: 0:90 }}...</span>
+=======
+      <p class="card-text" id="des">{{ productItem.description | slice: 0:80 }}...</p>
+>>>>>>> 9a544e1 (add tests for product and recipe list and item)
     </div>
   </div>
 </a>

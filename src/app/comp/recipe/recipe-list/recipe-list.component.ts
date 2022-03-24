@@ -16,7 +16,6 @@ export class RecipeListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadRecipes();
-    this.loadWishlist();
   }
 
   loadRecipes() {
@@ -24,16 +23,5 @@ export class RecipeListComponent implements OnInit {
       this.recipeList = recipes;
     });
   }
-  getRandomRecipe() {
-    var randomNumbers = new Array(4);
-    for (var i = 0; i < 4; i++) {
-      var Rand = Math.random();
-      randomNumbers.push(Math.round(Rand * this.recipeList.length));
-    }
-    var recipeSection = new Array(4);
-    for (var i = 0; i < 4; i++)
-      recipeSection.push(this.recipeList[randomNumbers[i]]);
-  }
 
-  loadWishlist() {}
 }
