@@ -14,17 +14,9 @@
       <p class="card-text">
         <strong class="price">{{ productItem.price | currency }}</strong>
       </p>
-<<<<<<< HEAD
-<<<<<<< HEAD
      
       <span *ngIf="productItem.description.length <= 90">{{productItem.description}}</span>
       <span *ngIf="productItem.description.length > 90">{{productItem.description | slice: 0:90 }}...</span>
-=======
-      <p class="card-text" id="des">{{ productItem.description | slice: 0:80 }}...</p>
->>>>>>> 9a544e1 (add tests for product and recipe list and item)
-=======
-      <p class="card-text" id="des">{{ productItem.description | slice: 0:80 }}...</p>
->>>>>>> 3624a31582abfb3bf026ad423a99777451460727
     </div>
   </div>
 </a>
