@@ -15,11 +15,12 @@ import { HttpErrorResponse } from '@angular/common/http';
 describe('UserDetailComponent', () => {
   let component: UserDetailComponent;
   let fixture: ComponentFixture<UserDetailComponent>;
+  let userService: UserService;
   let mockUser: User = {
     username: 'username',
     id: '',
     token: 'token',
-    email: '',
+    email: 'email',
     credit_card: '',
     shipping_address: '',
     last_login: new Date(),
@@ -43,7 +44,7 @@ describe('UserDetailComponent', () => {
   let mockUserHttp: any = {
     username: 'username',
     id: '',
-    token: 'token',
+    token: '',
     email: '',
     credit_card: '',
     shipping_address: null,
@@ -66,7 +67,7 @@ describe('UserDetailComponent', () => {
         // attributes
         id: '',
         token: 'token',
-        email: '',
+        email: 'email',
         credit_card: '',
         shipping_address: '',
 
@@ -97,10 +98,18 @@ describe('UserDetailComponent', () => {
       userToken: any
     ) => {
       userInfo.credit_card = cardID;
-      userInfo.shipping_address =  address + '' + province + ' ' + postal_code + ' ' + telephone;
+      mockShipping_address = {
+        address : address,
+        province : province,
+        postal_code : postal_code,
+        phone_number : telephone,
+      };
+      userInfo.shipping_address =  mockShipping_address;
       return userInfo;
     },
-    setUserToken: () => {}
+    setUserToken: (token: string) => {
+      mockUserHttp.token = token;
+    }
   };
 
   beforeEach(async () => {
@@ -114,6 +123,7 @@ describe('UserDetailComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(UserDetailComponent);
     component = fixture.componentInstance;
+    userService = TestBed.get(UserService);
     fixture.detectChanges();
   });
 
@@ -122,36 +132,32 @@ describe('UserDetailComponent', () => {
   });
 
   //首先要获得User
+  it('should get user information firstly', () => {
+    userService.getUser().subscribe((res: any) => {
+      mockUserHttp = res;
+    })
+    expect(mockUserHttp).not.toBeNull();
+    console.log(mockUserHttp);
+    expect((mockUserHttp as any).username).toBe(mockUser.username);
+    expect((mockUserHttp as any).token).toBe(mockUser.token);
+    expect((mockUserHttp as any).email).toBe(mockUser.email);
+  });
 
   //得到user显示出来
   it('should show user information to view after login', () => {
-    let el: DebugElement;
-    mockUserHttp.shipping_address = mockShipping_address;
-    component.userInfo = mockUserHttp;
-    console.log('     f ser ',component.userInfo);
-    el = fixture.debugElement.query(By.css('p.name'));
-    console.log(component.isChanging);
-    expect(el.nativeElement.textContent).toBe(component.userInfo.username);
-    el = fixture.debugElement.query(By.css('span.emptyContent'));
-    expect(el.nativeElement.textContent).toBe(component.emptyString);
-    el = fixture.debugElement.query(By.css('span.card'));
-    console.log(el);
-    expect(el.nativeElement.textContent).toBe(component.userInfo.credit_card);
-//     el = fixture.debugElement.query(By.css('span.shippingAddress'));
-//     expect(el.nativeElement.textContent).toBe(component.userInfo.shipping_address.address+', '+component.userInfo.shipping_address.province+', '+component.userInfo.shipping_address.postal_code);
-  })
-
-  //考虑要不要传递usertoken
-
-  //测试一下JudgeNull（简单）
-  it('should judge if information of user is null', () => {
-    let mockUser: User = {
+    let mockShipping_address: any = {
+      address : 'address',
+      province : 'address',
+      postal_code : 'code',
+      phone_number : 'telephone',
+    };
+    let mockUserHttp: any = {
       username: 'username',
       id: '',
-      token: 'token',
+      token: '',
       email: '',
       credit_card: '',
-      shipping_address: '',
+      shipping_address: null,
       last_login: new Date(),
       date_joined: new Date(),
       expiry: new Date(),
@@ -164,6 +170,36 @@ describe('UserDetailComponent', () => {
       groups: [],
       user_permissions: []
     };
+    let el: DebugElement;
+    mockUserHttp.shipping_address = mockShipping_address;
+    mockUserHttp.credit_card = '1234';
+    component.userInfo = mockUserHttp;
+    el = fixture.debugElement.query(By.css('p.name'));
+    expect(el.nativeElement.textContent).toBe(component.userInfo.username);
+    el = fixture.debugElement.query(By.css('span#cardEmpty'));
+    expect(el.nativeElement.textContent).toBe(component.emptyString);
+    el = fixture.debugElement.query(By.css('span#shippingAddress'));
+    expect(el.nativeElement.textContent).toBe(component.emptyString);
+    el = fixture.debugElement.query(By.css('span#telephone'));
+    expect(el.nativeElement.textContent).toBe(component.emptyString);
+    component.JudgeIfNull();
+    fixture.detectChanges();
+    el = fixture.debugElement.query(By.css('span.card'));
+    expect(el.nativeElement.textContent).toBe(component.userInfo.credit_card);
+    el = fixture.debugElement.query(By.css('span.shippingAddress'));
+    expect(el.nativeElement.textContent).toBe(component.userInfo.shipping_address.address+', '+component.userInfo.shipping_address.province+', '+component.userInfo.shipping_address.postal_code);
+    el = fixture.debugElement.query(By.css('span.telephone'));
+    expect(el.nativeElement.textContent).toBe(component.userInfo.shipping_address.phone_number);
+  });
+
+  //考虑要不要传递usertoken
+  it('should send token to service after get user information', () => {
+    userService.setUserToken('token');
+    expect(mockUserHttp.token).toBe('token');
+  });
+
+  //测试一下JudgeNull（简单）
+  it('should judge if information of user is null', () => {
     let mockShipping_address: any = {
       address : 'address',
       province : 'address',
@@ -189,7 +225,7 @@ describe('UserDetailComponent', () => {
       groups: [],
       user_permissions: []
     };
-    component.userInfo = mockUser;
+    component.userInfo = mockUserHttp;
     component.JudgeIfNull();
     expect(component.ifcardNull).toBe(true);
     expect(component.ifaddressNull).toBe(true);
@@ -205,7 +241,7 @@ describe('UserDetailComponent', () => {
     component.JudgeIfNull();
     expect(component.ifaddressNull).toBe(false);
     expect(component.iftelephoneNull).toBe(false);
-  })
+  });
 
   //测试一下Change()
   it('should provide form for user to complete information', () => {
@@ -214,9 +250,15 @@ describe('UserDetailComponent', () => {
     el = fixture.debugElement.query(By.css('button.change'));
     el.nativeElement.click();
     expect(component.isChanging).toBe(true);
-  })
+  });
+
   //Submit，UpdateSucc和updateFail
-
-
-
+  it('should update user information successfully when user completes the form', () => {
+    mockUserHttp = userService.UpdateUser(mockUserHttp,'card12341234','phone1234','address','province','postal','userToken');
+    expect(mockUserHttp.credit_card).toBe('card12341234');
+    expect(mockUserHttp.shipping_address.phone_number).toBe('phone1234');
+    expect(mockUserHttp.shipping_address.address).toBe('address');
+    expect(mockUserHttp.shipping_address.province).toBe('province');
+    expect(mockUserHttp.shipping_address.postal_code).toBe('postal');
+  });
 });
