@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, Observable, of } from 'rxjs';
 import { orderUrl } from '../config/api';
-import { Product } from '../model/product';
-import { ProductService } from './product.service';
 import { UserService } from './user.service';
 import { User } from '../model/user';
 
@@ -21,8 +19,7 @@ export class OrderService {
 
   constructor(
     private http: HttpClient,
-    private userService: UserService,
-    private productService: ProductService
+    private userService: UserService
   ) {
     this.userService.getUser().subscribe((user) => {
       this.user = user;
