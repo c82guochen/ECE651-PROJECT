@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { User } from '../../../model/user';
 import { OrderService } from '../../../services/order.service';
 @Component({
@@ -19,7 +18,6 @@ export class OrderDetailComponent implements OnInit {
       console.log('I am trying to get all orders!');
       console.log(it);
       console.log('url = ', it[0].order_items[0].product.image_url);
-
     }
     );
   }

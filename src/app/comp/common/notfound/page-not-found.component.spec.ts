@@ -34,4 +34,9 @@ describe('PageNotFoundComponent', () => {
     el = fixture.debugElement.query(By.css('a'));
     expect(el.nativeElement.getAttribute('href')).toBe('/');
   });
+
+  it('should display title', () =>{
+    el = fixture.debugElement.query(By.css('h3'));
+    expect(el.nativeElement.textContent.trim()).toBe('404 - Page Not Found');
+  });
 });

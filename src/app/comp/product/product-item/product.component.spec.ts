@@ -7,17 +7,12 @@ import {
   inject
 } from '@angular/core/testing';
 import { ProductComponent } from './product.component';
-import { RecipeService } from '../../../services/recipe.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CartService } from '../../../services/cart.service';
-import { Product } from '../../../model/product';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { formatCurrency } from '@angular/common';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Router } from '@angular/router';
-import { Location } from '@angular/common';
-import { SpyLocation } from '@angular/common/testing';
 
 describe('ProductComponent', () => {
   let component: ProductComponent;
