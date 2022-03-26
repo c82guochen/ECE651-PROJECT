@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../../../model/product';
-import { MessageService } from '../../../services/message.service';
 import { CartService } from '../../../services/cart.service';
 
 @Component({
@@ -11,5 +10,5 @@ import { CartService } from '../../../services/cart.service';
 export class ProductComponent {
   @Input() productItem!: Product;
 
-  constructor(private msg: MessageService, private cartService: CartService) {}
+  constructor(private cartService: CartService) {}
 }
