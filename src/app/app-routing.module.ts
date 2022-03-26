@@ -10,7 +10,6 @@ import { CartComponent } from './comp/cart/cart-list/cart.component';
 import { RecipeDetailComponent } from './comp/recipe/recipe-detail/recipe-detail.component';
 import { ShoppingCartDetailComponent } from './comp/cart/shopping-cart-detail/shopping-cart-detail.component';
 import { OrderDetailComponent } from './comp/page/order-detail/order-detail.component';
-import { FavouritesDetailComponent } from './comp/page/favourites-detail/favourites-detail.component';
 import { SearchComponent } from './comp/common/search/search.component';
 import { LoginComponent } from './comp/account/login/login.component';
 import { SignupComponent } from './comp/account/signup/signup.component';
@@ -28,11 +27,6 @@ const routes: Routes = [
   {
     path: 'ordersDetail',
     component: OrderDetailComponent,
-    canActivate: [AuthGuardService]
-  },
-  {
-    path: 'favouritesDetail',
-    component: FavouritesDetailComponent,
     canActivate: [AuthGuardService]
   },
   {

@@ -4,7 +4,7 @@ import { CartComponent } from './cart.component';
 import { RecipeService } from '../../../services/recipe.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CartService } from '../../../services/cart.service';
-import { MessageService } from '../../../services/message.service';
+
 
 describe('CartComponent', () => {
   let component: CartComponent;
@@ -13,7 +13,7 @@ describe('CartComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CartComponent],
-      providers: [CartService, MessageService],
+      providers: [CartService],
       imports: [HttpClientTestingModule]
     }).compileComponents();
   });
