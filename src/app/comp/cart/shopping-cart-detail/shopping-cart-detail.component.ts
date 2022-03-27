@@ -13,7 +13,7 @@ import { CheckoutOrder } from 'src/app/model/checkout';
 })
 export class ShoppingCartDetailComponent implements OnInit {
   cartItem!: CartItem;
-  constructor(private cServ: CartService, private userService: UserService) {}
+  constructor(private cServ: CartService, private userService: UserService) { }
   user: User | null = null;
   kart: any[] = [];
   checkoutOrder!: CheckoutOrder;
@@ -65,18 +65,25 @@ export class ShoppingCartDetailComponent implements OnInit {
     let status = 'unpaid';
     let order = [];
     console.log('trigger place order');
-    for (let item of this.kart) {
-      let obj: CheckoutOrder = {
-        product_id: -1,
-        quantity: -1
-      };
-      obj.product_id = item.product.id;
-      obj.quantity = item.quantity;
-      order.push(obj);
+    if (this.address == '') {
+      window.alert('Fail to place an order, address is missing');
+    } else if (this.card = '') {
+      window.alert('Fail to place an order, card is missing');
+    } else {
+      for (let item of this.kart) {
+        let obj: CheckoutOrder = {
+          product_id: -1,
+          quantity: -1
+        };
+        obj.product_id = item.product.id;
+        obj.quantity = item.quantity;
+        order.push(obj);
+      }
+      this.cServ.create_new_order(status, order).subscribe((data) => {
+        console.log('data = ', data);
+      });
+      window.alert('success place order');
     }
-    this.cServ.create_new_order(status, order).subscribe((data) => {
-      console.log('data = ', data);
-    });
-    window.alert('success place order');
   }
+
 }
