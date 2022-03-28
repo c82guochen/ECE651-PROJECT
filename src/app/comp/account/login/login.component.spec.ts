@@ -85,6 +85,8 @@ describe('LoginComponent', () => {
     expect(userService.getIfLogin()).toBe(false);
   });
 
+
+
   it('should remind user when login failed',() => {
     component.isLoginFailed = true;
     component.err_msg = '';
@@ -99,10 +101,5 @@ describe('LoginComponent', () => {
     expect(el.nativeElement.textContent).toBe('Log In');
   })
 
-//   it('input', () => {
-//     el = fixture.debugElement.query(By.css('#email'));
-//     el.nativeElement.value = mockUser.email;
-//     fixture.detectChanges();
-//     expect(component.email).toBe("test@gmail.com");
-//   })
+
 });

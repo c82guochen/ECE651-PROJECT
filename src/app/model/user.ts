@@ -17,9 +17,9 @@ export interface User {
   expiry: Date;
 
   // Types
-  is_active: true;
-  is_staff: false;
-  is_superuser: false;
+  is_active: boolean;
+  is_staff: boolean;
+  is_superuser: boolean;
 
   // Collections
   cart_items: CartItem[];
