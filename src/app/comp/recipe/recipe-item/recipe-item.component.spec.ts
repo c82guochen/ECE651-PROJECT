@@ -53,9 +53,14 @@ describe('RecipeComponent', () => {
   });
 
   it('initial one item', () => {
-    el = fixture.debugElement.query(By.css('div.card-header'));
+    el = fixture.debugElement.query(By.css('span.nameLess'));
     expect(el.nativeElement.textContent.trim()).toBe(component.recipeItem.name);
+    component.recipeItem.name = 'Flank Steak with Tangy Yogurt Sauce';
     fixture.detectChanges();
+    el = fixture.debugElement.query(By.css('span.nameGreater'));
+    expect(el.nativeElement.textContent.trim()).toEqual(
+      component.recipeItem.name.substr(0,25) + '...'
+    );
     el = fixture.debugElement.query(By.css('span.lessEqual'));
     expect(el.nativeElement.textContent.trim()).toEqual(
       component.recipeItem.description

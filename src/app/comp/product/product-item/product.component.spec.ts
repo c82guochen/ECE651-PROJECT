@@ -47,9 +47,15 @@ describe('ProductComponent', () => {
   });
 
   it('initial one item', () => {
-    el = fixture.debugElement.query(By.css('div.card-header'));
+    el = fixture.debugElement.query(By.css('.nameLess'));
     expect(el.nativeElement.textContent.trim()).toBe(
       component.productItem.name
+    );
+    component.productItem.name = 'Green Bell Pepper';
+    fixture.detectChanges();
+    el = fixture.debugElement.query(By.css('.nameGreater'));
+    expect(el.nativeElement.textContent.trim()).toBe(
+      component.productItem.name.substr(0,16)+'...'
     );
     el = fixture.debugElement.query(By.css('strong.price'));
     expect(el.nativeElement.textContent.trim()).toEqual(
@@ -74,9 +80,6 @@ describe('ProductComponent', () => {
     let href = fixture.debugElement
       .query(By.css('a'))
       .nativeElement.getAttribute('href');
-    console.log(fixture.debugElement
-      .query(By.css('a'))
-      .nativeElement);
     expect(href).toEqual('/productdetail/' + component.productItem.id);
   }));
 });

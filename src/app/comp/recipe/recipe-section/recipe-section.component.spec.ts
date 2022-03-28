@@ -64,7 +64,7 @@ describe('RecipeSectionComponent', () => {
         rating: 5,
         total_reviews: 80,
         details: ['aaa', 'ccc']
-      }
+      },
     ];
     fixture.detectChanges();
   });
@@ -92,11 +92,81 @@ describe('RecipeSectionComponent', () => {
   it('should produce random 4 recipes', fakeAsync(() => {
     component.recipeList = response;
     console.log(component.recipeList);
-//     component.getRandomRecipe();
-    spyOn(component,'getRandomRecipe').and.returnValue();
-    let num = component.getRndInteger(1,response.length);
-    component.recipeSection.push(response[num]);
+    component.getRandomRecipe();
     console.log(component.recipeSection);
+    expect(component.recipeList).toContain(component.recipeSection[0]);
+    response = [
+      {
+        id: 1,
+        name: 'test recipe1',
+        description: 'recipe desc1',
+        image_url:
+          'https://www.rockrecipes.com/wp-content/uploads/2016/04/Mongolian-Beef-close-up.jpg',
+        category: 'French',
+        ingredients_id: [1, 2, 3, 4],
+        ingredients_product: [],
+        rating: 5,
+        total_reviews: 94,
+        details: ['aaa', 'bbb']
+      },
+      {
+        id: 2,
+        name: 'test recipe2',
+        description: 'recipe desc2',
+        image_url:
+          'https://www.rockrecipes.com/wp-content/uploads/2016/04/Mongolian-Beef-close-up.jpg',
+        category: 'French',
+        ingredients_id: [1, 2, 3],
+        ingredients_product: [],
+        rating: 5,
+        total_reviews: 90,
+        details: ['aaa', 'ccc']
+      },
+      {
+        id: 3,
+        name: 'test recipe3',
+        description: 'recipe desc3',
+        image_url:
+          'https://www.rockrecipes.com/wp-content/uploads/2016/04/Mongolian-Beef-close-up.jpg',
+        category: 'French',
+        ingredients_id: [1, 2],
+        ingredients_product: [],
+        rating: 5,
+        total_reviews: 80,
+        details: ['aaa', 'ccc']
+      },
+      {
+        id: 4,
+        name: 'test recipe4',
+        description: 'recipe desc4',
+        image_url:
+          'https://www.rockrecipes.com/wp-content/uploads/2016/04/Mongolian-Beef-close-up.jpg',
+        category: 'French',
+        ingredients_id: [1, 2],
+        ingredients_product: [],
+        rating: 5,
+        total_reviews: 80,
+        details: ['aaa', 'ccc']
+      },
+      {
+        id: 5,
+        name: 'test recipe5',
+        description: 'recipe desc5',
+        image_url:
+          'https://www.rockrecipes.com/wp-content/uploads/2016/04/Mongolian-Beef-close-up.jpg',
+        category: 'French',
+        ingredients_id: [1, 2],
+        ingredients_product: [],
+        rating: 5,
+        total_reviews: 80,
+        details: ['aaa', 'ccc']
+      },
+    ];
+    component.recipeList = response;
+    component.recipeSection = [];
+    component.getRandomRecipe();
+    console.log(component.recipeSection);
+    expect(component.recipeSection.length).toBe(4);
     expect(component.recipeList).toContain(component.recipeSection[0]);
   }));
 });

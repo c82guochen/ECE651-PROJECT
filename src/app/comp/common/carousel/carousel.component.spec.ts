@@ -108,6 +108,24 @@ describe('CarouselComponent', () => {
       let href = obj.nativeElement.getAttribute('href');
       expect(href).toEqual('/recipedetail/' + component.res$[index].id);
       index++;
-    }
+    };
+    el = fixture.debugElement.queryAll(By.css('img'));
+    index = 0;
+    for(let obj of el){
+      expect(obj.nativeElement.src).toEqual(component.res$[index].image_url);
+      index++;
+    };
+    el = fixture.debugElement.queryAll(By.css('h5'));
+    index = 0;
+    for(let obj of el){
+      expect(obj.nativeElement.textContent.trim()).toEqual('#'+(index+1)+ ' ' +component.res$[index].name);
+      index++;
+    };
+    el = fixture.debugElement.queryAll(By.css('p'));
+    index = 0;
+    for(let obj of el){
+      expect(obj.nativeElement.textContent.trim()).toEqual(component.res$[index].description+'...');
+      index++;
+    };
   })
 });

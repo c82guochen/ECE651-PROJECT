@@ -4,6 +4,7 @@ import { Product } from '../../../model/product';
 import { CartService } from '../../../services/cart.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { RecipeService } from '../../../services/recipe.service';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -13,11 +14,12 @@ import { RecipeService } from '../../../services/recipe.service';
 export class RecipeDetailComponent implements OnInit {
   recipeItem!: Recipe;
   cartAns: any;
-
+  ifLogin = false;
   constructor(
     private cartService: CartService,
     private routeInfo: ActivatedRoute,
-    private recipeService: RecipeService
+    private recipeService: RecipeService,
+    private userService: UserService,
   ) {}
 
   ngOnInit(): void {
@@ -25,7 +27,8 @@ export class RecipeDetailComponent implements OnInit {
     console.log(recipeId);
     this.recipeService
       .getRecipe(Number(recipeId))
-      .subscribe((res) => (this.recipeItem = res[0]));
+      .subscribe((res) => {this.recipeItem = res[0];console.log(this.recipeItem);});
+    this.ifLogin = this.userService.getIfLogin();
   }
 
   handleAddAllToCart() {

@@ -24,22 +24,27 @@
           (change)="product_qty=$event">
         </ngx-number-spinner>
         <button
-          class="btn btn-primary rounded-3 offset-1"
+          class="btn btn-primary rounded-3 offset-1 buttonNot"
           type="button"
           (click)="addToKart()"
+          disabled = "!ifLogin"
+          *ngIf = "!ifLogin"
+        >
+          Add to cart
+        </button>
+        <button
+          class="btn btn-primary rounded-3 offset-1 buttonAdd"
+          type="button"
+          (click)="addToKart()"
+          *ngIf = "ifLogin"
         >
           Add to cart
         </button>
       </div>
-
       <div>
         {{ productItem.description }}
       </div>
     </div>
   </div>
-<!--  used for debugging -->
-<!--  <div class="row">-->
-<!--    {{productItem | json}}-->
-<!--  </div>-->
 </div>
 

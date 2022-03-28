@@ -12,6 +12,7 @@ import { Product } from '../../../model/product';
 import { Observable, of } from 'rxjs';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { HttpClient, HttpHeaders, HttpHandler } from '@angular/common/http';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
@@ -64,7 +65,6 @@ describe('ProductListComponent', () => {
     component.loadProducts();
     expect(component.productList).toBe(response);
     el = fixture.debugElement.queryAll(By.css('app-product-item'));
-    console.log(el);
     expect(el).toBeTruthy();
   }));
 });

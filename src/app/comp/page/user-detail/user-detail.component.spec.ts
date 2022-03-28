@@ -16,6 +16,7 @@ describe('UserDetailComponent', () => {
   let component: UserDetailComponent;
   let fixture: ComponentFixture<UserDetailComponent>;
   let userService: UserService;
+  let el: DebugElement;
   let mockUser: User = {
     username: 'username',
     id: '',
@@ -176,7 +177,6 @@ describe('UserDetailComponent', () => {
       groups: [],
       user_permissions: []
     };
-    let el: DebugElement;
     mockUserHttp.shipping_address = mockShipping_address;
     mockUserHttp.credit_card = '1234';
     component.userInfo = mockUserHttp;
@@ -257,6 +257,17 @@ describe('UserDetailComponent', () => {
     el.nativeElement.click();
     expect(component.isChanging).toBe(true);
   });
+
+//   it('input',() => {
+//     component.userInfo = mockUserHttp;
+//     component.isChanging = true;
+//     fixture.detectChanges();
+//     el = fixture.debugElement.query(By.css('input#floatingcardID'));
+//     el.nativeElement.value = "1234";
+//     fixture.detectChanges();
+//     console.log('el ',component.cardID);
+//     expect(component.cardID).toBe("1234");
+//   })
 
   //Submit，UpdateSucc和updateFail
   it('should update user information successfully when user completes the form', () => {

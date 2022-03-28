@@ -12,6 +12,7 @@ import { Observable, of } from 'rxjs';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 describe('NavComponent', () => {
   let component: NavComponent;
@@ -22,6 +23,8 @@ describe('NavComponent', () => {
   let recipes: Recipe[] = [];
   let products: Product[] = [];
   let el: DebugElement;
+  let router: Router;
+  const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -107,10 +110,11 @@ describe('NavComponent', () => {
     })
     component.ngOnInit();
     expect(component.username).toEqual(user.username);
+    fixture.detectChanges();
     let el: DebugElement;
     el = fixture.debugElement.query(By.css('span.username'));
     console.log(el);
-//     expect(el.nativeElement.textContent).toBe(user.username);
+    expect(el.nativeElement.textContent.trim()).toBe(user.username);
     expect(component.ifLogin).toBe(true);
   });
 
@@ -134,4 +138,16 @@ describe('NavComponent', () => {
     let href = fixture.debugElement.query(By.css('a.userDetail')).nativeElement.getAttribute('href');
     expect(href).toEqual('/userdetail');
   });
+
+  it('should jump to recipe list page by clicking \'recipe\'', () => {
+    let href = fixture.debugElement.query(By.css('a.recipelist')).nativeElement.getAttribute('href');
+    expect(href).toEqual('/recipelist');
+  });
+
+  it('should jump to product list page by clicking \'product\'', () => {
+    let href = fixture.debugElement.query(By.css('a.productlist')).nativeElement.getAttribute('href');
+    expect(href).toEqual('/productlist');
+  });
+
+//   it('search', () => {})
 });

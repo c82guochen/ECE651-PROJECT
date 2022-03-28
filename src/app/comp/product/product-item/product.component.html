@@ -7,8 +7,8 @@
       [src]="productItem.image_url"
     />
     <div class="card-header">
-      <span *ngIf="productItem.name.length <= 16">{{productItem.name}}</span>
-      <span *ngIf="productItem.name.length > 16">{{productItem.name | slice: 0:16 }}..</span>
+      <span *ngIf="productItem.name.length <= 16" class="nameLess">{{productItem.name}}</span>
+      <span *ngIf="productItem.name.length > 16" class="nameGreater">{{productItem.name | slice: 0:16 }}...</span>
     </div>
     <div class="card-body" style="min-height:210px;" >
       <p class="card-text">

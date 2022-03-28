@@ -18,8 +18,8 @@
       class="navbar-collapse collapse"
     >
       <div class="navbar-nav">
-        <a class="p-2 text-dark" routerLink="recipelist">Recipe</a>
-        <a class="p-2 text-dark" routerLink="productlist">Product</a>
+        <a class="p-2 text-dark recipelist" routerLink="recipelist">Recipe</a>
+        <a class="p-2 text-dark productlist" routerLink="productlist">Product</a>
       </div>
       <div class="" style="margin: auto; display: flex">
         <input
@@ -40,8 +40,8 @@
       </div>
 
       <div class="navbar-nav" *ngIf="!ifLogin" >
-        <a class="p-2 login" id="fontClick" routerLink="login">login</a>
-        <a class="p-2 signup" id="fontClick" routerLink="signup">signup</a>
+        <a class="p-2 login navbar-nav" id="fontLogin" routerLink="login">login</a>
+        <a class="p-2 signup navbar-nav" id="fontSignup" routerLink="signup">signup</a>
       </div>
       <a
         aria-expanded="false"

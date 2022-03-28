@@ -18,7 +18,18 @@
       <div class="des" style="margin:20px 0;">
         {{ recipeItem.description }}
       </div>
-      <button class="btn btn-success rounded-pill" id="buttonAdd" (click)="handleAddAllToCart()">Add Ingredients to Cart</button>
+      <button
+        class="btn btn-success rounded-pill"
+        id="buttonNot"
+        disabled = "!ifLogin"
+        *ngIf = "!ifLogin">Add Ingredients to Cart
+      </button>
+      <button
+        class="btn btn-success rounded-pill"
+        id="buttonAdd"
+        (click)="handleAddAllToCart()"
+        *ngIf = "ifLogin">Add Ingredients to Cart
+      </button>
     </div>
   </div>
 
@@ -65,15 +76,5 @@
         </thead>
       </table>
     </div>
-
-
-
-
   </div>
-
-<!--  Used for debugging -->
-<!--  <div>-->
-<!--    {{ recipeItem | json }}-->
-<!--  </div>-->
-
 </div>

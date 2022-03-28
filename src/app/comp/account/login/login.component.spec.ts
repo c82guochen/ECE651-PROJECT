@@ -14,7 +14,7 @@ describe('LoginComponent', () => {
   let fixture: ComponentFixture<LoginComponent>;
   let userService: UserService;
   let mockUser: User;
-
+  let el: DebugElement;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LoginComponent],
@@ -86,7 +86,6 @@ describe('LoginComponent', () => {
   });
 
   it('should remind user when login failed',() => {
-    let el: DebugElement;
     component.isLoginFailed = true;
     component.err_msg = '';
     fixture.detectChanges();
@@ -94,4 +93,16 @@ describe('LoginComponent', () => {
     console.log(el.nativeElement);
     expect(el.nativeElement.textContent).toEqual('Login failed,please try again! ');
   });
+
+  it('should show title',() => {
+    el = fixture.debugElement.query(By.css('.title'));
+    expect(el.nativeElement.textContent).toBe('Log In');
+  })
+
+//   it('input', () => {
+//     el = fixture.debugElement.query(By.css('#email'));
+//     el.nativeElement.value = mockUser.email;
+//     fixture.detectChanges();
+//     expect(component.email).toBe("test@gmail.com");
+//   })
 });

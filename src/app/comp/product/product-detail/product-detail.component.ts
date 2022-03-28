@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../../../model/product';
+import { UserService } from '../../../services/user.service';
 import { CartService } from '../../../services/cart.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ProductService } from '../../../services/product.service';
@@ -12,9 +13,11 @@ import { ProductService } from '../../../services/product.service';
 export class ProductDetailComponent implements OnInit {
   productItem!: Product;
   product_qty = 1;
+  ifLogin = false;
 
   constructor(
     private cartService: CartService,
+    private userService: UserService,
     private routeInfo: ActivatedRoute,
     private productService: ProductService
   ) {}
@@ -24,6 +27,7 @@ export class ProductDetailComponent implements OnInit {
     this.productService
       .getProduct(Number(productId))
       .subscribe((product) => (this.productItem = product[0]));
+    this.ifLogin = this.userService.getIfLogin();
   }
 
   addToKart() {
