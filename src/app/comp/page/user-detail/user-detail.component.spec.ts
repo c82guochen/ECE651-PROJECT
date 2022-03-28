@@ -106,7 +106,7 @@ describe('UserDetailComponent', () => {
         phone_number : telephone,
       };
       userInfo.shipping_address =  mockShipping_address;
-      return userInfo;
+      return new Observable<any>(userInfo);
     },
     setUserToken: (token: string) => {
       mockUserHttp.token = token;
@@ -242,6 +242,23 @@ describe('UserDetailComponent', () => {
     expect(component.ifcardNull).toBe(false);
     expect(component.ifaddressNull).toBe(true);
     expect(component.iftelephoneNull).toBe(true);
+    mockShipping_address = {
+      address : '',
+      province : '',
+      postal_code : '',
+      phone_number : '',
+    };
+    mockUserHttp.shipping_address = mockShipping_address;
+    component.userInfo = mockUserHttp;
+    component.JudgeIfNull();
+    expect(component.ifaddressNull).toBe(true);
+    expect(component.iftelephoneNull).toBe(true);
+    mockShipping_address = {
+      address : 'address',
+      province : 'address',
+      postal_code : 'code',
+      phone_number : 'telephone',
+    };
     mockUserHttp.shipping_address = mockShipping_address;
     component.userInfo = mockUserHttp;
     component.JudgeIfNull();
@@ -271,7 +288,11 @@ describe('UserDetailComponent', () => {
 
   //Submit，UpdateSucc和updateFail
   it('should update user information successfully when user completes the form', () => {
-    mockUserHttp = userService.UpdateUser(mockUserHttp,'card12341234','phone1234','address','province','postal','userToken');
+    userService.UpdateUser(mockUserHttp,'card12341234','phone1234','address','province','postal','userToken').subscribe((res: any) => {
+      console.log(res);
+    });
+//     console.log(mockUserHttp);
+//     console.log(mockUserHttp.credit_card);
     expect(mockUserHttp.credit_card).toBe('card12341234');
     expect(mockUserHttp.shipping_address.phone_number).toBe('phone1234');
     expect(mockUserHttp.shipping_address.address).toBe('address');
@@ -303,5 +324,47 @@ describe('UserDetailComponent', () => {
     expect(href).toEqual('/shoppingcartDetail');
     href = fixture.debugElement.query(By.css('a.orderList')).nativeElement.getAttribute('href');
     expect(href).toEqual('/ordersDetail');
+  });
+
+  it('should fail to submit changes when required information is incomplete', () => {
+    component.cardID = '';
+    component.Submit();
+    expect(component.isUpdateSucc).toBe(false);
+    expect(component.err_msg).toBe('(information is incomplete)');
+    expect(component.isChanging).toBe(true);
+    component.address = '';
+    component.Submit();
+    expect(component.isUpdateSucc).toBe(false);
+    expect(component.err_msg).toBe('(information is incomplete)');
+    expect(component.isChanging).toBe(true);
+    component.telephone = '';
+    component.Submit();
+    expect(component.isUpdateSucc).toBe(false);
+    expect(component.err_msg).toBe('(information is incomplete)');
+    expect(component.isChanging).toBe(true);
+    component.province = '';
+    component.Submit();
+    expect(component.isUpdateSucc).toBe(false);
+    expect(component.err_msg).toBe('(information is incomplete)');
+    expect(component.isChanging).toBe(true);
+    component.postal_code = '';
+    component.Submit();
+    expect(component.isUpdateSucc).toBe(false);
+    expect(component.err_msg).toBe('(information is incomplete)');
+    expect(component.isChanging).toBe(true);
+  });
+
+  it('should submit changes of user information through submit button', () => {
+    component.userInfo = mockUserHttp;
+    component.cardID = 'card12341234';
+    component.telephone = 'phone1234';
+    component.address = 'address';
+    component.province = 'province';
+    component.postal_code = 'postal';
+    spyOn(userService,'getUserToken').and.returnValue('token');
+    spyOn(userService,'UpdateUser').and.callThrough();;
+    component.Submit();
+    expect(userService.getUserToken).toHaveBeenCalled();
+    expect(userService.UpdateUser).toHaveBeenCalled();
   })
 });
