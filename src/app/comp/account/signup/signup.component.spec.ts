@@ -14,7 +14,7 @@ describe('SignupComponent', () => {
   let fixture: ComponentFixture<SignupComponent>;
   let userService: UserService;
   let mockUser: User;
-
+  let el: DebugElement;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SignupComponent],
@@ -75,7 +75,6 @@ describe('SignupComponent', () => {
   });
 
   it('should remind user when signup failed',() => {
-    let el: DebugElement;
     component.isSignUpFailed = true;
     fixture.detectChanges();
     el = fixture.debugElement.query(By.css('div.fail'));
@@ -83,7 +82,6 @@ describe('SignupComponent', () => {
   });
 
   it('should remind user when signup succeeded',() => {
-    let el: DebugElement;
     component.isSuccessful = true;
     fixture.detectChanges();
     el = fixture.debugElement.query(By.css('div.succ'));
@@ -96,4 +94,9 @@ describe('SignupComponent', () => {
     let href = fixture.debugElement.query(By.css('a.login')).nativeElement.getAttribute('href');
     expect(href).toEqual('/login');
   });
+
+  it('should show title',() => {
+    el = fixture.debugElement.query(By.css('.title'));
+    expect(el.nativeElement.textContent).toBe('Create an account');
+  })
 });

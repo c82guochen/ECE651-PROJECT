@@ -11,21 +11,24 @@ import { By } from '@angular/platform-browser';
 import { Recipe } from '../../../model/recipe';
 import { CartItem } from '../../../model/cart';
 import { Product } from '../../../model/product';
+import { UserService } from '../../../services/user.service';
 
 describe('RecipeDetailComponent', () => {
   let component: RecipeDetailComponent;
   let fixture: ComponentFixture<RecipeDetailComponent>;
   let recipeService: RecipeService;
   let cartService: CartService;
+  let userService: UserService;
   let response: Recipe[];
   let cart: CartItem[];
   let el: DebugElement;
   let productItem: Product;
+  let details: any;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [RecipeDetailComponent],
-      providers: [RecipeService, CartService],
+      providers: [RecipeService, CartService, UserService],
       imports: [HttpClientTestingModule, RouterTestingModule]
     }).compileComponents();
   });
@@ -35,6 +38,21 @@ describe('RecipeDetailComponent', () => {
     component = fixture.componentInstance;
     recipeService = TestBed.get(RecipeService);
     cartService = TestBed.get(CartService);
+    userService = TestBed.get(UserService);
+    details = {
+        quantity: [{
+          food1: 1,
+          food2: 2,
+        }],
+        instruction: [{
+          ins1: 'instruction1',
+          ins2: 'instruction2',
+        }],
+        nutrients: [{
+          nutri1: 'nutrient1',
+          nutri2: 'nutrient2',
+        }],
+      };
     response = [{
       id: 1,
       name: 'test recipe',
@@ -46,7 +64,7 @@ describe('RecipeDetailComponent', () => {
       ingredients_product: [],
       rating: 5,
       total_reviews: 94,
-      details: ['aaa', 'bbb']
+      details: details,
     }];
     fixture.detectChanges();
   });
@@ -68,6 +86,29 @@ describe('RecipeDetailComponent', () => {
     el = fixture.debugElement.query(By.css('div.des'));
     expect(el.nativeElement.textContent.trim()).toBe(component.recipeItem.description);
   }));
+
+  it('should disable button for adding to cart without login',() => {
+    spyOn(recipeService, 'getRecipe').and.returnValue(of<any[]>(response));
+    spyOn(userService, 'getIfLogin').and.returnValue(false);
+    component.ngOnInit();
+    expect(component.ifLogin).toBe(false);
+    fixture.detectChanges();
+    el = fixture.debugElement.query(By.css('#buttonNot'));
+    expect(el.nativeElement.getAttribute('disabled')).toBe('!ifLogin');
+  });
+
+  it('should add products through button after login',() => {
+    spyOn(recipeService, 'getRecipe').and.returnValue(of<any[]>(response));
+    spyOn(userService, 'getIfLogin').and.returnValue(true);
+    component.ngOnInit();
+    expect(component.ifLogin).toBe(true);
+    fixture.detectChanges();
+    el = fixture.debugElement.query(By.css('#buttonAdd'));
+    expect(el).toBeTruthy();
+    spyOn(cartService,'addProductsToCart').and.returnValue(of<any[]>(cart));
+    el.nativeElement.click();
+    expect(cartService.addProductsToCart).toHaveBeenCalled();
+  });
 
   it('can add all ingredients to cart and judge if it succeeds',fakeAsync(() => {
     let productItem = {

@@ -28,16 +28,24 @@ export class RecipeSectionComponent implements OnInit {
 
   getRandomRecipe() {
     if (this.recipeList.length <= 4) this.recipeSection = this.recipeList;
-    let randomNumbers = new Array(4);
-    for (let i = 0; i < 4; i++) {
-      let num = this.getRndInteger(0, this.recipeList.length);
-      while (randomNumbers.includes(num)) {
-        num = this.getRndInteger(0, this.recipeList.length);
+//     let randomNumbers = new Array(4);
+//     let i = Math.min(4,this.recipeList.length);
+//     for (let i = 0; i < 4; i++) {
+//       let num = this.getRndInteger(0, this.recipeList.length);
+//       while (randomNumbers.includes(num)) {
+//         num = this.getRndInteger(0, this.recipeList.length);
+//       }
+//       randomNumbers[i] = num;
+//     }
+//     for (let i = 0; i < 4; i++) {
+//       this.recipeSection.push(this.recipeList[randomNumbers[i]]);
+//     }
+    else{
+      let num = this.getRndInteger(1, this.recipeList.length-4);
+      for (let i = 0; i < 4; i++) {
+        this.recipeSection.push(this.recipeList[num+i]);
       }
-      randomNumbers[i] = num;
-    }
-    for (let i = 0; i < 4; i++) {
-      this.recipeSection.push(this.recipeList[randomNumbers[i]]);
+      console.log(this.recipeSection);
     }
   }
 }

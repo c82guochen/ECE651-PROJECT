@@ -19,7 +19,13 @@ nav {
   background: #c8ffc8;
 }
 
-#fontClick {
+#fontLogin {
+  color: #2f4f4f;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+#fontSignup {
   color: #2f4f4f;
   font-style: italic;
   text-decoration: underline;

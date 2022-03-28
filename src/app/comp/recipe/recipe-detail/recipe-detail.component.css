@@ -13,6 +13,11 @@ h3 {
   margin: 20px;
 }
 
+#buttonNot {
+  float: right;
+  margin: 20px;
+}
+
 .cover{
   object-fit: cover;
 }

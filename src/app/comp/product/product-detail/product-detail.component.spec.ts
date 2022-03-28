@@ -11,12 +11,14 @@ import { By } from '@angular/platform-browser';
 import { Product } from '../../../model/product';
 import { CartItem } from '../../../model/cart';
 import { formatCurrency } from '@angular/common';
+import { UserService } from '../../../services/user.service';
 
 describe('ProductDetailComponent', () => {
   let component: ProductDetailComponent;
   let fixture: ComponentFixture<ProductDetailComponent>;
   let productService: ProductService;
   let cartService: CartService;
+  let userService: UserService;
   let response: Product[];
   let cart: CartItem[];
   let el: DebugElement;
@@ -24,7 +26,7 @@ describe('ProductDetailComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ProductDetailComponent],
-      providers: [CartService, ProductService],
+      providers: [CartService, ProductService, UserService],
       imports: [HttpClientTestingModule, RouterTestingModule]
     }).compileComponents();
   });
@@ -34,6 +36,7 @@ describe('ProductDetailComponent', () => {
     component = fixture.componentInstance;
     productService = TestBed.get(ProductService);
     cartService = TestBed.get(CartService);
+    userService = TestBed.get(UserService);
     response = [{
       id: 0,
       name: 'test-product',
@@ -71,7 +74,30 @@ describe('ProductDetailComponent', () => {
     expect(el.nativeElement.textContent.trim()).toBe(formatCurrency(component.productItem.price, 'en_US', '$'));
   }));
 
-  it('can be added to cart',fakeAsync(() => {
+  it('should disable button for adding to cart without login',() => {
+    spyOn(productService, 'getProduct').and.returnValue(of<any[]>(response));
+    spyOn(userService, 'getIfLogin').and.returnValue(false);
+    component.ngOnInit();
+    expect(component.ifLogin).toBe(false);
+    fixture.detectChanges();
+    el = fixture.debugElement.query(By.css('.buttonNot'));
+    expect(el.nativeElement.getAttribute('disabled')).toBe('!ifLogin');
+  });
+
+  it('should add product through button after login',() => {
+    spyOn(productService, 'getProduct').and.returnValue(of<any[]>(response));
+    spyOn(userService, 'getIfLogin').and.returnValue(true);
+    component.ngOnInit();
+    expect(component.ifLogin).toBe(true);
+    fixture.detectChanges();
+    el = fixture.debugElement.query(By.css('.buttonAdd'));
+    expect(el).toBeTruthy();
+    spyOn(cartService,'addProductToCart').and.returnValue(of<any[]>(cart));
+    el.nativeElement.click();
+    expect(cartService.addProductToCart).toHaveBeenCalled();
+  });
+
+  it('can add product to cart',fakeAsync(() => {
     spyOn(cartService,'addProductToCart').and.returnValue(of<any[]>(cart));
     component.addToKart();
     tick();

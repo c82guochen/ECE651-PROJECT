@@ -39,4 +39,9 @@ describe('PageNotFoundComponent', () => {
     el = fixture.debugElement.query(By.css('h3'));
     expect(el.nativeElement.textContent.trim()).toBe('404 - Page Not Found');
   });
+
+  it('should remind user', () =>{
+    el = fixture.debugElement.query(By.css('p'));
+    expect(el.nativeElement.textContent.trim()).toBe('Oops! The page that you were looking for is not found.');
+  });
 });

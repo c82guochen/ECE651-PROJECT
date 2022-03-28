@@ -6,8 +6,8 @@
       [src]="recipeItem.image_url"
     />
     <div class="card-header">
-      <span *ngIf="recipeItem.name.length <= 25">{{recipeItem.name}}</span>
-      <span *ngIf="recipeItem.name.length > 25">{{recipeItem.name | slice: 0:25 }}...</span>
+      <span *ngIf="recipeItem.name.length <= 25" class="nameLess">{{recipeItem.name}}</span>
+      <span *ngIf="recipeItem.name.length > 25" class="nameGreater">{{recipeItem.name | slice: 0:25 }}...</span>
     </div>
     <div class="card-body">
       <div class="d-flex justify-content-between align-items-center">
