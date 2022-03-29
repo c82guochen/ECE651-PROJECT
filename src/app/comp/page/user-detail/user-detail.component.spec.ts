@@ -362,7 +362,7 @@ describe('UserDetailComponent', () => {
     component.province = 'province';
     component.postal_code = 'postal';
     spyOn(userService,'getUserToken').and.returnValue('token');
-    spyOn(userService,'UpdateUser').and.callThrough();;
+    spyOn(userService,'UpdateUser').and.callThrough();
     component.Submit();
     expect(userService.getUserToken).toHaveBeenCalled();
     expect(userService.UpdateUser).toHaveBeenCalled();

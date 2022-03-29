@@ -78,13 +78,13 @@ export class UserService {
     );
   }
 
-  passChange(oldPass: string, newPass: string) {}
-
-  logout() {
-    this.ifLogin = false;
-    this.userSubject.next(null);
-    return true;
-  }
+//   passChange(oldPass: string, newPass: string) {}
+//
+//   logout() {
+//     this.ifLogin = false;
+//     this.userSubject.next(null);
+//     return true;
+//   }
 
   UpdateUser(
     userInfo: any,

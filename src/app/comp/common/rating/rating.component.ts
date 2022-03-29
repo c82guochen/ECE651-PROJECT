@@ -13,9 +13,4 @@ export class RatingComponent {
     // customize default values of ratings used by this component tree
     // config.readonly = true;
   }
-
-  getSelect(selected: number) {
-    this.selected = selected;
-    console.log(this.selected);
-  }
 }

@@ -105,4 +105,11 @@ describe('LoginComponent', () => {
 //     fixture.detectChanges();
 //     expect(component.email).toBe("test@gmail.com");
 //   })
+  it('should login through signIn function',() => {
+     component.email = 'email@gmail.com';
+     component.email = '1234';
+     spyOn(userService,'login').and.callThrough();
+     component.signIn();
+     expect(userService.login).toHaveBeenCalled();
+  })
 });

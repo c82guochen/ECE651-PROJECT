@@ -98,5 +98,14 @@ describe('SignupComponent', () => {
   it('should show title',() => {
     el = fixture.debugElement.query(By.css('.title'));
     expect(el.nativeElement.textContent).toBe('Create an account');
+  });
+
+    it('should login through signIn function',() => {
+     component.email = 'email@gmail.com';
+     component.name = 'name';
+     component.email = '1234';
+     spyOn(userService,'signup').and.callThrough();
+     component.signUp();
+     expect(userService.signup).toHaveBeenCalled();
   })
 });
