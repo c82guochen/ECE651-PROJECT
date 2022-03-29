@@ -25,13 +25,19 @@ export class SearchComponent implements OnInit {
     this.routeInfo.paramMap.subscribe((word) => {
       const key = word.get('key') as string;
       this.key = key;
-      this.recipeService
-        .getRecipeByName(key)
-        .subscribe((res) => (this.recipeCandidates = res));
-
-      this.productService
-        .getProductByName(key)
-        .subscribe((res) => (this.productCandidates = res));
+      this.init(key);
+      this.initProduct(key);
     });
+  }
+
+  init(key: string) {
+    this.recipeService
+      .getRecipeByName(key)
+      .subscribe((res) => (this.recipeCandidates = res));
+  }
+  initProduct(key: string) {
+    this.productService
+      .getProductByName(key)
+      .subscribe((res) => (this.productCandidates = res));
   }
 }

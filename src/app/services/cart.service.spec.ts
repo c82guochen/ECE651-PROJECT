@@ -3,6 +3,10 @@ import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { CartService } from './cart.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { cartUrl, productsUrl } from '../config/api';
+import { UserService } from './user.service';
+import { BehaviorSubject } from 'rxjs';
+import { User } from '../model/user';
+import { SAMPLE_USER } from '../testdata/test.data';
 
 describe('CartService', () => {
   let service: CartService;
@@ -38,8 +42,15 @@ describe('CartService', () => {
     fav_recipes: []
   }
 
+  let userServiceStub: Partial<UserService>= {
+    getUser(): BehaviorSubject<User | null> {
+      return new BehaviorSubject<User | null>(SAMPLE_USER);
+    }
+  }
+
   beforeEach(() => {
     TestBed.configureTestingModule({
+      providers: [CartService, {provide: UserService, useValue:userServiceStub }],
       imports: [HttpClientTestingModule]
     });
     service = TestBed.inject(CartService);

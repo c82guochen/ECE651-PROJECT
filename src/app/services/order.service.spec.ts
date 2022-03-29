@@ -2,6 +2,10 @@ import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { OrderService } from './order.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { UserService } from './user.service';
+import { BehaviorSubject } from 'rxjs';
+import { User } from '../model/user';
+import { SAMPLE_USER } from '../testdata/test.data';
 
 describe('OrderService', () => {
   let service: OrderService;
@@ -25,10 +29,16 @@ describe('OrderService', () => {
     fav_recipes: []
   }
 
+  let userServiceStub: Partial<UserService>= {
+    getUser(): BehaviorSubject<User | null> {
+      return new BehaviorSubject<User | null>(SAMPLE_USER);
+    }
+  }
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule],
+      providers : [ {provide: UserService, useValue: userServiceStub}]
     });
     service = TestBed.inject(OrderService);
   });

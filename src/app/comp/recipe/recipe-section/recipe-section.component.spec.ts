@@ -89,6 +89,12 @@ describe('RecipeSectionComponent', () => {
     expect(el).toBeTruthy();
   }));
 
+  it('should be able to call loadRecipe function', fakeAsync(()=>{
+    spyOn(recipeService, 'getRecipes').and.returnValue(of<any[]>(response));
+    component.loadRecipes();
+    expect(component.recipeList).toBe(response);
+  }));
+
   it('should produce random 4 recipes', fakeAsync(() => {
     component.recipeList = response;
     console.log(component.recipeList);
