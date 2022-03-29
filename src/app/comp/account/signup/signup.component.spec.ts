@@ -8,6 +8,7 @@ import { User } from '../../../model/user';
 import { Observable, of } from 'rxjs';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { EMPTY_USER } from '../../../testdata/test.data';
 
 describe('SignupComponent', () => {
   let component: SignupComponent;
@@ -98,5 +99,11 @@ describe('SignupComponent', () => {
   it('should show title',() => {
     el = fixture.debugElement.query(By.css('.title'));
     expect(el.nativeElement.textContent).toBe('Create an account');
+  })
+
+  it('should be able to call SigIn()', () => {
+    let spy = spyOn(userService, 'signup').and.returnValue(of(EMPTY_USER));
+    component.signUp();
+    expect(spy).toHaveBeenCalled();
   })
 });

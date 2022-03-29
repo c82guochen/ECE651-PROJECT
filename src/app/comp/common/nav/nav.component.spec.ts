@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, fakeAsync, tick, } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { NavComponent } from './nav.component';
 import { RecipeService } from '../../../services/recipe.service';
 import { ProductService } from '../../../services/product.service';
@@ -40,6 +40,7 @@ describe('NavComponent', () => {
     recipeService = TestBed.get(RecipeService);
     productService = TestBed.get(ProductService);
     userService = TestBed.get(UserService);
+    router = TestBed.get(Router);
     recipes = [{
       id: 1,
       name: 'test recipe',
@@ -107,7 +108,7 @@ describe('NavComponent', () => {
     let user: any;
     userService.getUser().subscribe((res: any) => {
       user = res;
-    })
+    });
     component.ngOnInit();
     expect(component.username).toEqual(user.username);
     fixture.detectChanges();
@@ -149,5 +150,9 @@ describe('NavComponent', () => {
     expect(href).toEqual('/productlist');
   });
 
-//   it('search', () => {})
+  it('should look for the relevent text', () => {
+    component.search_text = 'xd';
+    component.look()
+    expect(true).toBeTruthy();
+  });
 });

@@ -8,12 +8,13 @@ import { Observable, of } from 'rxjs';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { HttpErrorResponse } from '@angular/common/http';
+import { EMPTY_USER, SAMPLE_USER } from '../../../testdata/test.data';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let userService: UserService;
-  let mockUser: User;
+  let mockUser = SAMPLE_USER;
   let el: DebugElement;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -27,26 +28,6 @@ describe('LoginComponent', () => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     userService = TestBed.get(UserService);
-    mockUser = {
-      username: 'username',
-      id: '',
-      token: '',
-      email: 'email@uwaterloo.ca',
-      credit_card: '',
-      shipping_address: '',
-      last_login: new Date(),
-      date_joined: new Date(),
-      expiry: new Date(),
-      is_active: true,
-      is_staff: false,
-      is_superuser: false,
-      cart_items: [],
-      orders: [],
-      fav_recipes: [],
-      groups: [],
-      user_permissions: []
-    };
-
     fixture.detectChanges();
   });
 
@@ -101,5 +82,9 @@ describe('LoginComponent', () => {
     expect(el.nativeElement.textContent).toBe('Log In');
   })
 
-
+  it('should be able to call SigIn()', () => {
+    let spy = spyOn(userService, 'login').and.returnValue(of(EMPTY_USER));
+    component.signIn();
+    expect(spy).toHaveBeenCalled();
+  })
 });

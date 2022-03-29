@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   email = '';
   password = '';
   err_msg = '';
@@ -39,6 +39,4 @@ export class LoginComponent implements OnInit {
       error: this.onSignInError.bind(this)
     });
   }
-
-  ngOnInit(): void {}
 }

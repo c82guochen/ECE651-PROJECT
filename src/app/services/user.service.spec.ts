@@ -8,10 +8,12 @@ import {
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { authUrl, userUrl } from 'src/app/config/api';
+import { EMPTY_USER } from '../testdata/test.data';
 
 describe('UserService', () => {
   let service: UserService;
   let httpTestingController: HttpTestingController;
+  let user = EMPTY_USER;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -55,51 +57,13 @@ describe('UserService', () => {
   });
 
   it('set value to user', () => {
-    let mockUser: User;
-    mockUser = {
-      username: 'username',
-      id: '',
-      token: '',
-      email: '',
-      credit_card: '',
-      shipping_address: '',
-      last_login: new Date(),
-      date_joined: new Date(),
-      expiry: new Date(),
-      is_active: true,
-      is_staff: false,
-      is_superuser: false,
-      cart_items: [],
-      orders: [],
-      fav_recipes: [],
-      groups: [],
-      user_permissions: []
-    };
-    service.setUser(mockUser);
-    expect(service.local_user).toBe(mockUser);
+    service.setUser(user);
+    expect(service.local_user).toBe(user);
   });
 
   it('get value of user', () => {
     let mockUser: BehaviorSubject<User | null> =
-      new BehaviorSubject<User | null>({
-        username: 'username',
-        id: '',
-        token: '',
-        email: '',
-        credit_card: '',
-        shipping_address: '',
-        last_login: new Date(),
-        date_joined: new Date(),
-        expiry: new Date(),
-        is_active: true,
-        is_staff: false,
-        is_superuser: false,
-        cart_items: [],
-        orders: [],
-        fav_recipes: [],
-        groups: [],
-        user_permissions: []
-      });
+      new BehaviorSubject<User | null>(user);
     service.userSubject = mockUser;
     expect(service.getUser()).toBe(mockUser);
   });
