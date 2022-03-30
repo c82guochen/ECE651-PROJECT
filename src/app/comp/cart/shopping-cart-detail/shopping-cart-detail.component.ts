@@ -25,23 +25,18 @@ export class ShoppingCartDetailComponent implements OnInit {
     console.log('shoppingcart Detail');
     this.cServ.getCartItems().subscribe((it) => {
       this.kart = it;
-      console.log(it);
       for (let item of it) {
         this.total_price += item.product.price * item.quantity;
       }
     });
     this.userService.getUser().subscribe((user: any) => {
-      console.log('I am getting user information');
-      console.log(user);
       this.address =
         user.shipping_address.address +
         ', ' +
         user.shipping_address.province +
         ', ' +
         user.shipping_address.postal_code;
-      console.log('shipping address = ', user.shipping_address.address);
       this.card = user.credit_card;
-      console.log('card number = ', user.credit_card);
     });
   }
 
@@ -57,19 +52,21 @@ export class ShoppingCartDetailComponent implements OnInit {
     });
   }
 
-  clear() {
-    // TODO: send a clear cart request
-  }
+  // clear() {
+  //   // TODO: send a clear cart request
+  // }
 
   placeOrder() {
     let status = 'unpaid';
     let order = [];
-    console.log('trigger place order');
     if (this.address == '') {
       window.alert('Fail to place an order, address is missing');
-    } else if (this.card = '') {
+      return false;
+    } else if (this.card == '') {
       window.alert('Fail to place an order, card is missing');
+      return false;
     } else {
+      
       for (let item of this.kart) {
         let obj: CheckoutOrder = {
           product_id: -1,
@@ -79,10 +76,12 @@ export class ShoppingCartDetailComponent implements OnInit {
         obj.quantity = item.quantity;
         order.push(obj);
       }
+      
       this.cServ.create_new_order(status, order).subscribe((data) => {
         console.log('data = ', data);
-      });
+      });  
       window.alert('success place order');
+      return true;
     }
   }
 

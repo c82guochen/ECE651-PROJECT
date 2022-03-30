@@ -38,5 +38,5 @@ context.keys().map(context);
 
 // const FILE = ['./app/comp/page/order-detail/order-detail.component.spec.ts'];
 // const FILE = ['./app/comp/shop/shop.component.spec.ts'];
-
+// const FILE = ['./app/comp/cart/shopping-cart-detail/shopping-cart-detail.component.spec.ts'];
 // context.keys().filter( name => !!FILE.includes(name)).map(context);

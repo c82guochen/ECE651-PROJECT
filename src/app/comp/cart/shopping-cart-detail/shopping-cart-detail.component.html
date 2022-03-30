@@ -20,13 +20,13 @@
     </div>
     <div class="col-8">
       <div class="row justify-content-between">
-        <div class="fs-5 fw-bold">{{it.product.name}}</div>
+        <div class="fs-5 fw-bold product-name">{{it.product.name}}</div>
         <div class="fs-5"><span>{{ it.product.price | currency }} x {{it.quantity}}
           = {{ it.product.price * it.quantity | currency }}</span></div>
       </div>
       <div class="row top-m10">
         <div class="col-12">
-          <p class="text-wrap text-break">{{it.product.description}}</p>
+          <p class="text-wrap text-break product-description">{{it.product.description}}</p>
         </div>
       </div>
       <button
@@ -51,9 +51,9 @@
   <div class="row" style="margin-top:10vh;">
     <div #checkoutdetail hidden>
       <span class="fs-5 fw-bold" > Confirming your details</span> 
-      <div class="top-m10">Card number: {{card}}</div>
-      <div class="top-m10">Address: {{address}}</div>   
-      <div class="top-m10">price total: {{total_price | currency}}</div>
+      <div class="top-m10 card">Card number: {{card}}</div>
+      <div class="top-m10 address">Address: {{address}}</div>   
+      <div class="top-m10 price">price total: {{total_price | currency}}</div>
       <div class="row mt-4">
         <div class="col-4">
           <button class="btn btn-success rounded" routerLink="/userdetail">
@@ -61,7 +61,7 @@
           </button>
         </div>
         <div class="col-4">
-          <button class="btn btn-success rounded" (click)="placeOrder()">Place my order</button>
+          <button class="btn btn-success rounded" id="order-btn" (click)="placeOrder()">Place my order</button>
         </div>
       </div>
     </div>
