@@ -82,9 +82,17 @@ describe('LoginComponent', () => {
     expect(el.nativeElement.textContent).toBe('Log In');
   })
 
-  it('should be able to call SigIn()', () => {
-    let spy = spyOn(userService, 'login').and.returnValue(of(EMPTY_USER));
-    component.signIn();
-    expect(spy).toHaveBeenCalled();
+//   it('input', () => {
+//     el = fixture.debugElement.query(By.css('#email'));
+//     el.nativeElement.value = mockUser.email;
+//     fixture.detectChanges();
+//     expect(component.email).toBe("test@gmail.com");
+//   })
+  it('should login through signIn function',() => {
+     component.email = 'email@gmail.com';
+     component.email = '1234';
+     spyOn(userService,'login').and.callThrough();
+     component.signIn();
+     expect(userService.login).toHaveBeenCalled();
   })
 });
