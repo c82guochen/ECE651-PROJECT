@@ -32,7 +32,7 @@ context.keys().map(context);
 // const FILE = ['./app/comp/product/product-detail/product-detail.component.spec.ts'];
 // const FILE = ['./app/comp/recipe/recipe-detail/recipe-detail.component.spec.ts'];
 // const FILE = ['./app/comp/recipe/recipe-section/recipe-section.component.spec.ts'];
-// const FILE = ['./app/comp/common/carousel/carousel.component.spec.ts'];
+// const FILE = ['./app/comp/common/nav/nav.component.spec.ts'];
 // const FILE = ['./app/comp/page/user-detail/user-detail.component.spec.ts'];
 // const FILE = ['./app/comp/account/login/login.component.spec.ts'];
 
