@@ -106,7 +106,7 @@ describe('UserDetailComponent', () => {
         phone_number : telephone,
       };
       userInfo.shipping_address =  mockShipping_address;
-      return new Observable<any>(userInfo);
+      return of(userInfo as any);
     },
     setUserToken: (token: string) => {
       mockUserHttp.token = token;
@@ -362,7 +362,7 @@ describe('UserDetailComponent', () => {
     component.province = 'province';
     component.postal_code = 'postal';
     spyOn(userService,'getUserToken').and.returnValue('token');
-    spyOn(userService,'UpdateUser').and.callThrough();;
+    spyOn(userService,'UpdateUser').and.callThrough();
     component.Submit();
     expect(userService.getUserToken).toHaveBeenCalled();
     expect(userService.UpdateUser).toHaveBeenCalled();

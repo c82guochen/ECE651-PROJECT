@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick, inject } from '@angular/core/testing';
 import { NavComponent } from './nav.component';
 import { RecipeService } from '../../../services/recipe.service';
 import { ProductService } from '../../../services/product.service';
@@ -23,7 +23,9 @@ describe('NavComponent', () => {
   let recipes: Recipe[] = [];
   let products: Product[] = [];
   let el: DebugElement;
-  let router: Router;
+  let router = {
+    navigate: jasmine.createSpy('navigate')
+  };
   const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
 
   beforeEach(async () => {
@@ -150,9 +152,10 @@ describe('NavComponent', () => {
     expect(href).toEqual('/productlist');
   });
 
-  it('should look for the relevent text', () => {
-    component.search_text = 'xd';
-    component.look()
-    expect(true).toBeTruthy();
-  });
+  it('should look for the relevent text', inject([Router], (router: Router) => {
+      component.search_text = 'xd';
+      spyOn(router, 'navigate').and.stub();
+      component.look();
+      expect(router.navigate).toHaveBeenCalledWith(['/search', component.search_text]);
+    }));
 });
