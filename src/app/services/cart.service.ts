@@ -48,6 +48,7 @@ export class CartService {
     console.log(this.user);
     console.log(this.httpOptions);
     this.httpOptions.headers.set('Authorization', 'token ' + this.user.token);
+    console.log('test item',this.http.get<any>(cartUrl, this.httpOptions))
     return this.http.get<any>(cartUrl, this.httpOptions);
   }
 
@@ -85,11 +86,6 @@ export class CartService {
 
   create_new_order(order_status: string, order: Array<CheckoutOrder>) {
     if (!this.user) return of([]); // TODO: catch error here
-    console.log(this.httpOptions);
-    console.log('status = ', order_status);
-    console.log('order = ', order);
-    let obj = { order_status, order };
-    console.log('I am tring to post this to backend: ', obj);
     this.httpOptions.headers.set('Authorization', 'token ' + this.user.token);
     return this.http.post(
       orderUrl,
