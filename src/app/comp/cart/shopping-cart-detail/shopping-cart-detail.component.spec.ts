@@ -79,6 +79,34 @@ describe('ShoppingCartDetailComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  // it('should get order list', fakeAsync(() => {
+  //   // spyOn(userService,'login').and.returnValue(of<User>(mockUser));
+  //   // let user: any;
+  //   // userService.getUser().subscribe((res: any) => {
+  //   //   user = res;
+  //   // });
+  //   // expect(user).toBe(mockUser);
+  //   spyOn(cartService, 'getCartItems').and.returnValue(of<any>(cart));
+  //   // component.ngOnInit();
+  //   // tick()
+  //   expect(component.kart).toBe(cart);
+  // }));
+  
+  it('should invoke delete button', fakeAsync(() => {
+    component.kart = cart;
+    fixture.detectChanges();
+    expect(component.delete).toBeTruthy()
+    spyOn(component, 'delete');
+    let button1 = fixture.debugElement.nativeElement.querySelector('button#delete-btn');
+    button1.click();
+    tick();
+    expect(component.delete).toHaveBeenCalled();
+
+    component.delete(0)
+    expect(component.kart).toEqual(cart)
+  }));
+ 
+
   it('should not place order, address empty', () => {
     component.address=''
     expect(component.placeOrder()).toBeFalsy();
@@ -95,7 +123,7 @@ describe('ShoppingCartDetailComponent', () => {
     component.card='1111222233334444'
     expect(component.placeOrder()).toBeTruthy();
   });
-
+  
   it('should invoke place order button', fakeAsync(() => {
     fixture.detectChanges();
     expect(component.placeOrder).toBeTruthy()
@@ -118,7 +146,7 @@ describe('ShoppingCartDetailComponent', () => {
     component.kart = cart;
     component.total_price = 110;
     fixture.detectChanges();
-
+    
     let el: DebugElement;
     el = fixture.debugElement.query(By.css('div.price'));
     expect(el.nativeElement.textContent.trim()).toBe('price total: '+ formatCurrency(component.total_price, 'en_US', '$'));
@@ -140,36 +168,49 @@ describe('ShoppingCartDetailComponent', () => {
   }));
 });
 
-describe('UserService', () => {
-  let userService: UserService;
-  let mockUserHttp: any = SAMPLE_USER;
+// describe('UserService', () => {
+//   let userService: UserService;
+//   let mockUserHttp: any = SAMPLE_USER;
 
-  let mockUser: User = {
-    username: 'username',
-    id: '',
-    token: 'token',
-    email: 'email',
-    credit_card: '',
-    shipping_address: '',
-    last_login: new Date(),
-    date_joined: new Date(),
-    expiry: new Date(),
-    is_active: true,
-    is_staff: false,
-    is_superuser: false,
-    cart_items: [],
-    orders: [],
-    fav_recipes: [],
-    groups: [],
-    user_permissions: []
-  };
-  let userSubject = new BehaviorSubject<User | null>(null);
-  beforeEach(() => { userService = new UserService(mockUserHttp); });
+//   let mockUser: User = {
+//     username: 'username',
+//     id: '',
+//     token: 'token',
+//     email: 'email',
+//     credit_card: '',
+//     shipping_address: '',
+//     last_login: new Date(),
+//     date_joined: new Date(),
+//     expiry: new Date(),
+//     is_active: true,
+//     is_staff: false,
+//     is_superuser: false,
+//     cart_items: [],
+//     orders: [],
+//     fav_recipes: [],
+//     groups: [],
+//     user_permissions: []
+//   };
+//   let userSubject = new BehaviorSubject<User | null>(null);
+//   beforeEach(() => { userService = new UserService(mockUserHttp); });
 
-  it('should get user behavior subject', () => {
-    expect(userService.getUser()).toEqual(userSubject);
-  });
-});
+//   it('should get user behavior subject', () => {
+//     expect(userService.getUser()).toEqual(userSubject);
+//   });
+
+//   it('should signin an account successfully', () =>{
+//     spyOn(userService,'login').and.returnValue(of<User>(mockUser));
+//     component.onSigninSuccess(mockUser);
+//     expect(component.isSuccessful).toBe(true);
+//     expect(component.isLoginFailed).toBe(false);
+//     let user: any;
+//     userService.getUser().subscribe((res: any) => {
+//       user = res;
+//     });
+//     expect(user).toBe(mockUser);
+//     expect(userService.getIfLogin()).toBe(true);
+//   })
+// });
 
 
 

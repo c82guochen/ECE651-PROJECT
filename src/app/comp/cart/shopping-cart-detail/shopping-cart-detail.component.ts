@@ -20,7 +20,7 @@ export class ShoppingCartDetailComponent implements OnInit {
   total_price = 0;
   address: string = '';
   card: string = '';
-
+  obj:CheckoutOrder = {product_id: -1, quantity: -1}
   ngOnInit(): void {
     console.log('shoppingcart Detail');
     this.cServ.getCartItems().subscribe((it) => {
@@ -68,13 +68,10 @@ export class ShoppingCartDetailComponent implements OnInit {
     } else {
       
       for (let item of this.kart) {
-        let obj: CheckoutOrder = {
-          product_id: -1,
-          quantity: -1
-        };
-        obj.product_id = item.product.id;
-        obj.quantity = item.quantity;
-        order.push(obj);
+      
+        this.obj.product_id = item.product.id;
+        this.obj.quantity = item.quantity;
+        order.push(this.obj);
       }
       
       this.cServ.create_new_order(status, order).subscribe((data) => {
