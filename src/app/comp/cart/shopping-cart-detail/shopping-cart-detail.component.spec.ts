@@ -14,7 +14,7 @@ import { By } from '@angular/platform-browser';
 import { SAMPLE_USER } from '../../../testdata/test.data';
 import { formatCurrency } from '@angular/common';
 
-import { HttpClientTestingModule } from '@angular/common/http/testing'; 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpTestingController } from '@angular/common/http/testing';
 
 describe('ShoppingCartDetailComponent', () => {
@@ -26,7 +26,7 @@ describe('ShoppingCartDetailComponent', () => {
   let el: DebugElement;
   let checkoutOrder: CheckoutOrder;
   let mockUser = SAMPLE_USER;
-  
+
   let mock_product1:Product = {
     id: 10,
     name: 'test-product1',
@@ -119,7 +119,7 @@ describe('ShoppingCartDetailComponent', () => {
     component.delete(10)
     expect(cartService.delProduct).toHaveBeenCalled();
 
-    
+
   }));
 
   // it('should get total price', fakeAsync(() => {
@@ -137,11 +137,11 @@ describe('ShoppingCartDetailComponent', () => {
   //   // })
   //   //   tick()
   //   //   console.log('price = ',component.total_price)
-    
+
   // }));
 
 
-  
+
   it('should invoke delete button', fakeAsync(() => {
     component.kart = cart;
     fixture.detectChanges();
@@ -152,7 +152,7 @@ describe('ShoppingCartDetailComponent', () => {
     tick();
     expect(component.delete).toHaveBeenCalled();
   }));
- 
+
   it('test order', () => {
     let mock_product1:Product = {
       id: 10,
@@ -197,7 +197,7 @@ describe('ShoppingCartDetailComponent', () => {
     let checkout2:CheckoutOrder = {product_id:11, quantity:1}
     let expect_order = [checkout1,checkout2]
     expect(component.order).toEqual(expect_order)
-    
+
   });
 
   it('should not place order, address empty', () => {
@@ -216,7 +216,7 @@ describe('ShoppingCartDetailComponent', () => {
     component.card='1111222233334444'
     expect(component.placeOrder()).toBeTruthy();
   });
-  
+
   it('should invoke place order button', fakeAsync(() => {
     fixture.detectChanges();
     expect(component.placeOrder).toBeTruthy()
@@ -239,7 +239,7 @@ describe('ShoppingCartDetailComponent', () => {
     component.kart = cart;
     component.total_price = 110;
     fixture.detectChanges();
-    
+
     let el: DebugElement;
     el = fixture.debugElement.query(By.css('div.price'));
     expect(el.nativeElement.textContent.trim()).toBe('price total: '+ formatCurrency(component.total_price, 'en_US', '$'));
@@ -259,6 +259,25 @@ describe('ShoppingCartDetailComponent', () => {
     el = fixture.debugElement.query(By.css('div.card'));
     expect(el.nativeElement.textContent.trim()).toBe('Card number: '+ component.card);
   }));
+
+  it('should delete an item and calculate total price again',() => {
+    let cart: any[] = [
+    { id: 1,
+      productId: 10,
+      quantity: 1,
+      product:mock_product1,
+    },
+    {
+      id: 2,
+      productId: 11,
+      quantity: 1,
+      product:mock_product2,
+    }
+  ];
+    spyOn(cartService,'delProduct').and.returnValue(of<any>(cart));
+    component.delete(10);
+    expect(cartService.delProduct).toHaveBeenCalled();
+  });
 });
 
 // describe('UserService', () => {
