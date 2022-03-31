@@ -28,7 +28,7 @@ describe('ShoppingCartDetailComponent', () => {
   let mockUser = SAMPLE_USER;
   
   let mock_product1:Product = {
-    id: 1,
+    id: 10,
     name: 'test-product1',
     description: 'desc',
     price: 10,
@@ -37,7 +37,7 @@ describe('ShoppingCartDetailComponent', () => {
     category: 'French'
   }
   let mock_product2:Product = {
-    id: 2,
+    id: 11,
     name: 'test-product2',
     description: 'desc',
     price: 100,
@@ -79,18 +79,68 @@ describe('ShoppingCartDetailComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should get order list', fakeAsync(() => {
-  //   // spyOn(userService,'login').and.returnValue(of<User>(mockUser));
-  //   // let user: any;
-  //   // userService.getUser().subscribe((res: any) => {
-  //   //   user = res;
-  //   // });
-  //   // expect(user).toBe(mockUser);
-  //   spyOn(cartService, 'getCartItems').and.returnValue(of<any>(cart));
-  //   // component.ngOnInit();
-  //   // tick()
-  //   expect(component.kart).toBe(cart);
+  it('should get order list', fakeAsync(() => {
+    let mockUser: BehaviorSubject<User | null> =
+      new BehaviorSubject<User | null>({
+        expiry: new Date("2022-03-28T17:59:57.566575Z"),
+        token: "2fa1a29afde6e251d7cbb6fc328106e4ef309938dccb7522bf5ec8683bbdb1de",
+        id: "a534b0e6-a681-4d24-a403-dd9876dbc862",
+        cart_items: [],
+        orders:[],
+        shipping_address: "sd",
+        last_login: new Date("2022-03-28T07:59:57.568441Z"),
+        is_superuser: false,
+        is_staff: false,
+        is_active: true,
+        date_joined: new Date("2022-03-07T15:58:51.345334Z"),
+        username: "eugene",
+        email: "eugene.r.w.12@gmail.com",
+        credit_card: "2222333311117777",
+        groups: [],
+        user_permissions: [],
+        fav_recipes: []
+      });
+    spyOn(userService, 'getUser').and.returnValue(mockUser);
+    // let user: any;
+    // userService.getUser().subscribe((res: any) => {
+    //   user = res;
+    // });
+    // expect(user).toBe(mockUser);
+    spyOn(cartService, 'getCartItems').and.returnValue(of<any>(cart));
+    component.ngOnInit();
+    tick()
+    expect(component.kart).toBe(cart);
+  }));
+
+  it('should delete a product', fakeAsync(() => {
+    let mock_cart = cart;
+    component.kart = cart;
+    spyOn(cartService, 'delProduct').and.callThrough();
+    component.delete(10)
+    expect(cartService.delProduct).toHaveBeenCalled();
+
+    
+  }));
+
+  // it('should get total price', fakeAsync(() => {
+  //   component.kart = cart;
+  //   spyOn(cartService,'delProduct').and.returnValue(of<any>(cart))
+  //   component.delete(10)
+  //   expect(component.total_price).toBe(110)
+  //   // cartService.delProduct(10).subscribe((res:any)=> {component.kart = res as any[];
+  //   //   component.total_price = 0;
+  //   //   console.log('res = ', res)
+  //   //   for (let item of res as any[]) {
+  //   //     component.total_price += item.product.price * item.qty;
+  //   //   }
+  //   //   expect(component.total_price).toBe(110)
+  //   // })
+  //   //   tick()
+  //   //   console.log('price = ',component.total_price)
+    
   // }));
+
+
   
   it('should invoke delete button', fakeAsync(() => {
     component.kart = cart;
@@ -101,11 +151,54 @@ describe('ShoppingCartDetailComponent', () => {
     button1.click();
     tick();
     expect(component.delete).toHaveBeenCalled();
-
-    component.delete(0)
-    expect(component.kart).toEqual(cart)
   }));
  
+  it('test order', () => {
+    let mock_product1:Product = {
+      id: 10,
+      name: 'test-product1',
+      description: 'desc',
+      price: 10,
+      image_url:
+        'https://cdn.britannica.com/68/143268-050-917048EA/Beef-loin.jpg',
+      category: 'French'
+    }
+    let mock_product2:Product = {
+      id: 11,
+      name: 'test-product2',
+      description: 'desc',
+      price: 100,
+      image_url:
+        'https://cdn.britannica.com/68/143268-050-917048EA/Beef-loin.jpg',
+      category: 'French'
+    }
+
+    let mock_cart:any[] = [
+      { id: 1,
+        productId: 10,
+        quantity: 1,
+        product:mock_product1,
+      },
+      {
+        id: 2,
+        productId: 11,
+        quantity: 1,
+        product:mock_product2,
+      }
+    ]
+    component.kart = mock_cart;
+    let flag:boolean = true;
+    component.card = '123'
+    component.address = '1234'
+    component.placeOrder()
+    console.log('order = ', component.order)
+    console.log('kart = ', component.kart)
+    let checkout1:CheckoutOrder = {product_id:10, quantity:1}
+    let checkout2:CheckoutOrder = {product_id:11, quantity:1}
+    let expect_order = [checkout1,checkout2]
+    expect(component.order).toEqual(expect_order)
+    
+  });
 
   it('should not place order, address empty', () => {
     component.address=''

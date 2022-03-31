@@ -20,7 +20,8 @@ export class ShoppingCartDetailComponent implements OnInit {
   total_price = 0;
   address: string = '';
   card: string = '';
-  obj:CheckoutOrder = {product_id: -1, quantity: -1}
+  
+  order: any[] = [];
   ngOnInit(): void {
     console.log('shoppingcart Detail');
     this.cServ.getCartItems().subscribe((it) => {
@@ -58,7 +59,7 @@ export class ShoppingCartDetailComponent implements OnInit {
 
   placeOrder() {
     let status = 'unpaid';
-    let order = [];
+    // let order = [];
     if (this.address == '') {
       window.alert('Fail to place an order, address is missing');
       return false;
@@ -66,17 +67,17 @@ export class ShoppingCartDetailComponent implements OnInit {
       window.alert('Fail to place an order, card is missing');
       return false;
     } else {
-      
+
       for (let item of this.kart) {
-      
-        this.obj.product_id = item.product.id;
-        this.obj.quantity = item.quantity;
-        order.push(this.obj);
+        let obj: CheckoutOrder = { product_id: -1, quantity: -1 }
+        obj.product_id = item.product.id;
+        obj.quantity = item.quantity;
+        this.order.push(obj);
       }
-      
-      this.cServ.create_new_order(status, order).subscribe((data) => {
+
+      this.cServ.create_new_order(status, this.order).subscribe((data) => {
         console.log('data = ', data);
-      });  
+      });
       window.alert('success place order');
       return true;
     }
