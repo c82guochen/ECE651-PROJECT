@@ -33,6 +33,7 @@ export class ProductDetailComponent implements OnInit {
   addToKart() {
     console.log('addToKart triggered');
     console.log(this.product_qty);
+    window.alert('Successfully add product to shopping cart!')
     this.cartService
       .addProductToCart(this.productItem, this.product_qty)
       .subscribe((res) => {

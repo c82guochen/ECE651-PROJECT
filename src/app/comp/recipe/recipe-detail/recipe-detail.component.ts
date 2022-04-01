@@ -43,6 +43,7 @@ export class RecipeDetailComponent implements OnInit {
     });
     if(this.cartAns != undefined)
       this.judgeCartAns();
+      window.alert('Successfully add all products to shopping cart!')
     console.log('adding product to cart');
   }
 
